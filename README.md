@@ -62,13 +62,14 @@ Open [http://localhost:3000](http://localhost:3000) to view the public portal.
 
 ---
 
-## 🔒 Administrative Portal Credentials
+## 🔒 Administrative Portal
 
-Navigate to [http://localhost:3000/admin/login](http://localhost:3000/admin/login) to login as administrator.
+After running the seed script, a default development administrator account is created automatically.
 
-- **Admin Email**: `admin@primesdn.com`
-- **Initial Password**: `changeme`
+If you need to change the default credentials, edit the seed data located in:
 
+prisma/seed.ts
+  
 ---
 
 ## 🗺️ Project Architecture
