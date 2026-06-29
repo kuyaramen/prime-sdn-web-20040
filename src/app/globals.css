@@ -1,0 +1,700 @@
+@import "tailwindcss";
+
+/* ===== PRIME SDN BRAND DESIGN SYSTEM ===== */
+
+:root {
+  /* Brand Colors */
+  --color-maroon-900: #5C0B23;
+  --color-maroon-700: #7A1230;
+  --color-maroon-500: #9B1B3D;
+  --color-teal-600: #0E7C7B;
+  --color-teal-500: #12A19F;
+  --color-gold-500: #C9A227;
+  --color-cream-50: #F7F5F2;
+  --color-ink-900: #120508;
+  --color-white: #FFFFFF;
+
+  /* Semantic */
+  --background: #ffffff;
+  --foreground: #120508;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Brand palette registered for Tailwind */
+  --color-maroon-900: #5C0B23;
+  --color-maroon-700: #7A1230;
+  --color-maroon-500: #9B1B3D;
+  --color-teal-600: #0E7C7B;
+  --color-teal-500: #12A19F;
+  --color-gold-500: #C9A227;
+  --color-cream-50: #F7F5F2;
+  --color-ink-900: #120508;
+
+  /* Fonts */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ===== BASE TYPOGRAPHY ===== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+}
+
+/* ===== SECTION LABEL (UPPERCASE TEAL) ===== */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-teal-600);
+}
+
+/* ===== PILL BUTTON STYLES ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-maroon {
+  background-color: var(--color-maroon-900);
+  color: var(--color-white);
+}
+.btn-maroon:hover {
+  background-color: var(--color-maroon-700);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(92, 11, 35, 0.3);
+}
+
+.btn-teal {
+  background-color: var(--color-teal-600);
+  color: var(--color-white);
+}
+.btn-teal:hover {
+  background-color: var(--color-teal-500);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 124, 123, 0.3);
+}
+
+.btn-white {
+  background-color: var(--color-white);
+  color: var(--color-maroon-900);
+}
+.btn-white:hover {
+  background-color: var(--color-cream-50);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-maroon-900);
+  border: 2px solid var(--color-maroon-900);
+}
+.btn-outline:hover {
+  background-color: var(--color-maroon-900);
+  color: var(--color-white);
+}
+
+.btn-black {
+  background-color: #000000;
+  color: #ffffff;
+}
+.btn-black:hover {
+  background-color: #333333;
+  transform: translateY(-1px);
+}
+
+/* ===== CARD STYLES ===== */
+.card {
+  background: var(--color-white);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(18, 5, 8, 0.1);
+}
+
+/* ===== NAV DROPDOWN ===== */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 0;
+  z-index: 50;
+}
+
+.nav-dropdown a {
+  display: block;
+  padding: 0.625rem 1.25rem;
+  color: var(--color-ink-900);
+  font-size: 0.9375rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-dropdown a:hover {
+  background: var(--color-cream-50);
+  color: var(--color-maroon-900);
+}
+
+/* ===== RICH TEXT CONTENT ===== */
+.prose-brand h1 { color: var(--color-maroon-900); font-size: 2.5rem; margin-bottom: 1rem; }
+.prose-brand h2 { color: var(--color-maroon-900); font-size: 1.75rem; margin: 2rem 0 0.75rem; }
+.prose-brand h3 { color: var(--color-maroon-700); font-size: 1.25rem; margin: 1.5rem 0 0.5rem; }
+.prose-brand p { margin-bottom: 1rem; color: #444; line-height: 1.75; }
+.prose-brand a { color: var(--color-teal-600); text-decoration: underline; }
+.prose-brand ul, .prose-brand ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+.prose-brand li { margin-bottom: 0.25rem; color: #444; }
+.prose-brand blockquote {
+  border-left: 4px solid var(--color-teal-600);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #555;
+}
+
+/* ===== ADMIN STYLES ===== */
+.admin-sidebar {
+  background: var(--color-ink-900);
+  min-height: 100vh;
+  width: 260px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.admin-sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: all 0.15s;
+  font-size: 0.9375rem;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar a.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.admin-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-50);
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  z-index: 100;
+  animation: slideDown 0.3s ease;
+}
+.toast-success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+.toast-error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* ===== SSC2040 ROADMAP SECTION & DASHBOARD ===== */
+.ssc2040-section {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #F0F9FF 0%, #E0F2FE 30%, #DBEAFE 65%, #EFF6FF 100%);
+}
+
+.ssc2040-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ssc2040-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #0284C7;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* Glassmorphic Dashboard Panel Cards */
+.ssc2040-dashboard-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.70);
+  box-shadow: 
+    0 10px 30px -10px rgba(3, 105, 161, 0.08),
+    0 1px 1px 0 rgba(255, 255, 255, 0.5) inset;
+  padding: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ssc2040-dashboard-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 
+    0 20px 40px -15px rgba(3, 105, 161, 0.15),
+    0 0 15px rgba(56, 189, 248, 0.1);
+}
+
+/* Dashboard Layout Grid */
+@media (min-width: 1024px) {
+  .ssc2040-dashboard-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  
+  .ssc2040-grid-center {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 520px;
+  }
+}
+
+/* 3D Perspective Stage */
+.ssc2040-viewport-3d {
+  perspective: 1400px;
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ssc2040-scene-3d {
+  /* Set tilt angles dynamically from JS inline styles via CSS Variables */
+  transform: rotateX(var(--tilt-x, 54deg)) rotateZ(var(--tilt-z, -12deg));
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Flat Road Portals (lie flat on the road) */
+.ssc2040-road-portal {
+  position: absolute;
+  transform-style: preserve-3d;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.ssc2040-road-portal::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  animation: spinPortal 20s linear infinite;
+  opacity: 0.5;
+  transition: all 0.4s ease;
+}
+
+.ssc2040-road-portal.active::before {
+  border-color: #38bdf8;
+  opacity: 1;
+  inset: -10px;
+}
+
+/* Upright Floating Billboard Containers (Counter-rotates to face camera) */
+.ssc2040-billboard {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  /* Reverses current tilt settings dynamically */
+  transform: translate3d(-50%, 0, 0) rotateZ(calc(-1 * var(--tilt-z, -12deg))) rotateX(calc(-1 * var(--tilt-x, 54deg)));
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+  width: 220px;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.ssc2040-road-portal.active .ssc2040-billboard {
+  transform: translate3d(-50%, -10px, 15px) rotateZ(calc(-1 * var(--tilt-z, -12deg))) rotateX(calc(-1 * var(--tilt-x, 54deg)));
+}
+
+/* Floating Milestone Card inside Billboard */
+.ssc2040-milestone-card {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  padding: 0.875rem 1rem;
+  box-shadow: 
+    0 15px 35px -10px rgba(3, 105, 161, 0.12),
+    0 0 0 1px rgba(56, 189, 248, 0.05);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.ssc2040-road-portal:hover .ssc2040-milestone-card,
+.ssc2040-milestone-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: rgba(255, 255, 255, 0.90);
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 
+    0 20px 40px -10px rgba(3, 105, 161, 0.18),
+    0 0 25px rgba(56, 189, 248, 0.25);
+}
+
+.ssc2040-road-portal.active .ssc2040-milestone-card {
+  border-color: #38bdf8;
+  background: #ffffff;
+  box-shadow: 
+    0 25px 45px -10px rgba(2, 132, 199, 0.25),
+    0 0 30px rgba(56, 189, 248, 0.35);
+}
+
+/* Holographic Neon Gradient Beam with Scanlines */
+.ssc2040-neon-beam {
+  width: 2px;
+  height: 90px;
+  background: linear-gradient(to top, rgba(34, 211, 238, 0.8) 0%, rgba(34, 211, 238, 0.3) 50%, transparent 100%);
+  position: relative;
+  margin-top: -2px;
+  margin-bottom: -4px;
+  opacity: 0.65;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.ssc2040-neon-beam::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(34, 211, 238, 0.25) 3px,
+    rgba(34, 211, 238, 0.25) 6px
+  );
+  animation: scanline 3s linear infinite;
+}
+
+.ssc2040-neon-beam::after {
+  content: '';
+  position: absolute;
+  inset: 0 -2px;
+  background: linear-gradient(to top, rgba(34, 211, 238, 0.4), transparent);
+  filter: blur(4px);
+}
+
+.ssc2040-road-portal:hover .ssc2040-neon-beam,
+.ssc2040-road-portal.active .ssc2040-neon-beam {
+  opacity: 1;
+  width: 3px;
+  height: 100px;
+  background: linear-gradient(to top, rgba(34, 211, 238, 1) 0%, rgba(34, 211, 238, 0.5) 60%, transparent 100%);
+}
+
+/* Concentric Radar Ring for Active Portals */
+.ssc2040-radar-ring {
+  position: absolute;
+  border: 1px solid rgba(34, 211, 238, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: radarSweep 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+}
+
+/* Floating 3D Islands (grounded in the water plane) */
+.ssc2040-island-3d {
+  position: absolute;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  animation: floatIsland 6s ease-in-out infinite alternate;
+}
+
+.ssc2040-cloud-3d {
+  position: absolute;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  animation: floatCloud 8s ease-in-out infinite alternate;
+}
+
+/* Theme Tiles (Square layout at bottom) */
+.ssc2040-theme-tile {
+  background: rgba(255, 255, 255, 0.40);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -5px rgba(3, 105, 161, 0.03);
+}
+
+.ssc2040-theme-tile:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 
+    0 15px 30px -10px rgba(3, 105, 161, 0.12),
+    0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+.ssc2040-theme-tile .icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  color: #0891B2;
+  transition: all 0.3s ease;
+}
+
+.ssc2040-theme-tile:hover .icon-wrapper {
+  background: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+/* Animations */
+@keyframes spinPortal {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes roadDash {
+  to { stroke-dashoffset: -40; }
+}
+
+.animate-road-dash {
+  stroke-dasharray: 12 8;
+  animation: roadDash 2s linear infinite;
+}
+
+@keyframes scanline {
+  from { background-position-y: 0px; }
+  to { background-position-y: 40px; }
+}
+
+@keyframes radarSweep {
+  0% { width: 24px; height: 24px; opacity: 1; transform: translate3d(0, 0, 0) scale(0.8); }
+  100% { width: 96px; height: 96px; opacity: 0; transform: translate3d(0, 0, 0) scale(1.6); }
+}
+
+@keyframes floatIsland {
+  0% { transform: translate3d(0, 0, 0) translateY(0px) rotateZ(0deg); }
+  100% { transform: translate3d(0, 0, 0) translateY(-6px) rotateZ(0.5deg); }
+}
+
+@keyframes floatCloud {
+  0% { transform: translate3d(0, 0, 60px) translateX(0px); opacity: 0.5; }
+  100% { transform: translate3d(0, 0, 60px) translateX(10px); opacity: 0.75; }
+}
+
+/* Reduced Motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  .ssc2040-road-portal::before,
+  .ssc2040-radar-ring,
+  .ssc2040-island-3d,
+  .ssc2040-cloud-3d {
+    animation: none !important;
+  }
+  .animate-road-dash {
+    animation: none !important;
+  }
+  .ssc2040-billboard, .ssc2040-milestone-card, .ssc2040-theme-tile {
+    transition: none !important;
+  }
+}
+
+
+/* ===== ECOSYSTEM FRAMEWORK STYLES ===== */
+
+@keyframes ecosystemFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes hubPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.18; transform: scale(1.06); }
+}
+
+@keyframes spokeDraw {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.ecosystem-node-float {
+  animation: ecosystemFloat 6s ease-in-out infinite;
+}
+
+.ecosystem-hub-ring {
+  animation: hubPulse 3.5s ease-in-out infinite;
+}
+
+.ecosystem-spoke {
+  stroke-dasharray: 5 5;
+  animation: spokeDraw 1.2s ease-out forwards;
+}
+
+/* Panel backdrop on mobile */
+.ecosystem-panel-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 30;
+}
+
+/* Description overlay — reveals on node circle hover */
+.ecosystem-node-circle:hover .ecosystem-desc-overlay {
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
+}
+
+/* Reduced motion overrides for ecosystem */
+@media (prefers-reduced-motion: reduce) {
+  .ecosystem-node-float,
+  .ecosystem-hub-ring {
+    animation: none !important;
+  }
+  .ecosystem-spoke {
+    animation: none !important;
+    stroke-dasharray: none !important;
+  }
+}
+
+/* ===== VIDEO PLAY BUTTON PULSE ===== */
+@keyframes playButtonPulse {
+  0% {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 0 0 16px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.play-pulse {
+  animation: playButtonPulse 3s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play-pulse {
+    animation: none !important;
+  }
+}
+

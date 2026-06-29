@@ -1,0 +1,333 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Pillar {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String
+  icon        String
+  order       Int      @default(0)
+
+  // relations
+  activities Activity[]
+}
+
+model Activity {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  pillarTag   String
+  excerpt     String
+  body        String
+  coverImage  String
+  publishedAt DateTime
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  // foreign key
+  pillar   Pillar? @relation(fields: [pillarTag], references: [slug])
+}
+
+model NewsPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  category    String
+  excerpt     String
+  body        String
+  coverImage  String
+  publishedAt DateTime
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Startup {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  logo        String
+  description String
+  category    String
+  website     String?
+  location    String?
+  founded     Int?
+}
+
+model Policy {
+  id          String   @id @default(cuid())
+  title       String
+  type        String
+  refNumber   String
+  dateIssued  DateTime
+  description String
+  fileUrl     String?
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  subscribedAt DateTime @default(now())
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("editor") // super_admin, admin, editor, startup_manager, viewer
+  name         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model RoadmapMilestone {
+  id          String   @id @default(cuid())
+  year        Int
+  title       String
+  description String
+  desktopPos  String   // JSON string for position
+  coords      String   // JSON string for coordinates
+  image       String?
+  initiatives String   // JSON string array
+  stats       String   // JSON string array
+  impact      String?
+  order       Int      @default(0)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model RoadmapTheme {
+  id          String   @id @default(cuid())
+  label       String
+  icon        String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Program {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  type        String   // event, training, incubation
+  description String
+  startDate   DateTime
+  endDate     DateTime?
+  location    String?
+  coverImage  String?
+  content     String?
+  status      String   @default("draft") // draft, published, archived
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  youtubeId   String?
+  thumbnail   String?
+  description String?
+  order       Int      @default(0)
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ===== ABOUT CONTENT MODELS =====
+
+model AboutStory {
+  id           String   @id @default(cuid())
+  year         String
+  title        String
+  description  String
+  achievements String   // JSON string array
+  image        String?
+  statistics   String   // JSON string object
+  order        Int      @default(0)
+  published    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model VisionLetter {
+  id           String   @id @default(cuid())
+  letter       String   // P, R, I, M, E
+  title        String
+  description  String
+  objectives   String   // JSON string array
+  timeline     String   // JSON string array
+  statistics   String   // JSON string object
+  icon         String?
+  image        String?
+  order        Int      @default(0)
+  published    Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model MissionCard {
+  id                String   @id @default(cuid())
+  letter            String   // S, M, A, R, T
+  title             String
+  description       String
+  objectives        String   // JSON string array
+  programs          String   // JSON string array
+  relatedActivities String   // JSON string array (activity IDs)
+  relatedNews       String   // JSON string array (news IDs)
+  icon              String?
+  image             String?
+  order             Int      @default(0)
+  published         Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model CoreValue {
+  id                String   @id @default(cuid())
+  name              String
+  description       String
+  icon              String?
+  illustration      String?
+  practicalExamples String   // JSON string array
+  order             Int      @default(0)
+  published         Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model GovernancePrinciple {
+  id              String   @id @default(cuid())
+  principle       String
+  description     String
+  purpose         String
+  implementation  String
+  relatedPolicies String   // JSON string array (policy IDs)
+  downloads       String   // JSON string array
+  order           Int      @default(0)
+  published       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model FrameworkPillar {
+  id                String   @id @default(cuid())
+  title             String
+  slug              String   @unique
+  description       String
+  objectives        String   // JSON string array
+  programs          String   // JSON string array
+  projects          String   // JSON string array
+  statistics        String   // JSON string object
+  successStories    String   // JSON string array
+  partners          String   // JSON string array
+  gallery           String   // JSON string array (image URLs)
+  downloads         String   // JSON string array
+  relatedActivities String   // JSON string array (activity IDs)
+  relatedNews       String   // JSON string array (news IDs)
+  icon              String?
+  illustration      String?
+  order             Int      @default(0)
+  published         Boolean  @default(false)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model StrategicPartner {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  category        String   // National Government, Provincial Government, LGU, Academic, Research, Industry, Private, Development
+  description     String
+  logo            String?
+  website         String?
+  relatedProjects String   // JSON string array
+  order           Int      @default(0)
+  published       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model DownloadResource {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  category    String   // Reports, Strategic Plans, Policies, Presentations, Templates, Infographics, Videos, PDFs
+  description String
+  fileUrl     String
+  fileSize    String?
+  fileType    String?
+  version     String?
+  downloadCount Int    @default(0)
+  featured    Boolean  @default(false)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FAQ {
+  id          String   @id @default(cuid())
+  question    String
+  answer      String
+  category    String?
+  order       Int      @default(0)
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model OrganizationalRole {
+  id              String   @id @default(cuid())
+  position        String
+  office          String
+  name            String
+  biography       String
+  photo           String?
+  responsibilities String   // JSON string array
+  email           String?
+  phone           String?
+  parentId        String?
+  parent          OrganizationalRole? @relation("OrgHierarchy", fields: [parentId], references: [id])
+  children        OrganizationalRole[] @relation("OrgHierarchy")
+  order           Int      @default(0)
+  published       Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model AboutPage {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  content     String   // JSON or rich text
+  heroImage   String?
+  heroTitle   String?
+  heroSubtitle String?
+  status      String   @default("draft") // draft, review, approved, scheduled, published, archived
+  publishedAt DateTime?
+  scheduledAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  ogImage         String?
+  keywords        String?
+  canonicalUrl    String?
+}

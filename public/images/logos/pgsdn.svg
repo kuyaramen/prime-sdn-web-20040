@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="90" viewBox="0 0 160 90">
+  <rect width="160" height="90" fill="white" rx="8"/>
+  <circle cx="80" cy="32" r="22" fill="#2e7d32"/>
+  <circle cx="80" cy="32" r="17" fill="#ffd54f"/>
+  <circle cx="80" cy="32" r="12" fill="#2e7d32"/>
+  <text x="80" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PGSDN</text>
+  <text x="80" y="64" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="900" fill="#2e7d32">PGSDN</text>
+  <text x="80" y="78" text-anchor="middle" font-family="Arial,sans-serif" font-size="7" fill="#888">Provincial Gov't of SDN</text>
+</svg>
