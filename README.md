@@ -1,6 +1,17 @@
 # PRIME SDN (Prime Surigao 2040)
 
-**PRIME SDN** is a public-facing provincial innovation and vision portal for Surigao del Norte, Philippines, inspired by Innovate Iloilo. It acts as a public movement showcase and a content management system (CMS) so non-technical staff can publish and coordinate activities, news, startups directory, and governance policy indices.
+**PRIME SDN** is a comprehensive digital innovation ecosystem and public engagement platform designed specifically for the Province of Surigao del Norte, Philippines. It serves as a centralized hub that promotes innovation, supports startups, showcases research, manages provincial initiatives, publishes news and events, provides governance transparency, and connects academia, industry, government, investors, and communities.
+
+The platform integrates multiple functional areas into a cohesive digital experience:
+
+- **Public Website**: Showcases the province's vision, strategic framework, activities, news, and startup ecosystem
+- **Content Management System**: Enables non-technical staff to publish and coordinate content across all platform sections
+- **Media Management**: Centralized library for managing images, documents, and digital assets
+- **Startup Directory**: Profiles local startups, their innovations, and contributions to the ecosystem
+- **Activities Management**: Coordinates innovation events, workshops, programs, and community initiatives
+- **News Management**: Publishes announcements, press releases, success stories, and updates
+- **Governance Portal**: Provides transparency through policies, ordinances, and executive orders
+- **Interactive Strategic Framework**: Visualizes the province's 7 Innovation Pillars and their interconnected contributions to long-term development
 
 ---
 
@@ -23,12 +34,47 @@
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 16+ (App Router)
+- **Framework**: Next.js 16 (App Router)
+- **UI Library**: React 19
+- **Language**: TypeScript
 - **Styling**: Tailwind CSS v4 + Vanilla CSS Design Tokens
-- **Database/ORM**: Prisma ORM v7 with Supabase PostgreSQL
+- **Database/ORM**: Prisma ORM v7 with PostgreSQL
+- **Database Hosting**: Supabase
 - **Authentication**: NextAuth.js (v4) with credentials provider
 - **Validation**: Zod + React Hook Form
+- **Animations**: Framer Motion
 - **Icons**: Lucide React
+
+---
+
+## 🎯 Project Vision
+
+PRIME SDN embodies the vision of transforming Surigao del Norte into a Smart Province through sustainable development, innovation, and digital transformation. The platform is built on core themes:
+
+- **Smart Province**: Leveraging technology to improve governance, service delivery, and citizen engagement
+- **Sustainable Development**: Balancing economic growth with environmental stewardship and social inclusion
+- **Innovation Ecosystem**: Creating an environment where ideas flourish, startups thrive, and research translates to impact
+- **Entrepreneurship**: Supporting local founders, micro-enterprises, and SMEs with resources and visibility
+- **Digital Transformation**: Modernizing traditional sectors (agriculture, fisheries, tourism, mining) through technology
+- **Research & Education**: Connecting academic institutions with industry to drive knowledge-based development
+- **Collaboration**: Fostering partnerships between government, private sector, academia, and communities
+- **Inclusive Growth**: Ensuring innovation benefits reach all sectors and municipalities across the province
+
+---
+
+## 🌟 PRIME SDN Framework
+
+The platform features an original interactive ecosystem visualization that represents the province's strategic innovation framework. Inspired by interconnected systems, the framework visualizes seven strategic pillars as orbiting elements around a central vision, each contributing uniquely to Surigao del Norte's long-term development:
+
+1. **Governance & Policy**: Establishing regulatory frameworks that enable innovation and ease of doing business
+2. **Education & Talent**: Developing future-ready skills, digital literacy, and technical capacity among the workforce
+3. **Research & Development**: Promoting scientific research, localized technology transfer, and sustainable solutions
+4. **Startup Ecosystem**: Supporting entrepreneurs with incubation, mentoring, and access to capital
+5. **Economic Growth**: Driving investment, job creation, and digital empowerment in traditional sectors
+6. **Culture, Arts & Tourism**: Leveraging cultural heritage and creative industries for sustainable tourism innovation
+7. **Infrastructure & Connectivity**: Building digital infrastructure and innovation spaces for collaboration
+
+This framework is original to PRIME SDN and designed specifically for Surigao del Norte's unique context as an island province with diverse economic sectors and rich cultural assets.
 
 ---
 

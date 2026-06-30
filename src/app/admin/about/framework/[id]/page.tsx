@@ -278,7 +278,7 @@ export default function FrameworkPillarEdit() {
             <textarea
               value={formData.successStories}
               onChange={(e) => setFormData({ ...formData, successStories: e.target.value })}
-              placeholder="TechCo raised ₱2M&#10;InnovateX expanded to 3 cities&#10;StartupY won national award"
+              placeholder="TechCo raised ₱2M&#10;StartupX expanded to 3 cities&#10;StartupY won national award"
               rows={3}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />

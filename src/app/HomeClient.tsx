@@ -144,7 +144,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
           </svg>
         </div>
 
-        {/* Title — near top of screen, left aligned, like Iloilo */}
+        {/* Title — near top of screen, left aligned, prominent positioning */}
         <AnimatedHero className="relative z-20 w-full h-full flex flex-col justify-between pt-8 md:pt-12 lg:pt-16 pb-12 md:pb-16 lg:pb-20 select-none">
           {/* Top — Brand Title */}
           <div className="leading-none tracking-tight font-extrabold shrink-0">
