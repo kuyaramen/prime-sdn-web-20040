@@ -21,8 +21,7 @@ const nextConfig: NextConfig = {
     ],
     unoptimized: false,
   },
-  // Suppress Turbopack file-tracing warnings about fs operations in db.ts
-  serverExternalPackages: ["better-sqlite3", "@prisma/adapter-better-sqlite3"],
+  serverExternalPackages: ["pg"],
 };
 
 export default nextConfig;

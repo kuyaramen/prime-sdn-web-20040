@@ -709,8 +709,8 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
 // Stat Counter Component - Reuses Homepage animation style
 function StatCounter({ value, prefix, suffix }: { value: number; prefix?: string; suffix?: string }) {
   const prefersReduced = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(ref as any, { once: true, margin: "-100px" });
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {

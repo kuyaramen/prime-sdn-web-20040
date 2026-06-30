@@ -31,6 +31,9 @@ export const newsSchema = z.object({
   coverImage: z.string().min(1),
   publishedAt: z.string().min(1),
   published: z.boolean(),
+  seoTitle: z.string().optional(),
+  seoDescription: z.string().optional(),
+  seoKeywords: z.array(z.string()).optional(),
 });
 
 export const startupSchema = z.object({

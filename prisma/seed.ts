@@ -1,5 +1,32 @@
-import { db as prisma } from "../src/lib/db";
+import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
 import bcrypt from "bcryptjs";
+import fs from "fs";
+import path from "path";
+
+// Manually parse .env file to ensure DATABASE_URL is loaded
+const envPath = path.resolve(process.cwd(), ".env");
+if (fs.existsSync(envPath)) {
+  const envFile = fs.readFileSync(envPath, "utf-8");
+  envFile.split("\n").forEach((line) => {
+    const parts = line.split("=");
+    if (parts.length >= 2) {
+      const key = parts[0].trim();
+      const value = parts.slice(1).join("=").trim().replace(/^['"]|['"]$/g, "");
+      if (key && !process.env[key]) {
+        process.env[key] = value;
+      }
+    }
+  });
+}
+
+const connectionString = process.env.DATABASE_URL;
+if (!connectionString) {
+  throw new Error("DATABASE_URL environment variable is not set");
+}
+
+const adapter = new PrismaPg({ connectionString });
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log("Seeding database...");

@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaPg } from "@prisma/adapter-pg";
 import path from "path";
 import fs from "fs";
 
@@ -28,19 +28,12 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function createPrismaClient() {
-  const dbUrl = process.env.DATABASE_URL || "file:./dev.db";
-  
-  if (dbUrl.startsWith("file:")) {
-    const relativePath = dbUrl.replace(/^file:/, "");
-    const absolutePath = path.resolve(process.cwd(), relativePath);
-    const adapter = new PrismaBetterSqlite3({ url: absolutePath });
-    return new PrismaClient({ adapter });
+  const connectionString = process.env.DATABASE_URL;
+  if (!connectionString) {
+    throw new Error("DATABASE_URL environment variable is not set");
   }
-  
-  throw new Error(
-    `Unsupported DATABASE_URL: "${dbUrl}". Currently only SQLite (file:...) is supported. ` +
-    "To use PostgreSQL in production, install @prisma/adapter-pg and pg, then update this file."
-  );
+  const adapter = new PrismaPg({ connectionString });
+  return new PrismaClient({ adapter });
 }
 
 export const db = globalForPrisma.prisma ?? createPrismaClient();

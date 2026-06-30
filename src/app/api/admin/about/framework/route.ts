@@ -44,6 +44,16 @@ export async function POST(request: NextRequest) {
         icon,
         illustration,
         order: (maxOrder?.order || 0) + 1,
+        objectives: "[]",
+        programs: "[]",
+        projects: "[]",
+        statistics: "{}",
+        successStories: "[]",
+        partners: "[]",
+        gallery: "[]",
+        downloads: "[]",
+        relatedActivities: "[]",
+        relatedNews: "[]",
       },
     });
 

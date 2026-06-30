@@ -25,7 +25,7 @@
 
 - **Framework**: Next.js 16+ (App Router)
 - **Styling**: Tailwind CSS v4 + Vanilla CSS Design Tokens
-- **Database/ORM**: Prisma ORM v7 with SQLite (local development) and PostgreSQL adapter ready (production)
+- **Database/ORM**: Prisma ORM v7 with Supabase PostgreSQL
 - **Authentication**: NextAuth.js (v4) with credentials provider
 - **Validation**: Zod + React Hook Form
 - **Icons**: Lucide React
@@ -35,10 +35,11 @@
 ## 📦 Getting Started
 
 ### 1. Prerequisite Settings
-Create a `.env` file in the root directory (already pre-configured for local development):
+Create a `.env` file in the root directory with your Supabase configuration:
 ```env
-DATABASE_URL="file:./dev.db"
-NEXTAUTH_SECRET="supersecretkey"
+DATABASE_URL="postgresql://postgres:[password]@db.[project-ref].supabase.co:5432/postgres"
+NEXTAUTH_SECRET="your-super-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
 RESEND_API_KEY="your-resend-api-key"
 ```
 
@@ -48,9 +49,10 @@ npm install
 ```
 
 ### 3. Generate Database and Seed Data
-Initialize tables and generate Prisma client (configured for Prisma 7+ using `better-sqlite3` driver adapter):
+Initialize tables and generate Prisma client:
 ```bash
 npx prisma generate
+npx prisma db push
 npx tsx prisma/seed.ts
 ```
 

@@ -149,7 +149,7 @@ export default function MediaLibraryClient() {
     } else if (filterUsage === "unused") {
       matchesUsage = item.isUnused || item.usageCount === 0;
     } else if (filterUsage === "duplicates") {
-      matchesUsage = item.isDuplicate;
+      matchesUsage = item.isDuplicate === true;
     }
     
     return matchesSearch && matchesFilter && matchesFolder && matchesUsage;

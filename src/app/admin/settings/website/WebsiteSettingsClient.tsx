@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Save, RefreshCw, ArrowLeft, Globe, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Save, RefreshCw, ArrowLeft, Globe, Mail, Phone, MapPin, Link as LinkIcon, Share2, AtSign } from "lucide-react";
 import Link from "next/link";
 
 export default function WebsiteSettingsClient() {
@@ -291,7 +291,7 @@ export default function WebsiteSettingsClient() {
                   <h3 className="text-sm font-bold text-gray-900 mb-4">Social Media Links</h3>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <Facebook size={18} className="text-blue-600" />
+                      <Globe size={18} className="text-blue-600" />
                       <input
                         type="url"
                         value={contactSettings.facebook}
@@ -301,7 +301,7 @@ export default function WebsiteSettingsClient() {
                       />
                     </div>
                     <div className="flex items-center gap-3">
-                      <Twitter size={18} className="text-blue-400" />
+                      <AtSign size={18} className="text-blue-400" />
                       <input
                         type="url"
                         value={contactSettings.twitter}
@@ -311,7 +311,7 @@ export default function WebsiteSettingsClient() {
                       />
                     </div>
                     <div className="flex items-center gap-3">
-                      <Instagram size={18} className="text-pink-600" />
+                      <Share2 size={18} className="text-pink-600" />
                       <input
                         type="url"
                         value={contactSettings.instagram}
@@ -321,7 +321,7 @@ export default function WebsiteSettingsClient() {
                       />
                     </div>
                     <div className="flex items-center gap-3">
-                      <Linkedin size={18} className="text-blue-700" />
+                      <LinkIcon size={18} className="text-blue-700" />
                       <input
                         type="url"
                         value={contactSettings.linkedin}
@@ -331,7 +331,7 @@ export default function WebsiteSettingsClient() {
                       />
                     </div>
                     <div className="flex items-center gap-3">
-                      <Youtube size={18} className="text-red-600" />
+                      <Globe size={18} className="text-red-600" />
                       <input
                         type="url"
                         value={contactSettings.youtube}
