@@ -9,9 +9,6 @@ if (!process.env.NEXTAUTH_URL) {
 }
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: path.resolve(process.cwd()),
-  },
   images: {
     remotePatterns: [
       {
