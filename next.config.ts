@@ -9,6 +9,9 @@ if (!process.env.NEXTAUTH_URL) {
 }
 
 const nextConfig: NextConfig = {
+  turbopack: process.env.NODE_ENV === 'development' ? {
+    root: path.resolve(process.cwd()),
+  } : undefined,
   images: {
     remotePatterns: [
       {
