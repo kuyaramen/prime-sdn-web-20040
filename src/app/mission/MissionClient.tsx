@@ -145,13 +145,13 @@ export function MissionClient() {
           <motion.button
             whileHover={{ scale: 1.05, x: -4 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#500a31] transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#1E4FBF] transition-all"
             style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span className="text-sm font-medium" style={{ color: "#500a31" }}>Back</span>
+            <span className="text-sm font-medium" style={{ color: "#1E4FBF" }}>Back</span>
           </motion.button>
         </Link>
       </div>
@@ -231,7 +231,7 @@ export function MissionClient() {
                   fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
                   fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
                   fontWeight: 700,
-                  color: "#500a31",
+                  color: "#1E4FBF",
                 }}
               >
                 MISSION
@@ -246,7 +246,7 @@ export function MissionClient() {
                   fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
                   fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
                   fontWeight: 700,
-                  color: "#500a31",
+                  color: "#1E4FBF",
                 }}
               >
                 S.M.A.R.T. ACTIONS FOR{"\n"}
@@ -261,7 +261,7 @@ export function MissionClient() {
                 style={{
                   fontFamily: "Montserrat, Arial, sans-serif",
                   fontSize: "clamp(16px, 1.8vw, 20px)",
-                  color: "#500a31",
+                  color: "#1E4FBF",
                   opacity: 0.8,
                 }}
               >
@@ -276,7 +276,7 @@ export function MissionClient() {
               >
                 <Button
                   href="#overview"
-                  variant="maroon"
+                  variant="primary"
                   showArrow={true}
                   className="text-base py-3 px-8 rounded-full"
                 >
@@ -286,7 +286,7 @@ export function MissionClient() {
                   href="#actions"
                   variant="outline"
                   showArrow={true}
-                  className="text-base py-3 px-8 rounded-full border-2 border-[#500a31] text-[#500a31]"
+                  className="text-base py-3 px-8 rounded-full border-2 border-[#1E4FBF] text-[#1E4FBF]"
                 >
                   View SMART Actions
                 </Button>
@@ -297,7 +297,7 @@ export function MissionClient() {
       </section>
 
       {/* ===== MISSION OVERVIEW ===== */}
-      <section id="overview" className="bg-white py-[100px] px-6" aria-label="Mission Overview">
+      <section id="overview" className="bg-white py-20 px-6" aria-label="Mission Overview">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -305,7 +305,7 @@ export function MissionClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Overview
@@ -316,7 +316,7 @@ export function MissionClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               OUR MISSION
@@ -325,12 +325,12 @@ export function MissionClient() {
 
           <AnimatedSection delay={0.1}>
             <motion.div
-              className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 md:p-12 border border-[#500a31]/10"
+              className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 md:p-12 border border-[#1E4FBF]/10"
             >
-              <p className="text-base leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.8 }}>
+              <p className="text-base leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.8 }}>
                 PRIME SDN is committed to building a thriving innovation ecosystem in Surigao del Norte through strategic, collaborative, and inclusive approaches. Our mission is to empower communities, nurture talent, attract investments, and create sustainable pathways for economic and social development through innovation.
               </p>
-              <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.8 }}>
+              <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.8 }}>
                 By focusing on five key SMART actions, we ensure that every initiative is purposeful, measurable, and aligned with the long-term vision of transforming Surigao del Norte into a leading innovation hub in the Philippines.
               </p>
             </motion.div>
@@ -339,7 +339,7 @@ export function MissionClient() {
       </section>
 
       {/* ===== SMART ACTIONS ===== */}
-      <section id="actions" className="bg-white py-[100px] px-6" aria-label="SMART Actions">
+      <section id="actions" className="bg-white py-20 px-6" aria-label="SMART Actions">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -347,7 +347,7 @@ export function MissionClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Framework
@@ -358,7 +358,7 @@ export function MissionClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               FIVE SMART ACTIONS
@@ -374,10 +374,10 @@ export function MissionClient() {
                   className="bg-white rounded-2xl shadow-[0_8px 24px rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden"
                 >
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-[#500a31] to-[#500a31]/80 p-6 md:p-8">
+                  <div className="bg-gradient-to-r from-[#1E4FBF] to-[#1E4FBF]/80 p-6 md:p-8">
                     <div className="flex items-start gap-6">
                       <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shrink-0">
-                        <span className="font-extrabold text-3xl" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                        <span className="font-extrabold text-3xl" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                           {action.letter}
                         </span>
                       </div>
@@ -394,20 +394,20 @@ export function MissionClient() {
 
                   {/* Content */}
                   <div className="p-6 md:p-8">
-                    <p className="text-base leading-relaxed mb-8" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.8 }}>
+                    <p className="text-base leading-relaxed mb-8" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.8 }}>
                       {action.description}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {/* Objectives */}
                       <div>
-                        <h4 className="font-bold text-sm mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                        <h4 className="font-bold text-sm mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                           OBJECTIVES
                         </h4>
                         <ul className="space-y-2">
                           {action.objectives.map((objective, i) => (
-                            <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
-                              <span className="text-[#500a31] mt-1">•</span>
+                            <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
+                              <span className="text-[#1E4FBF] mt-1">•</span>
                               <span>{objective}</span>
                             </li>
                           ))}
@@ -416,13 +416,13 @@ export function MissionClient() {
 
                       {/* Programs */}
                       <div>
-                        <h4 className="font-bold text-sm mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                        <h4 className="font-bold text-sm mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                           PROGRAMS
                         </h4>
                         <ul className="space-y-2">
                           {action.programs.map((program, i) => (
-                            <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
-                              <span className="text-[#500a31] mt-1">•</span>
+                            <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
+                              <span className="text-[#1E4FBF] mt-1">•</span>
                               <span>{program}</span>
                             </li>
                           ))}
@@ -431,13 +431,13 @@ export function MissionClient() {
 
                       {/* Outcomes */}
                       <div>
-                        <h4 className="font-bold text-sm mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                        <h4 className="font-bold text-sm mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                           EXPECTED OUTCOMES
                         </h4>
                         <ul className="space-y-2">
                           {action.outcomes.map((outcome, i) => (
-                            <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
-                              <span className="text-[#500a31] mt-1">•</span>
+                            <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
+                              <span className="text-[#1E4FBF] mt-1">•</span>
                               <span>{outcome}</span>
                             </li>
                           ))}
@@ -453,7 +453,7 @@ export function MissionClient() {
       </section>
 
       {/* ===== RELATED TOPICS ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Related Topics">
+      <section className="bg-white py-20 px-6" aria-label="Related Topics">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -461,7 +461,7 @@ export function MissionClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Explore More
@@ -472,7 +472,7 @@ export function MissionClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               RELATED TOPICS
@@ -493,12 +493,12 @@ export function MissionClient() {
                   <motion.div
                     whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                     transition={{ duration: 0.3 }}
-                    className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 border border-[#500a31]/10 h-full"
+                    className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 border border-[#1E4FBF]/10 h-full"
                   >
-                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                       {topic.title}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                    <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                       {topic.description}
                     </p>
                   </motion.div>
@@ -510,7 +510,7 @@ export function MissionClient() {
       </section>
 
       {/* ===== CALL TO ACTION ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Call to Action">
+      <section className="bg-white py-20 px-6" aria-label="Call to Action">
         <div className="max-w-[1440px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -525,7 +525,7 @@ export function MissionClient() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="leading-relaxed mb-12 max-w-5xl mx-auto font-extrabold uppercase tracking-tight"
-              style={{ color: "#500a31", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
+              style={{ color: "#1E4FBF", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
             >
               JOIN US IN BUILDING SURIGAO'S INNOVATION FUTURE
             </motion.p>
@@ -545,7 +545,7 @@ export function MissionClient() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-[#500a31] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-[#1E4FBF] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 Get Involved
@@ -561,7 +561,7 @@ export function MissionClient() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#500a31] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#1E4FBF] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 View Our Vision

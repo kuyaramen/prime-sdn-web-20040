@@ -206,7 +206,7 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "Local tech founders can now apply for equity-free grants up to PHP 250,000 for early validation."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
     ctaText: "Join the PRIME Launchpad Cohort"
   },
   {
@@ -315,7 +315,7 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "30 local scholars selected to undergo technical training in piloting and maintaining crop monitoring drones."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
     ctaText: "Apply for a Technology Scholarship"
   },
   {
@@ -424,7 +424,7 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "The Surigaonon research team was recognized for their innovative soil phytoremediation technology."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
     ctaText: "Apply for a Research Grant"
   },
   {
@@ -763,134 +763,18 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "Cooperation includes technical exchange on smart grid and agricultural logistics tools."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80",
+    heroImage: "https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&w=1600&q=80",
     ctaText: "View SDN Investment Guide"
-  },
-  {
-    id: "policy-governance",
-    title: "Policy & Governance",
-    slug: "policy-governance",
-    description: "Establishing the legal, institutional, and regulatory foundations for lasting innovation.",
-    accentColor: "#6B7280",
-    accentColorRgb: "107, 114, 128",
-    iconName: "Scale",
-    mission: "Build a robust, transparent, and innovation-enabling governance framework for Surigao del Norte through evidence-based policymaking, strong institutional capacity, and participatory governance that empowers citizens and stakeholders.",
-    vision: "To lead national rankings in local government transparency, accountability, and citizen-led innovation governance by 2040.",
-    whyItMatters: [
-      { title: "The Problem", description: "Outdated legislation stifles technological experimentation and discourages modern startups.", type: "Problem" },
-      { title: "Current Situation", description: "Lack of institutional frameworks for open data and citizen feedback integration.", type: "Current Situation" },
-      { title: "Desired Future", description: "Dynamic policies that anticipate future tech trends and embed transparency into LGU operations.", type: "Desired Future" },
-      { title: "Expected Impact", description: "Unmatched public trust, accelerated regulatory approvals, and sustained institutional progress.", type: "Expected Impact" }
-    ],
-    workflow: [
-      { step: 1, title: "Consultation", description: "Gathering input from citizens, academia, and industry stakeholders." },
-      { step: 2, title: "Drafting", description: "Formulating innovation-friendly ordinances and executive orders." },
-      { step: 3, title: "Legislation", description: "Passing policies through the Provincial Board and local councils." },
-      { step: 4, title: "Enforcement", description: "Deploying mandates via the Provincial Innovation Council." }
-    ],
-    stats: [
-      { value: 5, label: "Active Ordinances" },
-      { value: 8, label: "Policy Papers Issued" },
-      { value: 100, suffix: "%", label: "Transparency Score" },
-      { value: 26, label: "Compliant LGUs" }
-    ],
-    objectives: [
-      "Form the Provincial Innovation Council (PIC) containing multi-stakeholder seats.",
-      "Achieve 100% compliance in municipal Open Data and public financial reportage.",
-      "Train all provincial employees in digital-first management tools.",
-      "Provide public feedback loops for every ordinance and executive program."
-    ],
-    tooltipMetrics: [
-      "5 Active Ordinances",
-      "8 Policy Papers Issued",
-      "100% Transparency Score"
-    ],
-    programs: [
-      {
-        title: "Provincial Innovation Ordinance Code",
-        type: "Initiative",
-        description: "Creating the institutional mandates, funding streams, and regulatory exemptions that allow technology pilots."
-      },
-      {
-        title: "SDN Open Data Portal Initiative",
-        type: "Initiative",
-        description: "Publishing municipal budgets, project timelines, and procurement records to ensure transparency."
-      },
-      {
-        title: "Citizen Feedback Action Desk",
-        type: "Initiative",
-        description: "An SMS and web-based system letting citizens request services, report damage, and rate LGU transaction quality."
-      }
-    ],
-    projects: [
-      {
-        title: "Legislative Research on Innovation Policies",
-        type: "Research",
-        description: "Collaborative research with policy institutes on tax framework structures that incentivize green startups.",
-        date: "Published Q2 2025"
-      },
-      {
-        title: "Innovation Policy Workshops",
-        type: "Activity",
-        description: "Empowering municipal councilors to draft ordinances promoting municipal digitization.",
-        date: "Ongoing"
-      }
-    ],
-    roadmap: [
-      { year: "2025", milestone: "Establish the Provincial Innovation Council with executive bylaws", target: "1 Council established" },
-      { year: "2026", milestone: "Launch the SDN Open Data public portal", target: "1 active database" },
-      { year: "2030", milestone: "Attain 100% municipal compliance on COA transparency metrics", target: "All 26 LGUs" },
-      { year: "2040", milestone: "Fulfill fully automated, auditable blockchain-based ledger systems", target: "100% secure ledger system" }
-    ],
-    partners: [
-      { name: "Department of the Interior and Local Government", type: "LGU" },
-      { name: "Civil Service Commission CARAGA", type: "LGU" },
-      { name: "UP Law Center Policy Institute", type: "University" },
-      { name: "Surigao NGO Coalition", type: "Private Sector" }
-    ],
-    policies: [
-      {
-        title: "The Surigao del Norte Provincial Innovation Code",
-        number: "Ordinance No. 2024-001",
-        type: "Provincial Ordinance",
-        year: "2024"
-      },
-      {
-        title: "Creation of the Provincial Innovation Secretariat",
-        number: "Executive Order No. 04",
-        type: "Executive Order",
-        year: "2024"
-      }
-    ],
-    successStories: [
-      {
-        beneficiary: "Provincial Innovation Council",
-        type: "Community Impact",
-        story: "By including youth and academic representatives directly in the council, SDN successfully passed two targeted STEM scholarship laws that were stalled for years.",
-        impact: "Guaranteed student input in educational policy development."
-      }
-    ],
-    news: [
-      {
-        title: "COA Awards Surigao del Norte Highest Audit Rating for Fiscal 2025",
-        type: "Announcement",
-        date: "March 22, 2026",
-        summary: "The province was commended for outstanding financial management and open reporting records."
-      }
-    ],
-    heroImage: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1600&q=80",
-    ctaText: "Review Provincial Innovation Codes"
   }
 ];
 
 // Node angular positions (degrees from top, clockwise)
-// 7 nodes evenly spaced = 360/7 ≈ 51.43° apart, starting at -90° (top)
+// 6 nodes evenly spaced = 360/6 = 60° apart, starting at -90° (top)
 export const NODE_ANGLES: number[] = [
   -90,           // 1: Startup Development — Top Center
-  -90 + 51.43,   // 2: Education & Talent — Upper Right
-  -90 + 102.86,  // 3: Research & Innovation — Middle Right
-  -90 + 154.29,  // 4: Digital Transformation — Lower Right
-  -90 + 205.71,  // 5: Sustainable Communities — Bottom Center
-  -90 + 257.14,  // 6: Partnerships & Investments — Lower Left
-  -90 + 308.57,  // 7: Policy & Governance — Upper Left
+  -90 + 60,      // 2: Education & Talent — Upper Right
+  -90 + 120,     // 3: Research & Innovation — Middle Right
+  -90 + 180,     // 4: Digital Transformation — Bottom Center
+  -90 + 240,     // 5: Sustainable Communities — Lower Left
+  -90 + 300,     // 6: Partnerships & Investments — Upper Left
 ];

@@ -116,7 +116,7 @@ export default function ContactPage() {
                   />
                   {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
                 </div>
-                <Button type="submit" variant="maroon" disabled={status === "loading"} className="w-full justify-center">
+                <Button type="submit" variant="primary" disabled={status === "loading"} className="w-full justify-center">
                   {status === "loading" ? "Sending..." : "Send Message"}
                 </Button>
               </form>

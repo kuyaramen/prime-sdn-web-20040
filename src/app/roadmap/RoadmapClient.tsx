@@ -170,13 +170,13 @@ export function RoadmapClient() {
           <motion.button
             whileHover={{ scale: 1.05, x: -4 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#500a31] transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#1E4FBF] transition-all"
             style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span className="text-sm font-medium" style={{ color: "#500a31" }}>Back</span>
+            <span className="text-sm font-medium" style={{ color: "#1E4FBF" }}>Back</span>
           </motion.button>
         </Link>
       </div>
@@ -256,7 +256,7 @@ export function RoadmapClient() {
                   fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
                   fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
                   fontWeight: 700,
-                  color: "#500a31",
+                  color: "#1E4FBF",
                 }}
               >
                 ROADMAP
@@ -271,7 +271,7 @@ export function RoadmapClient() {
                   fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
                   fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
                   fontWeight: 700,
-                  color: "#500a31",
+                  color: "#1E4FBF",
                 }}
               >
                 JOURNEY TO 2040
@@ -285,7 +285,7 @@ export function RoadmapClient() {
                 style={{
                   fontFamily: "Montserrat, Arial, sans-serif",
                   fontSize: "clamp(16px, 1.8vw, 20px)",
-                  color: "#500a31",
+                  color: "#1E4FBF",
                   opacity: 0.8,
                 }}
               >
@@ -300,7 +300,7 @@ export function RoadmapClient() {
               >
                 <Button
                   href="#overview"
-                  variant="maroon"
+                  variant="primary"
                   showArrow={true}
                   className="text-base py-3 px-8 rounded-full"
                 >
@@ -310,7 +310,7 @@ export function RoadmapClient() {
                   href="#milestones"
                   variant="outline"
                   showArrow={true}
-                  className="text-base py-3 px-8 rounded-full border-2 border-[#500a31] text-[#500a31]"
+                  className="text-base py-3 px-8 rounded-full border-2 border-[#1E4FBF] text-[#1E4FBF]"
                 >
                   View Milestones
                 </Button>
@@ -321,7 +321,7 @@ export function RoadmapClient() {
       </section>
 
       {/* ===== OVERVIEW ===== */}
-      <section id="overview" className="bg-white py-[100px] px-6" aria-label="Roadmap Overview">
+      <section id="overview" className="bg-white py-20 px-6" aria-label="Roadmap Overview">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -329,7 +329,7 @@ export function RoadmapClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Overview
@@ -340,7 +340,7 @@ export function RoadmapClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               STRATEGIC JOURNEY
@@ -349,12 +349,12 @@ export function RoadmapClient() {
 
           <AnimatedSection delay={0.1}>
             <motion.div
-              className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 md:p-12 border border-[#500a31]/10"
+              className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 md:p-12 border border-[#1E4FBF]/10"
             >
-              <p className="text-base leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.8 }}>
+              <p className="text-base leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.8 }}>
                 The PRIME SDN roadmap is a comprehensive 15-year strategic plan that transforms Surigao del Norte from an emerging innovation ecosystem into a premier global innovation hub. Each phase builds upon the previous one, creating cumulative impact and sustainable progress.
               </p>
-              <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.8 }}>
+              <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.8 }}>
                 The journey is divided into five strategic phases, each with specific goals, projects, timelines, and deliverables that ensure measurable progress and accountability at every stage.
               </p>
             </motion.div>
@@ -363,7 +363,7 @@ export function RoadmapClient() {
       </section>
 
       {/* ===== MILESTONES ===== */}
-      <section id="milestones" className="bg-white py-[100px] px-6" aria-label="Milestones">
+      <section id="milestones" className="bg-white py-20 px-6" aria-label="Milestones">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -371,7 +371,7 @@ export function RoadmapClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Phases
@@ -382,7 +382,7 @@ export function RoadmapClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               FIVE STRATEGIC PHASES
@@ -398,10 +398,10 @@ export function RoadmapClient() {
                   className="bg-white rounded-2xl shadow-[0_8px 24px rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden"
                 >
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-[#500a31] to-[#500a31]/80 p-6 md:p-8">
+                  <div className="bg-gradient-to-r from-[#1E4FBF] to-[#1E4FBF]/80 p-6 md:p-8">
                     <div className="flex items-start gap-6">
                       <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center shrink-0">
-                        <span className="font-extrabold text-3xl" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                        <span className="font-extrabold text-3xl" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                           {milestone.year}
                         </span>
                       </div>
@@ -423,13 +423,13 @@ export function RoadmapClient() {
                       <div className="space-y-6">
                         {/* Goals */}
                         <div>
-                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                             STRATEGIC GOALS
                           </h4>
                           <ul className="space-y-2">
                             {milestone.goals.map((goal, i) => (
-                              <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
-                                <span className="text-[#500a31] mt-1">•</span>
+                              <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
+                                <span className="text-[#1E4FBF] mt-1">•</span>
                                 <span>{goal}</span>
                               </li>
                             ))}
@@ -438,13 +438,13 @@ export function RoadmapClient() {
 
                         {/* Projects */}
                         <div>
-                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                             KEY PROJECTS
                           </h4>
                           <div className="space-y-2">
                             {milestone.projects.map((project, i) => (
-                              <div key={i} className="flex items-center justify-between text-sm p-2 bg-[#500a31]/5 rounded">
-                                <span style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.8 }}>
+                              <div key={i} className="flex items-center justify-between text-sm p-2 bg-[#1E4FBF]/5 rounded">
+                                <span style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.8 }}>
                                   {project.name}
                                 </span>
                                 <span className="text-xs px-2 py-1 rounded-full" style={{ 
@@ -464,16 +464,16 @@ export function RoadmapClient() {
                       <div className="space-y-6">
                         {/* Timeline */}
                         <div>
-                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                             TIMELINE
                           </h4>
                           <div className="space-y-2">
                             {milestone.timeline.map((item, i) => (
                               <div key={i} className="flex items-start gap-3 text-sm">
-                                <div className="w-16 shrink-0 font-bold" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                                <div className="w-16 shrink-0 font-bold" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                                   {item.quarter}
                                 </div>
-                                <div style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                                <div style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                                   {item.milestone}
                                 </div>
                               </div>
@@ -483,13 +483,13 @@ export function RoadmapClient() {
 
                         {/* Deliverables */}
                         <div>
-                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                          <h4 className="font-bold text-sm mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                             KEY DELIVERABLES
                           </h4>
                           <ul className="space-y-2">
                             {milestone.deliverables.map((deliverable, i) => (
-                              <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
-                                <span className="text-[#500a31] mt-1">✓</span>
+                              <li key={i} className="text-sm leading-relaxed flex items-start gap-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
+                                <span className="text-[#1E4FBF] mt-1">✓</span>
                                 <span>{deliverable}</span>
                               </li>
                             ))}
@@ -506,7 +506,7 @@ export function RoadmapClient() {
       </section>
 
       {/* ===== RELATED TOPICS ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Related Topics">
+      <section className="bg-white py-20 px-6" aria-label="Related Topics">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -514,7 +514,7 @@ export function RoadmapClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Explore More
@@ -525,7 +525,7 @@ export function RoadmapClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               RELATED TOPICS
@@ -546,12 +546,12 @@ export function RoadmapClient() {
                   <motion.div
                     whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                     transition={{ duration: 0.3 }}
-                    className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 border border-[#500a31]/10 h-full"
+                    className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 border border-[#1E4FBF]/10 h-full"
                   >
-                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                       {topic.title}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                    <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                       {topic.description}
                     </p>
                   </motion.div>
@@ -563,7 +563,7 @@ export function RoadmapClient() {
       </section>
 
       {/* ===== CALL TO ACTION ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Call to Action">
+      <section className="bg-white py-20 px-6" aria-label="Call to Action">
         <div className="max-w-[1440px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -578,7 +578,7 @@ export function RoadmapClient() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="leading-relaxed mb-12 max-w-5xl mx-auto font-extrabold uppercase tracking-tight"
-              style={{ color: "#500a31", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
+              style={{ color: "#1E4FBF", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
             >
               BE PART OF SURIGAO'S INNOVATION JOURNEY
             </motion.p>
@@ -598,7 +598,7 @@ export function RoadmapClient() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-[#500a31] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-[#1E4FBF] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 Join the Journey
@@ -614,7 +614,7 @@ export function RoadmapClient() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#500a31] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#1E4FBF] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 View Our Vision

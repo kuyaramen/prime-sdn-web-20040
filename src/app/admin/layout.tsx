@@ -213,7 +213,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         } ${sidebarCollapsed ? "lg:w-20" : "lg:w-72"} w-72`}
       >
         {/* Brand */}
-        <div className="h-20 flex items-center px-6 border-b border-gray-100 bg-gradient-to-r from-maroon-900 to-maroon-700">
+        <div className="h-20 flex items-center px-6 border-b border-gray-100 bg-gradient-to-r from-[#5A2396] to-[#1E4FBF]">
           <Link href="/" className="font-display font-bold text-2xl tracking-tight text-white flex items-center gap-2">
             <div className="p-2 rounded-lg bg-white/20">
               <LayoutDashboard size={24} className="text-white" />
@@ -227,7 +227,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   transition={{ duration: 0.2 }}
                 >
                   <div>
-                    PRIME <span className="text-teal-400">SDN</span>
+                    PRIME <span className="text-[#D8A629]">SDN</span>
                     <span className="block text-xs text-white/80 font-sans font-normal mt-1">Admin Portal</span>
                   </div>
                 </motion.div>
@@ -252,7 +252,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                   placeholder="Search menu..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-900 bg-gray-50"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]/20 focus:border-[#5A2396] bg-gray-50"
                 />
               </div>
             </motion.div>
@@ -261,7 +261,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
         {/* User Card */}
         <div className="p-4 border-b border-gray-100 bg-gradient-to-b from-gray-50 to-white flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-maroon-700 to-maroon-900 text-white flex items-center justify-center shadow-md shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#5A2396] to-[#1E4FBF] text-white flex items-center justify-center shadow-md shrink-0">
             <User size={20} />
           </div>
           <AnimatePresence mode="wait">
@@ -276,7 +276,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 <p className="text-sm font-bold text-gray-900 truncate">
                   {session?.user?.email}
                 </p>
-                <p className="text-xs text-maroon-700 uppercase tracking-wider font-semibold">
+                <p className="text-xs text-[#5A2396] uppercase tracking-wider font-semibold">
                   {(session?.user as any)?.role || "Editor"}
                 </p>
               </motion.div>
@@ -330,7 +330,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                           onClick={() => setSidebarOpen(false)}
                           className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 relative group ${
                             isActive
-                              ? "bg-maroon-900 text-white shadow-md"
+                              ? "bg-[#5A2396] text-white shadow-md"
                               : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                           }`}
                           title={sidebarCollapsed ? item.name : undefined}
@@ -351,7 +351,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                           {isActive && (
                             <motion.div
                               layoutId="activeIndicator"
-                              className="absolute right-2 w-1.5 h-1.5 rounded-full bg-teal-400"
+                              className="absolute right-2 w-1.5 h-1.5 rounded-full bg-[#D8A629]"
                             />
                           )}
                         </Link>
@@ -405,7 +405,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             <Link
               href="/"
               target="_blank"
-              className="text-sm font-semibold px-4 py-2.5 rounded-xl bg-maroon-900 text-white hover:bg-maroon-800 transition-colors flex items-center gap-2"
+              className="text-sm font-semibold px-4 py-2.5 rounded-xl text-white hover:opacity-90 transition-opacity flex items-center gap-2"
+              style={{
+                background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+              }}
             >
               <span>View Live Website</span>
               <ArrowRight size={16} />

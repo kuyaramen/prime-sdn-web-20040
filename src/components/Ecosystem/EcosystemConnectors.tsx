@@ -15,6 +15,8 @@ interface EcosystemConnectorsProps {
   pillars: EcosystemPillar[];
   selectedIndex: number | null;
   hoveredIndex: number | null;
+  hubEdgeRadius?: number;
+  nodeEdgeRadius?: number;
 }
 
 export function EcosystemConnectors({
@@ -24,6 +26,8 @@ export function EcosystemConnectors({
   pillars,
   selectedIndex,
   hoveredIndex,
+  hubEdgeRadius = 105,
+  nodeEdgeRadius = 72,
 }: EcosystemConnectorsProps) {
   return (
     <svg
@@ -34,45 +38,70 @@ export function EcosystemConnectors({
         height: "100%",
         pointerEvents: "none",
         zIndex: 0,
+        overflow: "visible",
       }}
     >
+      <defs>
+        {pillars.map((pillar) => (
+          <linearGradient
+            key={`grad-${pillar.id}`}
+            id={`lineGrad-${pillar.id}`}
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor={pillar.accentColor} stopOpacity="0.05" />
+            <stop offset="50%" stopColor={pillar.accentColor} stopOpacity="0.25" />
+            <stop offset="100%" stopColor={pillar.accentColor} stopOpacity="0.08" />
+          </linearGradient>
+        ))}
+      </defs>
+
       {nodes.map((node, i) => {
         const pillar = pillars[i];
         const isHovered = hoveredIndex === i;
         const isActive = selectedIndex === i;
         const isHighlight = isHovered || isActive;
 
-        // Draw from center to node, but stop at circle edges
-        // hub radius ~140px on desktop, node radius ~66px
         const dx = node.x - centerX;
         const dy = node.y - centerY;
         const dist = Math.sqrt(dx * dx + dy * dy);
         const nx = dx / dist;
         const ny = dy / dist;
 
-        const hubEdge = 190; // radius of hub visual + gap (for 380px hub)
-        const nodeEdge = 95; // radius of node + gap (for 180px node)
+        const x1 = centerX + nx * hubEdgeRadius;
+        const y1 = centerY + ny * hubEdgeRadius;
+        const x2 = node.x - nx * nodeEdgeRadius;
+        const y2 = node.y - ny * nodeEdgeRadius;
 
-        const x1 = centerX + nx * hubEdge;
-        const y1 = centerY + ny * hubEdge;
-        const x2 = node.x - nx * nodeEdge;
-        const y2 = node.y - ny * nodeEdge;
+        // Small dot coords at node end
+        const dotX = node.x - nx * (nodeEdgeRadius - 4);
+        const dotY = node.y - ny * (nodeEdgeRadius - 4);
 
         return (
           <g key={pillar.id}>
-            {/* Base faint normal line */}
-            <line
+            {/* Base line — draw-on-scroll via whileInView */}
+            <motion.line
               x1={x1}
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="#94A3B8"
-              strokeWidth={2}
-              opacity={0.3}
-              strokeDasharray="4 4"
+              stroke={isHighlight ? pillar.accentColor : `url(#lineGrad-${pillar.id})`}
+              strokeWidth={isHighlight ? 1.5 : 1}
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: isHighlight ? 0.75 : 0.4 }}
+              viewport={{ once: true }}
+              transition={{
+                pathLength: { duration: 0.9, delay: 0.3 + i * 0.08, ease: "easeOut" },
+                opacity: { duration: 0.5, delay: 0.3 + i * 0.08 },
+              }}
+              style={{
+                filter: isHighlight
+                  ? `drop-shadow(0 0 4px ${pillar.accentColor}60)`
+                  : "none",
+              }}
             />
 
-            {/* Active / Hovered glow line */}
+            {/* Highlight animated glow line */}
             {isHighlight && (
               <motion.line
                 x1={x1}
@@ -80,34 +109,46 @@ export function EcosystemConnectors({
                 x2={x2}
                 y2={y2}
                 stroke={pillar.accentColor}
+                strokeWidth={3}
+                strokeLinecap="round"
                 initial={{ pathLength: 0 }}
                 animate={{
                   pathLength: 1,
-                  opacity: [0.6, 1.0, 0.6],
-                  strokeWidth: [3.5, 4.5, 3.5],
+                  opacity: [0.5, 0.9, 0.5],
                 }}
                 transition={{
                   pathLength: { duration: 0.4, ease: "easeOut" },
-                  opacity: { duration: 4, ease: "easeInOut", repeat: Infinity },
-                  strokeWidth: { duration: 4, ease: "easeInOut", repeat: Infinity },
+                  opacity: { duration: 2.5, ease: "easeInOut", repeat: Infinity },
                 }}
-                style={{ filter: `drop-shadow(0 0 3px ${pillar.accentColor}50)` }}
+                style={{ filter: `drop-shadow(0 0 6px ${pillar.accentColor}70)` }}
               />
             )}
 
-            {/* Traveling dot along spoke */}
+            {/* Dot at node connection point */}
             <motion.circle
-              r={isHighlight ? 3.5 : 2.5}
+              cx={dotX}
+              cy={dotY}
+              r={isHighlight ? 3.5 : 2}
               fill={pillar.accentColor}
-              animate={{
-                opacity: isHighlight ? 1 : 0.3,
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: isHighlight ? 0.9 : 0.25 }}
+              viewport={{ once: true }}
+              transition={{
+                scale: { duration: 0.3, delay: 0.9 + i * 0.09 },
+                opacity: { duration: 0.3, delay: 0.9 + i * 0.09 },
               }}
-              transition={{ duration: 0.3 }}
+            />
+
+            {/* Traveling light particle */}
+            <motion.circle
+              r={isHighlight ? 2.5 : 1.5}
+              fill={pillar.accentColor}
+              opacity={isHighlight ? 0.8 : 0.18}
             >
               <animateMotion
-                dur={`${4 + i * 0.4}s`}
+                dur={`${4.5 + i * 0.35}s`}
                 repeatCount="indefinite"
-                begin={`${i * 0.4}s`}
+                begin={`${i * 0.45}s`}
                 path={`M ${x1} ${y1} L ${x2} ${y2}`}
               />
             </motion.circle>

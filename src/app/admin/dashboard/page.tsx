@@ -61,10 +61,10 @@ export default function DashboardPage() {
   const [stats, setStats] = useState<StatCard[]>([
     { name: "Website Visitors", count: 45231, href: "/admin/analytics", icon: Users, color: "from-blue-500 to-blue-600", trend: 12, actionable: true, actionText: "View Analytics" },
     { name: "Pending Approvals", count: 5, href: "/admin/content", icon: FileCheck, color: "from-amber-500 to-amber-600", trend: 0, actionable: true, actionText: "Review" },
-    { name: "Published News", count: 128, href: "/admin/news", icon: Newspaper, color: "from-teal-500 to-teal-600", trend: 15 },
+    { name: "Published News", count: 128, href: "/admin/news", icon: Newspaper, color: "from-[#1E4FBF] to-[#5A2396]", trend: 15 },
     { name: "Upcoming Events", count: 12, href: "/admin/activities", icon: Calendar, color: "from-green-500 to-green-600", trend: 22, actionable: true, actionText: "View Calendar" },
     { name: "Active Users", count: 8, href: "/admin/users", icon: Users, color: "from-purple-500 to-purple-600", trend: 8 },
-    { name: "Contact Messages", count: 23, href: "/admin/communication/contact", icon: Inbox, color: "from-maroon-700 to-maroon-800", trend: -8, actionable: true, actionText: "Respond" },
+    { name: "Contact Messages", count: 23, href: "/admin/communication/contact", icon: Inbox, color: "from-[#5A2396] to-[#1E4FBF]", trend: -8, actionable: true, actionText: "Respond" },
   ]);
 
   const [activities, setActivities] = useState<ActivityItem[]>([
@@ -79,14 +79,14 @@ export default function DashboardPage() {
   ]);
 
   const quickActions = [
-    { name: "Create News", href: "/admin/news", icon: Newspaper, color: "bg-teal-500" },
-    { name: "Create Activity", href: "/admin/activities", icon: Activity, color: "bg-orange-500" },
-    { name: "Upload Media", href: "/admin/media", icon: Video, color: "bg-pink-500" },
-    { name: "Add Framework", href: "/admin/content/framework", icon: Layers, color: "bg-blue-500" },
-    { name: "Publish Update", href: "/admin/content/homepage", icon: FileText, color: "bg-green-500" },
-    { name: "Add Policy", href: "/admin/documents", icon: FileText, color: "bg-purple-500" },
-    { name: "Create Event", href: "/admin/activities", icon: Calendar, color: "bg-amber-500" },
-    { name: "Manage Users", href: "/admin/users", icon: Users, color: "bg-maroon-700" },
+    { name: "Create News", href: "/admin/news", icon: Newspaper, color: "bg-[#1E4FBF]" },
+    { name: "Create Activity", href: "/admin/activities", icon: Activity, color: "bg-[#D8A629]" },
+    { name: "Upload Media", href: "/admin/media", icon: Video, color: "bg-[#5A2396]" },
+    { name: "Add Framework", href: "/admin/content/framework", icon: Layers, color: "bg-[#1E4FBF]" },
+    { name: "Publish Update", href: "/admin/content/homepage", icon: FileText, color: "bg-[#D8A629]" },
+    { name: "Add Policy", href: "/admin/documents", icon: FileText, color: "bg-[#5A2396]" },
+    { name: "Create Event", href: "/admin/activities", icon: Calendar, color: "bg-[#1E4FBF]" },
+    { name: "Manage Users", href: "/admin/users", icon: Users, color: "bg-[#5A2396]" },
   ];
 
   const [systemStatus, setSystemStatus] = useState({
@@ -190,7 +190,7 @@ export default function DashboardPage() {
             >
               <Link
                 href={stat.href}
-                className="block bg-white p-5 rounded-2xl border border-gray-200 hover:shadow-xl hover:border-maroon-300 transition-all duration-300 group"
+                className="block bg-white p-5 rounded-2xl border border-gray-200 hover:shadow-xl hover:border-[#5A2396] transition-all duration-300 group"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className={`p-3 rounded-xl bg-gradient-to-br ${stat.color} text-white shadow-lg`}>
@@ -205,12 +205,12 @@ export default function DashboardPage() {
                   <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">
                     {stat.name}
                   </p>
-                  <p className="text-3xl font-extrabold text-gray-900 group-hover:text-maroon-900 transition-colors">
+                  <p className="text-3xl font-extrabold text-gray-900 group-hover:text-[#5A2396] transition-colors">
                     {stat.count.toLocaleString()}
                   </p>
                 </div>
                 {stat.actionable && (
-                  <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-maroon-900">
+                  <div className="mt-3 flex items-center gap-2 text-xs font-semibold text-[#5A2396]">
                     <ArrowRight size={14} />
                     <span>{stat.actionText}</span>
                   </div>
@@ -324,12 +324,12 @@ export default function DashboardPage() {
                 <Link
                   key={action.name}
                   href={action.href}
-                  className="flex flex-col items-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-maroon-300 hover:bg-maroon-50 transition-all group"
+                  className="flex flex-col items-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-[#5A2396] hover:bg-[#5A2396]/5 transition-all group"
                 >
                   <div className={`p-2.5 rounded-lg ${action.color} text-white group-hover:scale-110 transition-transform`}>
                     <Icon size={20} />
                   </div>
-                  <span className="text-xs font-semibold text-gray-700 group-hover:text-maroon-900">{action.name}</span>
+                  <span className="text-xs font-semibold text-gray-700 group-hover:text-[#5A2396]">{action.name}</span>
                 </Link>
               );
             })}
@@ -350,7 +350,7 @@ export default function DashboardPage() {
               <h2 className="text-lg font-bold text-gray-900">Recent Activity</h2>
               <p className="text-sm text-gray-500 mt-0.5">Latest system events and updates</p>
             </div>
-            <Link href="/admin/settings/audit" className="text-xs font-semibold text-maroon-900 hover:underline flex items-center gap-1.5">
+            <Link href="/admin/settings/audit" className="text-xs font-semibold text-[#5A2396] hover:underline flex items-center gap-1.5">
               <span>View all</span>
               <ArrowRight size={14} />
             </Link>
@@ -419,7 +419,7 @@ export default function DashboardPage() {
               </div>
             ))}
           </div>
-          <Link href="/admin/content" className="mt-4 block text-center text-sm font-semibold text-maroon-900 hover:underline">
+          <Link href="/admin/content" className="mt-4 block text-center text-sm font-semibold text-[#5A2396] hover:underline">
             View all pending items
           </Link>
         </motion.div>
@@ -437,7 +437,7 @@ export default function DashboardPage() {
             <h2 className="text-lg font-bold text-gray-900">Upcoming Events</h2>
             <p className="text-sm text-gray-500 mt-0.5">Scheduled activities and deadlines</p>
           </div>
-          <Link href="/admin/activities" className="text-xs font-semibold text-maroon-900 hover:underline flex items-center gap-1.5">
+          <Link href="/admin/activities" className="text-xs font-semibold text-[#5A2396] hover:underline flex items-center gap-1.5">
             <span>View calendar</span>
             <ArrowRight size={14} />
           </Link>
@@ -451,8 +451,8 @@ export default function DashboardPage() {
           ].map((event, index) => (
             <div key={index} className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
               <div className="flex items-center gap-2 mb-2">
-                <CalendarIcon size={16} className="text-maroon-900" />
-                <span className="text-xs font-semibold text-maroon-900">{event.date}</span>
+                <CalendarIcon size={16} className="text-[#5A2396]" />
+                <span className="text-xs font-semibold text-[#5A2396]">{event.date}</span>
               </div>
               <p className="text-sm font-medium text-gray-900 mb-1">{event.title}</p>
               <p className="text-xs text-gray-500">{event.time} • {event.type}</p>

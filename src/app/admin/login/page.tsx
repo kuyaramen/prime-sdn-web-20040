@@ -58,9 +58,9 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4 relative overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-maroon-900/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-600/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 animate-pulse" style={{ animationDelay: "1s" }} />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-900/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#5A2396]/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#1E4FBF]/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 animate-pulse" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-[#D8A629]/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse" style={{ animationDelay: "2s" }} />
       </div>
 
       <div className="w-full max-w-md z-10">
@@ -68,7 +68,7 @@ export default function LoginPage() {
         <div className="text-center mb-10">
           <Link href="/" className="inline-block font-display text-5xl sm:text-6xl font-bold leading-none mb-4 tracking-tight">
             <span className="text-white">PRIME</span>
-            <span className="text-teal-400"> SDN</span>
+            <span className="text-[#D8A629]"> SDN</span>
           </Link>
           <p className="text-gray-400 text-sm font-medium tracking-wide">Admin Portal</p>
         </div>
@@ -76,7 +76,7 @@ export default function LoginPage() {
         {/* Login Box */}
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 sm:p-10 border border-white/10">
           <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
-            <div className="p-3 rounded-2xl bg-gradient-to-br from-maroon-900 to-maroon-700 text-white shadow-lg">
+            <div className="p-3 rounded-2xl bg-gradient-to-br from-[#5A2396] to-[#1E4FBF] text-white shadow-lg">
               <ShieldCheck size={28} />
             </div>
             <div>
@@ -107,7 +107,7 @@ export default function LoginPage() {
                   type="email"
                   placeholder="admin@primesdn.com"
                   {...register("email")}
-                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-900 bg-gray-50 ${
+                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]/20 focus:border-[#5A2396] bg-gray-50 ${
                     errors.email ? "border-red-300 bg-red-50" : "border-gray-200 focus:bg-white"
                   }`}
                 />
@@ -131,7 +131,7 @@ export default function LoginPage() {
                   type="password"
                   placeholder="••••••••"
                   {...register("password")}
-                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-900 bg-gray-50 ${
+                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-[#1E4FBF]/20 focus:border-[#5A2396] bg-gray-50 ${
                     errors.password ? "border-red-300 bg-red-50" : "border-gray-200 focus:bg-white"
                   }`}
                 />
@@ -145,7 +145,10 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-maroon-900 to-maroon-700 hover:from-maroon-800 hover:to-maroon-600 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-maroon-700/50 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
+              className="w-full py-4 px-6 rounded-xl text-white font-semibold text-sm transition-all shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#5A2396]/50 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
+              style={{
+                background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+              }}
             >
               {loading ? (
                 <>

@@ -30,11 +30,11 @@ export function AnimatedSection({ children, className = "", delay = 0 }: Animate
   );
 }
 
-export function AnimatedHero({ children, className = "" }: { children: ReactNode; className?: string }) {
+export function AnimatedHero({ children, className = "", style }: { children: ReactNode; className?: string; style?: React.CSSProperties }) {
   const prefersReduced = useReducedMotion();
 
   if (prefersReduced) {
-    return <div className={className}>{children}</div>;
+    return <div className={className} style={style}>{children}</div>;
   }
 
   return (
@@ -43,6 +43,7 @@ export function AnimatedHero({ children, className = "" }: { children: ReactNode
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>

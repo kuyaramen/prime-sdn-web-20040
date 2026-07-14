@@ -52,20 +52,20 @@ export function Header() {
 
   return (
     <header 
-      className="sticky top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 shadow-sm transition-all duration-300"
+      className="sticky top-0 left-0 right-0 z-50 bg-[rgba(255,255,255,0.92)] backdrop-blur-[20px] border-b border-[#EAF4FF] shadow-[0_8px_32px_rgba(0,0,0,0.03)] transition-all duration-300"
       role="banner"
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" role="navigation" aria-label="Main navigation">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Prime SDN Home">
-          <div className="w-11 h-11 rounded-full bg-maroon-900 flex items-center justify-center">
+        <Link href="/" className="flex items-center gap-3 shrink-0 translate-y-1" aria-label="Prime SDN Home">
+          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#1E4FBF] to-[#5A2396] flex items-center justify-center shadow-[0_8px_24px_rgba(30,79,191,0.25)]">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 21c0 .5 4 .5 4 0v-2H9v2zM12 2C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" fill="white"/>
             </svg>
           </div>
-          <span className="text-xl tracking-tight leading-none">
-            <span className="font-display font-bold text-maroon-900">PRIME</span>{" "}
-            <span className="font-display font-bold text-teal-600">SDN</span>
+          <span className="text-xl tracking-tight leading-none" style={{ fontFamily: "var(--font-display)" }}>
+            <span className="font-bold" style={{ color: "var(--color-text-brand)" }}>PRIME</span>{" "}
+            <span className="font-bold" style={{ color: "var(--color-secondary-purple)" }}>SDN</span>
           </span>
         </Link>
 
@@ -77,17 +77,19 @@ export function Header() {
                 <div className="flex items-center gap-1">
                   <Link
                     href={item.href}
-                    className="text-[0.9375rem] font-medium text-gray-700 hover:text-maroon-900 transition-colors"
+                    className="text-[0.9375rem] font-medium text-gray-700 hover:text-[#1E4FBF] relative group transition-colors duration-300"
                   >
                     {item.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#1E4FBF] to-[#5A2396] transition-all duration-300 group-hover:w-full" />
                   </Link>
                   <button
                     onClick={() => setAboutOpen(!aboutOpen)}
                     onMouseEnter={() => setAboutOpen(true)}
-                    className="text-gray-700 hover:text-maroon-900 transition-colors"
+                    className="text-gray-700 hover:text-[#1E4FBF] transition-colors duration-300"
                     aria-expanded={aboutOpen}
                     aria-haspopup="true"
                     aria-label="About us menu"
+                    suppressHydrationWarning
                   >
                     <ChevronDown size={14} className={`transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
                   </button>
@@ -120,9 +122,10 @@ export function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[0.9375rem] font-medium text-gray-700 hover:text-maroon-900 transition-colors"
+                className="text-[0.9375rem] font-medium text-gray-700 hover:text-[#1E4FBF] relative group transition-colors duration-300"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#1E4FBF] to-[#5A2396] transition-all duration-300 group-hover:w-full" />
               </Link>
             )
           )}
@@ -134,6 +137,7 @@ export function Header() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
+          suppressHydrationWarning
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -178,7 +182,7 @@ export function Header() {
                           <Link
                             key={child.href}
                             href={child.href}
-                            className="block py-2 text-sm text-gray-600 hover:text-maroon-900"
+                            className="block py-2 text-sm text-gray-600 hover:text-[#1E4FBF] transition-colors duration-300"
                             onClick={() => setMobileOpen(false)}
                           >
                             {child.label}
@@ -191,7 +195,7 @@ export function Header() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block py-3 text-sm font-medium text-gray-700 hover:text-maroon-900"
+                    className="block py-3 text-sm font-medium text-gray-700 hover:text-[#1E4FBF] transition-colors duration-300"
                     onClick={() => setMobileOpen(false)}
                   >
                     {item.label}

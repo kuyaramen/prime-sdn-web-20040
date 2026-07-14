@@ -45,7 +45,7 @@ const AnimatedCounter = ({ value, prefix = "", suffix = "" }: { value: number, p
 
 export default function ImpactStatsSection({ pillar }: ImpactStatsSectionProps) {
   return (
-    <section className="bg-slate-950 py-24 text-white relative overflow-hidden">
+    <section className="bg-slate-950 py-20 text-white relative overflow-hidden">
       <div 
         className="absolute inset-0 opacity-10 pointer-events-none"
         style={{ 

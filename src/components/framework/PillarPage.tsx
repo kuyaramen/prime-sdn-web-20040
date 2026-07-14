@@ -26,13 +26,13 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="text-2xl font-bold mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+          <div className="text-2xl font-bold mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
             Pillar not found
           </div>
-          <div className="text-sm" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+          <div className="text-sm" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
             Looking for: {pillarSlug}
           </div>
-          <div className="text-sm mt-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.5 }}>
+          <div className="text-sm mt-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.5 }}>
             Available: {ECOSYSTEM_PILLARS.map(p => p.id).join(', ')}
           </div>
         </div>
@@ -48,13 +48,13 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
           <motion.button
             whileHover={{ scale: 1.05, x: -4 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#500a31] transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#1E4FBF] transition-all"
             style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span className="text-sm font-medium" style={{ color: "#500a31" }}>Back</span>
+            <span className="text-sm font-medium" style={{ color: "#1E4FBF" }}>Back</span>
           </motion.button>
         </Link>
       </div>
@@ -134,7 +134,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                   fontFamily: "Montserrat, Arial, sans-serif",
                   fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
                   fontWeight: 700,
-                  color: "#500a31",
+                  color: "#1E4FBF",
                 }}
               >
                 {pillar.title.toUpperCase()}
@@ -148,7 +148,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 style={{
                   fontFamily: "Montserrat, Arial, sans-serif",
                   fontSize: "clamp(16px, 1.8vw, 20px)",
-                  color: "#500a31",
+                  color: "#1E4FBF",
                   opacity: 0.8,
                 }}
               >
@@ -163,7 +163,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               >
                 <Button
                   href="#about"
-                  variant="maroon"
+                  variant="primary"
                   showArrow={true}
                   className="text-base py-3 px-8 rounded-full"
                 >
@@ -173,7 +173,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                   href="#programs"
                   variant="outline"
                   showArrow={true}
-                  className="text-base py-3 px-8 rounded-full border-2 border-[#500a31] text-[#500a31]"
+                  className="text-base py-3 px-8 rounded-full border-2 border-[#1E4FBF] text-[#1E4FBF]"
                 >
                   View Programs
                 </Button>
@@ -184,7 +184,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== ABOUT THIS PILLAR ===== */}
-      <section id="about" className="bg-white py-[100px] px-6" aria-label="About This Pillar">
+      <section id="about" className="bg-white py-20 px-6" aria-label="About This Pillar">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -192,7 +192,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               About
@@ -203,7 +203,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               {pillar.title.toUpperCase()}
@@ -213,25 +213,25 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
             <AnimatedSection delay={0.1}>
               <div className="mb-8">
-                <h3 className="font-bold text-xl mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                <h3 className="font-bold text-xl mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                   Mission
                 </h3>
-                <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                   {pillar.mission}
                 </p>
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                <h3 className="font-bold text-xl mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                   Vision
                 </h3>
-                <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                   {pillar.vision}
                 </p>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <h3 className="font-bold text-xl mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+              <h3 className="font-bold text-xl mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                 Why It Matters
               </h3>
               <StaggerContainer className="space-y-4">
@@ -240,12 +240,12 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                     <motion.div
                       whileHover={{ x: 8 }}
                       transition={{ duration: 0.3 }}
-                      className="bg-gradient-to-r from-[#500a31]/5 to-[#500a31]/10 rounded-xl p-6 border border-[#500a31]/10"
+                      className="bg-gradient-to-r from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-xl p-6 border border-[#1E4FBF]/10"
                     >
-                      <div className="font-bold text-sm mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                      <div className="font-bold text-sm mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                         {item.title}
                       </div>
-                      <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                      <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                         {item.description}
                       </p>
                     </motion.div>
@@ -258,7 +258,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== OBJECTIVES ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Objectives">
+      <section className="bg-white py-20 px-6" aria-label="Objectives">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -266,7 +266,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Goals
@@ -277,7 +277,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               OBJECTIVES
@@ -290,15 +290,15 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 <motion.div
                   whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                   transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 border border-[#500a31]/10"
+                  className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 border border-[#1E4FBF]/10"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-[#500a31] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#1E4FBF] flex items-center justify-center shrink-0">
                       <span className="text-white font-bold" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
                         {index + 1}
                       </span>
                     </div>
-                    <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.8 }}>
+                    <p className="text-base leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.8 }}>
                       {objective}
                     </p>
                   </div>
@@ -310,7 +310,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== IMPACT STATISTICS ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Impact Statistics">
+      <section className="bg-white py-20 px-6" aria-label="Impact Statistics">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16 text-center">
             <motion.p
@@ -318,7 +318,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Impact
@@ -329,7 +329,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               STATISTICS
@@ -342,7 +342,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 <motion.div
                   whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.2)" }}
                   transition={{ duration: 0.3 }}
-                  className="bg-[#500a31] rounded-2xl p-8 text-center"
+                  className="bg-[#1E4FBF] rounded-2xl p-8 text-center"
                 >
                   <StatCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                   <div className="text-sm text-white/80 mt-2" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
@@ -356,7 +356,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== KEY PROGRAMS ===== */}
-      <section id="programs" className="bg-white py-[100px] px-6" aria-label="Key Programs">
+      <section id="programs" className="bg-white py-20 px-6" aria-label="Key Programs">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -364,7 +364,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Programs
@@ -375,7 +375,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               KEY PROGRAMS
@@ -391,21 +391,21 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                   className="bg-white rounded-2xl p-8 shadow-[0_8px 24px rgba(0,0,0,0.08)] border border-gray-100"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 rounded-full bg-[#500a31]/10 text-[#500a31] text-xs font-bold uppercase" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+                    <span className="px-3 py-1 rounded-full bg-[#1E4FBF]/10 text-[#1E4FBF] text-xs font-bold uppercase" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
                       {program.type}
                     </span>
                   </div>
-                  <h3 className="font-bold text-xl mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                  <h3 className="font-bold text-xl mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                     {program.title}
                   </h3>
-                  <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                  <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                     {program.description}
                   </p>
                   <Button
                     href="#"
                     variant="outline"
                     showArrow={true}
-                    className="text-sm py-2 px-6 rounded-full border-2 border-[#500a31] text-[#500a31]"
+                    className="text-sm py-2 px-6 rounded-full border-2 border-[#1E4FBF] text-[#1E4FBF]"
                   >
                     Learn More
                   </Button>
@@ -417,7 +417,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== PROJECTS ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Projects">
+      <section className="bg-white py-20 px-6" aria-label="Projects">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -425,7 +425,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Projects
@@ -436,7 +436,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               FEATURED PROJECTS
@@ -449,22 +449,22 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 <motion.div
                   whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                   transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 border border-[#500a31]/10"
+                  className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 border border-[#1E4FBF]/10"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="px-3 py-1 rounded-full bg-[#500a31] text-white text-xs font-bold uppercase" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+                    <span className="px-3 py-1 rounded-full bg-[#1E4FBF] text-white text-xs font-bold uppercase" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
                       {project.type}
                     </span>
                     {project.date && (
-                      <span className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.6 }}>
+                      <span className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.6 }}>
                         {project.date}
                       </span>
                     )}
                   </div>
-                  <h3 className="font-bold text-xl mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                  <h3 className="font-bold text-xl mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                     {project.title}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                  <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                     {project.description}
                   </p>
                 </motion.div>
@@ -475,7 +475,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== SUCCESS STORIES ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Success Stories">
+      <section className="bg-white py-20 px-6" aria-label="Success Stories">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -483,7 +483,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Impact
@@ -494,7 +494,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               SUCCESS STORIES
@@ -507,7 +507,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 <motion.div
                   whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.2)" }}
                   transition={{ duration: 0.3 }}
-                  className="bg-[#500a31] rounded-2xl p-8"
+                  className="bg-[#1E4FBF] rounded-2xl p-8"
                 >
                   <div className="text-sm text-white/60 mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
                     {story.type}
@@ -534,7 +534,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== STRATEGIC PARTNERS ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Strategic Partners">
+      <section className="bg-white py-20 px-6" aria-label="Strategic Partners">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -542,7 +542,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Partners
@@ -553,7 +553,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               STRATEGIC PARTNERS
@@ -566,12 +566,12 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 <motion.div
                   whileHover={{ y: -8, scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-6 border border-[#500a31]/10 text-center"
+                  className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-6 border border-[#1E4FBF]/10 text-center"
                 >
-                  <div className="text-sm font-bold mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                  <div className="text-sm font-bold mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                     {partner.name}
                   </div>
-                  <div className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.6 }}>
+                  <div className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.6 }}>
                     {partner.type}
                   </div>
                 </motion.div>
@@ -582,7 +582,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== RELATED PILLARS ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Related Pillars">
+      <section className="bg-white py-20 px-6" aria-label="Related Pillars">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -590,7 +590,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Explore
@@ -601,7 +601,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               RELATED PILLARS
@@ -615,18 +615,18 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                   <motion.div
                     whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                     transition={{ duration: 0.3 }}
-                    className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 border border-[#500a31]/10 h-full"
+                    className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 border border-[#1E4FBF]/10 h-full"
                   >
-                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                       {relatedPillar.title}
                     </h3>
-                    <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                    <p className="text-sm leading-relaxed mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                       {relatedPillar.description}
                     </p>
                     <Button
                       variant="outline"
                       showArrow={true}
-                      className="text-sm py-2 px-4 rounded-full border-2 border-[#500a31] text-[#500a31]"
+                      className="text-sm py-2 px-4 rounded-full border-2 border-[#1E4FBF] text-[#1E4FBF]"
                     >
                       Explore
                     </Button>
@@ -639,7 +639,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
       </section>
 
       {/* ===== CALL TO ACTION ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Call to Action">
+      <section className="bg-white py-20 px-6" aria-label="Call to Action">
         <div className="max-w-[1440px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -654,7 +654,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="leading-relaxed mb-12 max-w-5xl mx-auto font-extrabold uppercase tracking-tight"
-              style={{ color: "#500a31", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
+              style={{ color: "#1E4FBF", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
             >
               {pillar.ctaText.toUpperCase()}
             </motion.p>
@@ -674,7 +674,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-[#500a31] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-[#1E4FBF] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 Contact PRIME SDN
@@ -690,7 +690,7 @@ export function PillarPage({ pillarSlug }: PillarPageProps) {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#500a31] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#1E4FBF] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 Learn About PRIME SDN

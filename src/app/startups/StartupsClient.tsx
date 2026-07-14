@@ -104,13 +104,13 @@ export function StartupsClient() {
           <motion.button
             whileHover={{ scale: 1.05, x: -4 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#500a31] transition-all"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-lg border border-gray-200 hover:border-[#1E4FBF] transition-all"
             style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            <span className="text-sm font-medium" style={{ color: "#500a31" }}>Back</span>
+            <span className="text-sm font-medium" style={{ color: "#1E4FBF" }}>Back</span>
           </motion.button>
         </Link>
       </div>
@@ -190,7 +190,7 @@ export function StartupsClient() {
                   fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
                   fontSize: "clamp(2.5rem, 5vw, 4.5rem)",
                   fontWeight: 700,
-                  color: "#500a31",
+                  color: "#1E4FBF",
                 }}
               >
                 STARTUP ECOSYSTEM
@@ -205,7 +205,7 @@ export function StartupsClient() {
                   fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
                   fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
                   fontWeight: 700,
-                  color: "#500a31",
+                  color: "#1E4FBF",
                 }}
               >
                 BUILDING THE FUTURE OF{"\n"}
@@ -220,7 +220,7 @@ export function StartupsClient() {
                 style={{
                   fontFamily: "Montserrat, Arial, sans-serif",
                   fontSize: "clamp(16px, 1.8vw, 20px)",
-                  color: "#500a31",
+                  color: "#1E4FBF",
                   opacity: 0.8,
                 }}
               >
@@ -235,7 +235,7 @@ export function StartupsClient() {
               >
                 <Button
                   href="#programs"
-                  variant="maroon"
+                  variant="primary"
                   showArrow={true}
                   className="text-base py-3 px-8 rounded-full"
                 >
@@ -245,7 +245,7 @@ export function StartupsClient() {
                   href="#apply"
                   variant="outline"
                   showArrow={true}
-                  className="text-base py-3 px-8 rounded-full border-2 border-[#500a31] text-[#500a31]"
+                  className="text-base py-3 px-8 rounded-full border-2 border-[#1E4FBF] text-[#1E4FBF]"
                 >
                   Apply Now
                 </Button>
@@ -256,7 +256,7 @@ export function StartupsClient() {
       </section>
 
       {/* ===== PROGRAMS ===== */}
-      <section id="programs" className="bg-white py-[100px] px-6" aria-label="Startup Programs">
+      <section id="programs" className="bg-white py-20 px-6" aria-label="Startup Programs">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -264,7 +264,7 @@ export function StartupsClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Support
@@ -275,7 +275,7 @@ export function StartupsClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               STARTUP PROGRAMS
@@ -291,21 +291,21 @@ export function StartupsClient() {
                   className="bg-white rounded-2xl shadow-[0_8px 24px rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden"
                 >
                   <div className="p-6 md:p-8">
-                    <h3 className="font-bold text-xl mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                    <h3 className="font-bold text-xl mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                       {program.title}
                     </h3>
-                    <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                    <p className="text-sm leading-relaxed mb-6" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                       {program.description}
                     </p>
 
                     <div className="space-y-4 mb-6">
                       <div>
-                        <div className="text-xs font-bold mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                        <div className="text-xs font-bold mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                           FEATURES
                         </div>
                         <ul className="space-y-1">
                           {program.features.map((feature, i) => (
-                            <li key={i} className="text-xs leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.6 }}>
+                            <li key={i} className="text-xs leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.6 }}>
                               • {feature}
                             </li>
                           ))}
@@ -314,18 +314,18 @@ export function StartupsClient() {
 
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <div className="text-xs font-bold mb-1" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                          <div className="text-xs font-bold mb-1" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                             ELIGIBILITY
                           </div>
-                          <div className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.6 }}>
+                          <div className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.6 }}>
                             {program.eligibility}
                           </div>
                         </div>
                         <div>
-                          <div className="text-xs font-bold mb-1" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                          <div className="text-xs font-bold mb-1" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                             DURATION
                           </div>
-                          <div className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.6 }}>
+                          <div className="text-xs" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.6 }}>
                             {program.duration}
                           </div>
                         </div>
@@ -336,7 +336,7 @@ export function StartupsClient() {
                       href="#apply"
                       variant="outline"
                       showArrow={true}
-                      className="text-sm py-2 px-4 rounded-full border-2 border-[#500a31] text-[#500a31]"
+                      className="text-sm py-2 px-4 rounded-full border-2 border-[#1E4FBF] text-[#1E4FBF]"
                     >
                       Learn More
                     </Button>
@@ -349,7 +349,7 @@ export function StartupsClient() {
       </section>
 
       {/* ===== SUCCESS STORIES ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Success Stories">
+      <section className="bg-white py-20 px-6" aria-label="Success Stories">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -357,7 +357,7 @@ export function StartupsClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Impact
@@ -368,7 +368,7 @@ export function StartupsClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               SUCCESS STORIES
@@ -381,7 +381,7 @@ export function StartupsClient() {
                 <motion.div
                   whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                   transition={{ duration: 0.3 }}
-                  className="bg-[#500a31] rounded-2xl p-6"
+                  className="bg-[#1E4FBF] rounded-2xl p-6"
                 >
                   <div className="text-xs text-white/60 mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
                     {story.industry} • {story.year}
@@ -408,7 +408,7 @@ export function StartupsClient() {
       </section>
 
       {/* ===== RESOURCES ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Resources">
+      <section className="bg-white py-20 px-6" aria-label="Resources">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -416,7 +416,7 @@ export function StartupsClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Tools
@@ -427,7 +427,7 @@ export function StartupsClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               STARTUP RESOURCES
@@ -440,15 +440,15 @@ export function StartupsClient() {
                 <motion.div
                   whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                   transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-6 border border-[#500a31]/10 text-center"
+                  className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-6 border border-[#1E4FBF]/10 text-center"
                 >
-                  <div className="text-xs font-bold mb-2 px-3 py-1 rounded-full inline-block" style={{ fontFamily: "Montserrat, Arial, sans-serif", backgroundColor: "#500a31", color: "white" }}>
+                  <div className="text-xs font-bold mb-2 px-3 py-1 rounded-full inline-block" style={{ fontFamily: "Montserrat, Arial, sans-serif", backgroundColor: "#1E4FBF", color: "white" }}>
                     {resource.type}
                   </div>
-                  <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                  <h3 className="font-bold text-sm mb-2" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                     {resource.title}
                   </h3>
-                  <p className="text-xs leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                  <p className="text-xs leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                     {resource.description}
                   </p>
                 </motion.div>
@@ -459,7 +459,7 @@ export function StartupsClient() {
       </section>
 
       {/* ===== RELATED TOPICS ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Related Topics">
+      <section className="bg-white py-20 px-6" aria-label="Related Topics">
         <div className="max-w-[1440px] mx-auto">
           <AnimatedSection className="mb-16">
             <motion.p
@@ -467,7 +467,7 @@ export function StartupsClient() {
               style={{
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(20px, 3vw, 28px)",
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               Explore More
@@ -478,7 +478,7 @@ export function StartupsClient() {
                 fontFamily: "Montserrat, Arial, sans-serif",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 700,
-                color: "#500a31",
+                color: "#1E4FBF",
               }}
             >
               RELATED TOPICS
@@ -499,12 +499,12 @@ export function StartupsClient() {
                   <motion.div
                     whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(80, 10, 49, 0.15)" }}
                     transition={{ duration: 0.3 }}
-                    className="bg-gradient-to-br from-[#500a31]/5 to-[#500a31]/10 rounded-2xl p-8 border border-[#500a31]/10 h-full"
+                    className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#1E4FBF]/10 rounded-2xl p-8 border border-[#1E4FBF]/10 h-full"
                   >
-                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31" }}>
+                    <h3 className="font-bold text-lg mb-3" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF" }}>
                       {topic.title}
                     </h3>
-                    <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#500a31", opacity: 0.7 }}>
+                    <p className="text-sm leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif", color: "#1E4FBF", opacity: 0.7 }}>
                       {topic.description}
                     </p>
                   </motion.div>
@@ -516,7 +516,7 @@ export function StartupsClient() {
       </section>
 
       {/* ===== APPLY ===== */}
-      <section id="apply" className="bg-white py-[100px] px-6" aria-label="Apply">
+      <section id="apply" className="bg-white py-20 px-6" aria-label="Apply">
         <div className="max-w-[1440px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -531,7 +531,7 @@ export function StartupsClient() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="leading-relaxed mb-12 max-w-5xl mx-auto font-extrabold uppercase tracking-tight"
-              style={{ color: "#500a31", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
+              style={{ color: "#1E4FBF", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
             >
               START YOUR ENTREPRENEURIAL JOURNEY
             </motion.p>
@@ -551,7 +551,7 @@ export function StartupsClient() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-[#500a31] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-[#1E4FBF] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 Apply for Program
@@ -567,7 +567,7 @@ export function StartupsClient() {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#500a31] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
+                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#1E4FBF] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#1E4FBF] flex items-center justify-center gap-2"
                 style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
               >
                 Contact Us

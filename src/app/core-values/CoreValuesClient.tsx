@@ -311,7 +311,7 @@ export function CoreValuesClient() {
               >
                 <Button
                   href="#overview"
-                  variant="maroon"
+                  variant="primary"
                   showArrow={true}
                   className="text-base py-3 px-8 rounded-full"
                 >

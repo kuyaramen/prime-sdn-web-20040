@@ -120,7 +120,10 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
               published: false,
             });
           }}
-          className="flex items-center gap-2 px-4 py-2 bg-maroon-900 text-white rounded-lg hover:bg-maroon-800 transition-colors"
+          className="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors"
+          style={{
+            background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+          }}
         >
           <Plus size={18} />
           Add Video
@@ -195,7 +198,7 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                 </button>
                 <button
                   onClick={() => setEditingVideo(video)}
-                  className="p-2 text-gray-600 hover:text-maroon-900 hover:bg-gray-100 rounded-lg transition-colors"
+                  className="p-2 text-gray-600 hover:text-[#5A2396] hover:bg-gray-100 rounded-lg transition-colors"
                 >
                   <Edit2 size={18} />
                 </button>
@@ -249,7 +252,7 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                     onChange={(e) =>
                       setEditingVideo({ ...editingVideo, title: e.target.value })
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maroon-900 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1E4FBF]/20 focus:border-[#5A2396]"
                   />
                 </div>
                 <div>
@@ -263,7 +266,7 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                       setEditingVideo({ ...editingVideo, youtubeId: id || null });
                     }}
                     placeholder="https://youtube.com/watch?v=... or video ID"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maroon-900 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1E4FBF]/20 focus:border-[#5A2396]"
                   />
                 </div>
                 <div>
@@ -275,7 +278,7 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                       setEditingVideo({ ...editingVideo, thumbnail: e.target.value || null })
                     }
                     placeholder="https://img.youtube.com/vi/.../maxresdefault.jpg"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maroon-900 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1E4FBF]/20 focus:border-[#5A2396]"
                   />
                 </div>
                 <div>
@@ -286,7 +289,7 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                       setEditingVideo({ ...editingVideo, description: e.target.value || null })
                     }
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maroon-900 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1E4FBF]/20 focus:border-[#5A2396]"
                   />
                 </div>
                 <div className="flex items-center gap-4">
@@ -297,7 +300,7 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                       onChange={(e) =>
                         setEditingVideo({ ...editingVideo, featured: e.target.checked })
                       }
-                      className="rounded border-gray-300 text-maroon-900 focus:ring-maroon-900"
+                      className="rounded border-gray-300 text-[#5A2396] focus:ring-[#5A2396]"
                     />
                     <span className="text-sm text-gray-700">Featured</span>
                   </label>
@@ -308,7 +311,7 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                       onChange={(e) =>
                         setEditingVideo({ ...editingVideo, published: e.target.checked })
                       }
-                      className="rounded border-gray-300 text-maroon-900 focus:ring-maroon-900"
+                      className="rounded border-gray-300 text-[#5A2396] focus:ring-[#5A2396]"
                     />
                     <span className="text-sm text-gray-700">Published</span>
                   </label>
@@ -326,7 +329,10 @@ export function VideosClient({ videos: initialVideos }: VideosClientProps) {
                 </button>
                 <button
                   onClick={() => handleSaveVideo(editingVideo)}
-                  className="flex items-center gap-2 px-4 py-2 bg-maroon-900 text-white rounded-lg hover:bg-maroon-800 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 text-white rounded-lg transition-colors"
+                  style={{
+                    background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+                  }}
                 >
                   <Save size={18} />
                   Save

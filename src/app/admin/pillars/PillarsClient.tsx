@@ -92,7 +92,7 @@ export function PillarsClient({ pillars }: PillarsClientProps) {
   return (
     <div className="space-y-6">
       {/* Informative description banner */}
-      <div className="bg-teal-50 border border-teal-200 rounded-2xl p-5 text-sm text-teal-800 leading-relaxed flex gap-3">
+      <div className="bg-[#1E4FBF]/5 border border-[#1E4FBF]/20 rounded-2xl p-5 text-sm text-[#1E4FBF] leading-relaxed flex gap-3">
         <Layers size={20} className="shrink-0 mt-0.5" />
         <div>
           <h4 className="font-bold mb-1">About the 7 Pillars Framework</h4>
@@ -113,7 +113,7 @@ export function PillarsClient({ pillars }: PillarsClientProps) {
             >
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-maroon-50 text-maroon-900 flex items-center justify-center border border-maroon-100">
+                  <div className="w-10 h-10 rounded-lg bg-[#5A2396]/10 text-[#5A2396] flex items-center justify-center border border-[#5A2396]/20">
                     <IconComponent size={20} />
                   </div>
                   <div>
@@ -145,7 +145,11 @@ export function PillarsClient({ pillars }: PillarsClientProps) {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 z-50 overflow-y-auto">
           <div className="bg-white rounded-2xl max-w-xl w-full shadow-2xl overflow-hidden my-8">
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-maroon-900 text-white">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 text-white"
+              style={{
+                background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+              }}
+            >
               <h3 className="font-bold text-lg">Configure Pillar: {editingPillar?.title}</h3>
               <button
                 onClick={() => setModalOpen(false)}

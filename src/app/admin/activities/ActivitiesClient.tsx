@@ -20,6 +20,7 @@ import {
   Eye,
   AlertCircle,
   Check,
+  Image as ImageIcon,
 } from "lucide-react";
 import Image from "next/image";
 import { formatDate } from "@/lib/utils";
@@ -69,11 +70,14 @@ export function ActivitiesClient({
   const [editingActivity, setEditingActivity] = useState<ActivityWithPillar | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  const [imageUploading, setImageUploading] = useState(false);
+
   const {
     register,
     handleSubmit,
     setValue,
     reset,
+    watch,
     formState: { errors },
   } = useForm<ActivityFormData>({
     resolver: zodResolver(activitySchema),
@@ -82,6 +86,8 @@ export function ActivitiesClient({
       published: false,
     },
   });
+
+  const watchCoverImage = watch("coverImage");
 
   const openAddModal = () => {
     setEditingActivity(null);
@@ -126,6 +132,44 @@ export function ActivitiesClient({
         .replace(/\s+/g, "-")
         .replace(/-+/g, "-")
     );
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("Please upload an image file (png, jpg, jpeg, webp)");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert("Image size should be less than 5MB");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    setImageUploading(true);
+    try {
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to upload image");
+      }
+
+      const result = await res.json();
+      setValue("coverImage", result.url);
+    } catch (err: any) {
+      alert(err.message || "Something went wrong during image upload");
+    } finally {
+      setImageUploading(false);
+    }
   };
 
   const onSubmit = async (data: ActivityFormData) => {
@@ -365,20 +409,50 @@ export function ActivitiesClient({
                   )}
                 </div>
 
-                {/* Cover Image URL */}
-                <div className="md:col-span-2">
-                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
-                    Cover Image URL
-                  </label>
-                  <input
-                    type="text"
-                    {...register("coverImage")}
-                    className="w-full px-3.5 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-maroon-700/20"
-                    placeholder="e.g. /images/activities/summit.jpg or an external link"
-                  />
-                  {errors.coverImage && (
-                    <p className="mt-1 text-xs text-red-600">{errors.coverImage.message}</p>
-                  )}
+                {/* Cover Image URL / Upload */}
+                <div className="md:col-span-2 space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-20 h-20 rounded-lg overflow-hidden border border-gray-200 bg-gray-50 flex-shrink-0 flex items-center justify-center">
+                      {watchCoverImage ? (
+                        <img
+                          src={watchCoverImage}
+                          alt="Cover preview"
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <ImageIcon size={24} className="text-gray-400" />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
+                        Upload Cover Image
+                      </label>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        disabled={imageUploading}
+                        className="block w-full text-xs text-gray-500 file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-maroon-50 file:text-maroon-900 hover:file:bg-maroon-100 cursor-pointer"
+                      />
+                      {imageUploading && (
+                        <p className="text-xs text-maroon-900 mt-1 animate-pulse">Uploading image...</p>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5">
+                      Cover Image URL
+                    </label>
+                    <input
+                      type="text"
+                      {...register("coverImage")}
+                      className="w-full px-3.5 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-maroon-700/20"
+                      placeholder="e.g. /images/activities/summit.jpg or an external link"
+                    />
+                    {errors.coverImage && (
+                      <p className="mt-1 text-xs text-red-600">{errors.coverImage.message}</p>
+                    )}
+                  </div>
                 </div>
 
                 {/* Excerpt */}

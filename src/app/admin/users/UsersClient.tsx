@@ -108,7 +108,10 @@ export function UsersClient({ initialUsers, currentUserId }: UsersClientProps) {
         </div>
         <button
           onClick={openAddModal}
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-maroon-900 to-maroon-700 hover:from-maroon-800 hover:to-maroon-600 text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 cursor-pointer"
+          className="flex items-center justify-center gap-2 px-6 py-3 text-white rounded-xl text-sm font-semibold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 cursor-pointer"
+          style={{
+            background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+          }}
         >
           <Plus size={20} />
           <span>Add User Account</span>
@@ -141,7 +144,7 @@ export function UsersClient({ initialUsers, currentUserId }: UsersClientProps) {
                       <div>
                         <div className="font-semibold text-gray-900">{user.email}</div>
                         {user.id === currentUserId && (
-                          <span className="inline-block mt-1 px-2 py-0.5 bg-maroon-100 text-maroon-900 text-[10px] rounded-lg font-bold uppercase tracking-wider">
+                          <span className="inline-block mt-1 px-2 py-0.5 bg-[#5A2396]/10 text-[#5A2396] text-[10px] rounded-lg font-bold uppercase tracking-wider">
                             You
                           </span>
                         )}
@@ -154,12 +157,12 @@ export function UsersClient({ initialUsers, currentUserId }: UsersClientProps) {
                         user.role === "super_admin"
                           ? "bg-purple-100 text-purple-900 border-purple-300"
                           : user.role === "admin"
-                          ? "bg-maroon-100 text-maroon-900 border-maroon-300"
+                          ? "bg-[#5A2396]/10 text-[#5A2396] border-[#5A2396]/30"
                           : user.role === "startup_manager"
-                          ? "bg-blue-100 text-blue-700 border-blue-300"
+                          ? "bg-[#1E4FBF]/10 text-[#1E4FBF] border-[#1E4FBF]/30"
                           : user.role === "viewer"
                           ? "bg-gray-100 text-gray-700 border-gray-300"
-                          : "bg-teal-100 text-teal-700 border-teal-300"
+                          : "bg-[#D8A629]/10 text-[#D8A629] border-[#D8A629]/30"
                       }`}
                     >
                       {user.role}
@@ -187,7 +190,11 @@ export function UsersClient({ initialUsers, currentUserId }: UsersClientProps) {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 overflow-y-auto">
           <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl overflow-hidden my-8">
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-gradient-to-r from-maroon-900 to-maroon-700">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 text-white"
+              style={{
+                background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+              }}
+            >
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-white/20">
                   <Users size={24} className="text-white" />

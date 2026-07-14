@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 interface ButtonProps {
   children: ReactNode;
   href?: string;
-  variant?: "maroon" | "teal" | "white" | "outline" | "black";
+  variant?: "primary" | "secondary" | "white" | "outline" | "black";
   showArrow?: boolean;
   className?: string;
   type?: "button" | "submit";
@@ -16,7 +16,7 @@ interface ButtonProps {
 export function Button({
   children,
   href,
-  variant = "maroon",
+  variant = "primary",
   showArrow = true,
   className = "",
   type = "button",

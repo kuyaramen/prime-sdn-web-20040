@@ -17,15 +17,12 @@ export default function HeroSection({ pillar }: HeroSectionProps) {
   return (
     <section className="relative w-full h-[90vh] min-h-[600px] flex items-end overflow-hidden bg-slate-950">
       {/* Background Image with Ken Burns effect and Parallax */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 z-0 origin-center"
         style={{ y, opacity }}
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.05 }}
-        transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
       >
         <Image 
-          src={pillar.heroImage} 
+          src="/hero_background.png" 
           alt={pillar.title}
           fill
           priority
@@ -52,9 +49,12 @@ export default function HeroSection({ pillar }: HeroSectionProps) {
             PRIME Framework Pillar
           </motion.span>
           
-          <motion.h1 
-            className="text-5xl md:text-8xl font-extrabold uppercase tracking-tight text-white mb-8 leading-[0.9]"
-            style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
+          <motion.h1
+            className="font-extrabold uppercase tracking-tight text-white mb-8 leading-[0.9]"
+            style={{ 
+              fontSize: "clamp(2.5rem, 6vw, 5rem)",
+              fontFamily: "var(--font-display), Inter, system-ui, sans-serif"
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -63,7 +63,8 @@ export default function HeroSection({ pillar }: HeroSectionProps) {
           </motion.h1>
           
           <motion.p 
-            className="text-slate-300 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mb-10"
+            className="text-slate-300 font-light leading-relaxed max-w-2xl mb-10"
+            style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}

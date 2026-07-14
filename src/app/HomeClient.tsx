@@ -14,7 +14,7 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/ui/AnimatedSection";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import SSC2040Roadmap from "@/components/sections/SSC2040Roadmap";
 import { CinematicVideoSection } from "@/components/sections/CinematicVideoSection";
@@ -63,6 +63,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
   const scrollXSurigao = useTransform(scrollY, [0, 800], [0, -150]);
   const [activeNewsIndex, setActiveNewsIndex] = useState(0);
   const [isHoveringNews, setIsHoveringNews] = useState(false);
+  const [isVisionExpanded, setIsVisionExpanded] = useState(false);
 
   const xPrime = prefersReduced ? 0 : scrollXPrime;
   const xSurigao = prefersReduced ? 0 : scrollXSurigao;
@@ -70,7 +71,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
   // Autoplay for news cards
   useEffect(() => {
     if (news.length <= 1) return;
-    
+
     const interval = setInterval(() => {
       if (!isHoveringNews) {
         setActiveNewsIndex((prev) => (prev + 1) % Math.min(news.length, 3));
@@ -82,199 +83,242 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
 
   return (
     <>
-
-      <section className="relative min-h-fit w-full overflow-hidden px-10 sm:px-12 md:px-14 lg:px-16 bg-white" aria-label="Hero">
+      <section className="relative w-full overflow-hidden px-10 sm:px-12 md:px-14 lg:px-16 bg-white" aria-label="Hero" style={{ height: "calc(100vh - 5rem)", minHeight: "calc(100vh - 5rem)" }}>
         {/* Background Image Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <motion.div
-            initial={{ scale: 1, x: 0, y: 0 }}
-            animate={{
-              scale: [1, 1.08, 1],
-              x: [0, -15, 0],
-              y: [0, -8, 0],
-            }}
-            transition={{
-              duration: 25,
-              ease: "easeInOut",
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-            className="absolute inset-0 w-full h-full opacity-30 mix-blend-multiply z-0"
-          >
-            <Image
-              src="/images/hero_aerial_surigao_new.jpg"
-              alt="Aerial view of Surigao City"
-              fill
-              priority
-              className="object-cover"
-            />
-          </motion.div>
+          <Image
+            src="/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png"
+            alt="Cinematic aerial view of Surigao del Norte"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "center 120%", filter: "brightness(1.0) contrast(1.1) saturate(0.95)" }}
+          />
         </div>
-        {/* Gradient Overlay Layer */}
-        <div 
-          className="absolute inset-0 z-10 pointer-events-none" 
+        {/* Atmospheric Fog Overlay: Blue x Gold x White */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none mix-blend-screen"
           style={{
-            background: "linear-gradient(135deg, rgba(253, 224, 71, 0.4) 0%, rgba(249, 115, 22, 0.15) 25%, rgba(255, 255, 255, 0.7) 60%, rgba(45, 212, 191, 0.3) 100%)"
+            background: "radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15) 0%, transparent 40%), radial-gradient(circle at 20% 60%, rgba(30, 79, 191, 0.2) 0%, transparent 50%)"
           }}
         />
-        {/* Bottom wave brush mask transition */}
-        <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none">
-          <svg
-            className="w-full h-32 md:h-48"
-            viewBox="0 0 1440 120"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="white" stopOpacity="0" />
-                <stop offset="50%" stopColor="white" stopOpacity="0.7" />
-                <stop offset="100%" stopColor="white" stopOpacity="1" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,58.7C960,64,1056,64,1152,58.7C1248,53,1344,43,1392,37.3L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-              fill="url(#waveGradient)"
-              opacity="0.9"
-            />
-            <path
-              d="M0,80L48,74.7C96,69,192,59,288,64C384,69,480,91,576,96C672,101,768,91,864,85.3C960,80,1056,80,1152,85.3C1248,91,1344,101,1392,106.7L1440,112L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z"
-              fill="url(#waveGradient)"
-              opacity="0.5"
-            />
-          </svg>
-        </div>
+        
+        {/* Soft Gold & Blue Bottom Fog Transition */}
+        <div
+          className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
+          style={{
+            height: "60%",
+            background: "linear-gradient(to bottom, transparent 0%, rgba(212, 175, 55, 0.05) 20%, rgba(30, 79, 191, 0.08) 40%, rgba(255, 255, 255, 0.6) 65%, #FFFFFF 85%, #FFFFFF 100%)",
+            filter: "blur(4px)"
+          }}
+        />
+        
+        {/* Clean White Edge Blending */}
+        <div
+          className="absolute inset-x-0 bottom-0 z-10 pointer-events-none"
+          style={{
+            height: "30%",
+            background: "linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.9) 40%, #FFFFFF 100%)"
+          }}
+        />
 
-        {/* Title — near top of screen, left aligned, prominent positioning */}
-        <AnimatedHero className="relative z-20 w-full h-full flex flex-col justify-between pt-8 md:pt-12 lg:pt-16 pb-12 md:pb-16 lg:pb-20 select-none">
-          {/* Top — Brand Title */}
-          <div className="leading-none tracking-tight font-extrabold shrink-0">
-            {/* Row 1: SURIGAO */}
-            <motion.h1
-              style={{ x: xPrime, color: "#500a31" }}
-              className="text-7xl sm:text-8xl md:text-[7rem] lg:text-[8.5rem] xl:text-[10rem] font-[900] uppercase tracking-wide mb-1 md:mb-3 font-display"
-            >
-              SURIGAO
-            </motion.h1>
-
-            {/* Row 2: PRIME 2040 */}
-            <motion.h2
-              style={{ x: xSurigao }}
-              className="text-7xl sm:text-8xl md:text-[7rem] lg:text-[8.5rem] xl:text-[10rem] font-[900] uppercase tracking-wide flex flex-wrap items-center gap-x-4 md:gap-x-8 font-display"
-            >
-              <span style={{ color: "#500a31" }}>PRIME</span>
-              <span style={{ color: "#114d4a", fontFamily: "Montserrat, Arial, sans-serif", fontWeight: 900 }}>2040</span>
-            </motion.h2>
-          </div>
-
-          {/* Bottom — Partner Agency Logos (Near the end of the picture) */}
-          <div className="w-full flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="h-[1px] w-8 bg-current opacity-20" style={{ color: "#500a31" }} />
-              <p className="text-xs font-bold uppercase tracking-widest whitespace-nowrap" style={{ color: "#500a31", opacity: 0.6 }}>
-                In Partnership With
-              </p>
-              <span className="h-[1px] w-full max-w-xs md:max-w-md bg-current opacity-20" style={{ color: "#500a31" }} />
-            </div>
-            <div className="flex items-center gap-6 md:gap-8">
-              {/* Left: Partner Logo Marquee */}
-              <div className="flex-1 overflow-hidden relative select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4">
-                <motion.div
-                  className="flex items-center w-max"
-                  animate={{ x: ["-25%", "-75%"] }}
-                  transition={{
-                    ease: "linear",
-                    duration: 25,
-                    repeat: Infinity,
+        {/* Hero Content — Premium Editorial Composition */}
+        <AnimatedHero className="relative z-20 w-full h-full flex items-center select-none">
+          <div className="w-full max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-28">
+            {/* Left Column: Title, Partners, CTA */}
+            <div className="md:col-span-12 lg:col-span-12 flex flex-col">
+              {/* Brand Title — Oversized, Dominant */}
+              <div className="leading-none max-w-[750px]" style={{ marginBottom: "32px", marginTop: "40px" }}>
+                {/* Row 1: SURIGAO */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                  style={{
+                    x: xPrime,
+                    background: "linear-gradient(135deg, #081F5C 0%, #1E4FBF 70%, #3B82F6 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    fontSize: "clamp(7rem, 11.5vw, 13.5rem)",
+                    fontFamily: "Montserrat, Inter, system-ui, -apple-system, sans-serif",
+                    fontWeight: "800",
+                    lineHeight: "0.85",
+                    letterSpacing: "-0.03em",
+                    filter: "drop-shadow(0px 8px 24px rgba(30,79,191,0.12))"
                   }}
+                  className="mb-2"
                 >
-                  {[...Array(2)].map((_, arrayIndex) => (
-                    <div key={arrayIndex} className="flex items-center gap-4 pr-4">
-                      {[
-                        { src: "/images/logos/dost.jpg", label: "DOST" },
-                        { src: "/images/logos/dti.jpg",  label: "DTI" },
-                        { src: "/images/logos/dict.png",  label: "DICT" },
-                        { src: "/images/logos/ched.png",  label: "CHED" },
-                        { src: "/images/logos/surigao_del_norte.png",  label: "Province of Surigao del Norte" },
-                        { src: "/images/logos/tesda_new.jpg",  label: "TESDA" },
-                        { src: "/images/logos/snsu.jpg",  label: "SNSU" },
-                      ].map((agency) => (
-                        <div
-                          key={agency.label}
-                          className="group flex items-center justify-center bg-white backdrop-blur-sm rounded-full p-2 w-12 h-12 md:w-[56px] md:h-[56px] shadow-sm border border-white/60 hover:shadow-md hover:scale-110 transition-all duration-300 cursor-default flex-shrink-0"
-                          title={agency.label}
-                        >
-                          <Image
-                            src={agency.src}
-                            alt={agency.label + " logo"}
-                            width={32}
-                            height={32}
-                            className="object-contain w-8 h-8 md:w-[32px] md:h-[32px] opacity-100 transition-all duration-300"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </motion.div>
+                  SURIGAO
+                </motion.h1>
+
+                {/* Row 2: PRIME 2040 */}
+                <motion.h2
+                  initial={{ opacity: 0, y: 15, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  style={{
+                    x: xSurigao,
+                    fontSize: "clamp(6.5rem, 11vw, 13rem)",
+                    fontFamily: "Montserrat, Inter, system-ui, -apple-system, sans-serif",
+                    fontWeight: "800",
+                    lineHeight: "0.85",
+                    letterSpacing: "-0.03em",
+                  }}
+                  className="flex items-center gap-x-5"
+                >
+                  <span style={{ 
+                    background: "linear-gradient(135deg, #081F5C 0%, #1E4FBF 70%, #3B82F6 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    filter: "drop-shadow(0px 8px 24px rgba(30,79,191,0.12))"
+                  }}>PRIME</span>
+                  <span
+                    className="gold-text-animate"
+                    style={{
+                      display: "inline-block",
+                      fontWeight: "800",
+                      fontSize: "clamp(6rem, 10vw, 12.5rem)",
+                      letterSpacing: "-0.02em",
+                      filter: "drop-shadow(0px 8px 24px rgba(212,175,55,0.2))"
+                    }}
+                  >
+                    2040
+                  </span>
+                </motion.h2>
               </div>
-              {/* Right: Description Text */}
-              <div className="hidden md:block max-w-[520px] text-right">
-                <p className="text-[28px] leading-[1.2] font-normal" style={{ color: "#500a31", opacity: 0.7 }}>
-                  A public-private movement to promote innovation in the city & province of Surigao del Norte, Philippines
-                </p>
+
+              {/* Partnership Section — Left-aligned */}
+              <div style={{ marginBottom: "40px", marginTop: "40px" }}>
+                <div className="flex items-center justify-start gap-3 mb-6">
+                  <span className="h-[1px] w-10 bg-current" style={{ color: "#081F5C" }} />
+                  <p className="text-xs font-bold uppercase tracking-widest whitespace-nowrap" style={{ color: "#081F5C" }}>
+                    In Partnership With
+                  </p>
+                  <span className="h-[1px] w-10 bg-current" style={{ color: "#081F5C" }} />
+                </div>
+                <div className="overflow-hidden relative select-none [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] py-4 px-6 rounded-full" style={{ maxWidth: "520px" }}>
+                  <motion.div
+                    className="flex items-center w-max"
+                    animate={{ x: ["0%", "-50%"], y: [0, -2, 0] }}
+                    transition={{
+                      ease: "linear",
+                      duration: 35,
+                      repeat: Infinity,
+                      y: {
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                  >
+                    {[...Array(4)].map((_, arrayIndex) => (
+                      <div key={arrayIndex} className="flex items-center gap-6 pr-6">
+                        {[
+                          { src: "/images/logos/dost.jpg", label: "DOST" },
+                          { src: "/images/logos/dti.jpg", label: "DTI" },
+                          { src: "/images/logos/dict.png", label: "DICT" },
+                          { src: "/images/logos/ched.png", label: "CHED" },
+                          { src: "/images/logos/surigao_del_norte.png", label: "Province of Surigao del Norte" },
+                          { src: "/images/logos/tesda_new.jpg", label: "TESDA" },
+                          { src: "/images/logos/snsu.jpg", label: "SNSU" },
+                        ].map((agency) => (
+                          <div
+                            key={agency.label}
+                            className="group flex items-center justify-center rounded-full hover:scale-105 transition-all duration-300 cursor-default flex-shrink-0"
+                            style={{ width: "52px", height: "52px", padding: "6px", boxShadow: "0 2px 8px rgba(0,0,0,0.15)", backgroundColor: "#ffffff" }}
+                            title={agency.label}
+                          >
+                            <Image
+                              src={agency.src}
+                              alt={agency.label + " logo"}
+                              width={32}
+                              height={32}
+                              className="object-contain transition-all duration-300"
+                              style={{ width: "26px", height: "26px" }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </motion.div>
+                </div>
               </div>
             </div>
           </div>
         </AnimatedHero>
 
-        {/* Scroll Chevron */}
-        <div 
-          style={{ color: "#500a31" }} 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-70 animate-bounce z-20"
+        {/* Description — Bottom-right caption */}
+        <div
+          className="hidden md:block z-20"
+          style={{
+            position: "absolute",
+            right: "96px",
+            bottom: "24px",
+            width: "40vw",
+            maxWidth: "520px",
+            textAlign: "right"
+          }}
         >
-          <ChevronDown size={32} />
+          <div className="flex items-end justify-end gap-4">
+            <p
+              className="font-normal"
+              style={{
+                color: "#081F5C",
+                fontSize: "1.35rem",
+                lineHeight: "1.6",
+                letterSpacing: "0.01em",
+                textWrap: "balance",
+                paddingBottom: "2px",
+                fontFamily: "Inter, system-ui, -apple-system, sans-serif"
+              }}
+            >
+              A public-private movement to promote innovation in the city & province of Surigao del Norte, Philippines
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ===== PRIME SDN FRAMEWORK SECTION ===== */}
       <PrimeFramework />
 
-      {/* ===== VISION SECTION ===== */}
-      <section className="bg-white pt-[60px] pb-[120px] px-6" aria-label="Our Vision">
-        <div className="max-w-[1400px] mx-auto text-center flex flex-col items-center">
+      {/* ===== VISION SECTION (Expandable) ===== */}
+      <section className="relative bg-white pt-[60px] pb-[120px] px-6 overflow-hidden" aria-label="Our Vision">
+        <div className="relative z-10 max-w-[1400px] mx-auto text-center flex flex-col items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ amount: 0.25, margin: "0px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-center"
           >
-            {/* Small Heading */}
-            <motion.h2
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="font-black uppercase tracking-[-3px] leading-[0.9]"
-              style={{
-                fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
-                fontSize: "clamp(48px, 8vw, 96px)",
-                color: "#500a31",
-              }}
-            >
-              VISION
-            </motion.h2>
+               {/* Section Label */}
+               <motion.h2
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ amount: 0.25, margin: "0px" }}
+                 transition={{ duration: 1.0, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                 className="font-bold leading-tight"
+                 style={{
+                   fontFamily: "var(--font-display)",
+                   fontSize: "clamp(6rem, 9vw, 8rem)",
+                   color: "#081F5C",
+                 }}
+               >
+                 VISION
+               </motion.h2>
 
             {/* Main Statement */}
             <motion.h3
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="font-extrabold uppercase tracking-[-2px] leading-[0.88] mt-[50px] max-w-[1200px]"
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ amount: 0.25, margin: "0px" }}
+              transition={{ duration: 1.2, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="font-bold leading-[1.05] mt-[50px] max-w-[1200px]"
               style={{
-                fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
-                fontSize: "clamp(32px, 5vw, 76px)",
-                color: "#500a31",
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(3rem, 5vw, 4.5rem)",
+                fontWeight: "var(--font-weight-bold)",
+                color: "#1E4FBF",
               }}
             >
               SURIGAO DEL NORTE:{"\n"}
@@ -284,335 +328,194 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              viewport={{ amount: 0.25, margin: "0px" }}
+              transition={{ duration: 1.0, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
               className="font-normal leading-[1.25] mt-[50px] max-w-[1300px]"
               style={{
-                fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
-                fontSize: "clamp(18px, 2vw, 28px)",
-                color: "#500a31",
+                fontFamily: "var(--font-body)",
+                fontSize: "var(--font-size-body-lg)",
+                color: "var(--color-text-secondary)",
+                letterSpacing: "var(--letter-spacing-body)",
               }}
             >
-              Through PRIME SDN, the province seeks to nurture an ecosystem that empowers entrepreneurs, strengthens research and talent development, embraces digital transformation, and fosters resilient communities capable of creating lasting economic and social impact.
+              Through <span style={{ color: "var(--color-text-brand)", fontWeight: 700 }}>PRIME SDN</span>, the province seeks to nurture an ecosystem that empowers entrepreneurs, strengthens research and talent development, embraces digital transformation, and fosters resilient communities capable of creating lasting economic and social impact.
             </motion.p>
 
-            {/* Primary Button */}
-            <Link href="/vision">
-              <motion.button
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                whileHover={{ scale: 1.03 }}
-                className="mt-[60px] bg-[#111111] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(0,0,0,0.10)] transition-transform duration-300"
-                style={{
-                  fontFamily: "Plus Jakarta Sans, Inter, system-ui, sans-serif",
-                  fontSize: "clamp(16px, 1.5vw, 20px)",
-                }}
-              >
-                Learn More
-                <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </motion.button>
-            </Link>
+            {/* Expandable Content - Mission, Core Values, Startups */}
+            <AnimatePresence>
+              {isVisionExpanded && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="w-full mt-12 overflow-hidden"
+                >
+                  {/* Mission Section */}
+                  <div className="py-12 border-b border-[#1E4DBF]/10">
+                    <div className="flex flex-col lg:flex-row gap-12 items-start">
+                      <div className="w-full lg:w-[25%]">
+                        <div className="inline-block">
+                          <h3
+                            className="leading-[1.05]"
+                            style={{
+                              fontFamily: "var(--font-display)",
+                              fontSize: "var(--font-size-heading-2)",
+                              fontWeight: "var(--font-weight-bold)",
+                              color: "var(--color-text-brand)",
+                            }}
+                          >
+                            MISSION
+                          </h3>
+                          <div className="w-10 h-0.75 bg-[var(--color-accent-gold)] mt-2 rounded-full" />
+                        </div>
+                      </div>
+                      <div className="w-full lg:w-[75%] flex flex-col">
+                        <h3
+                          className="mb-4"
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            fontSize: "var(--font-size-heading-1)",
+                            fontWeight: "var(--font-weight-bold)",
+                            lineHeight: "var(--line-height-heading)",
+                            letterSpacing: "var(--letter-spacing-heading)",
+                            color: "var(--color-text-primary)",
+                          }}
+                        >
+                          S.M.A.R.T. ACTIONS FOR{"\n"}
+                          <span style={{ color: "var(--color-text-brand)" }}>INNOVATION EXCELLENCE</span>
+                        </h3>
+                        <p
+                          className="mb-6"
+                          style={{
+                            fontFamily: "var(--font-body)",
+                            fontSize: "var(--font-size-body-lg)",
+                            color: "var(--color-text-secondary)",
+                            maxWidth: "900px",
+                          }}
+                        >
+                          Strengthening innovation infrastructure, mobilizing resources and partnerships, advancing research and development, reinforcing human capital, and transforming governance for sustainable development.
+                        </p>
+                        <Link href="/mission">
+                          <button
+                            className="bg-[#1E4DB7] hover:bg-[#173C96] text-white font-semibold rounded-full px-[32px] py-[14px] flex items-center gap-2 transition-all duration-300 w-fit cursor-pointer"
+                            style={{
+                              fontFamily: "var(--font-body)",
+                              fontSize: "var(--font-size-button)",
+                            }}
+                          >
+                            Explore Mission
+                            <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Core Values Section */}
+                  <div className="py-12 border-b border-[#1E4DBF]/10">
+                    <div className="flex flex-col lg:flex-row gap-12 items-start">
+                      <div className="w-full lg:w-[25%]">
+                        <div className="inline-block">
+                          <h3
+                            className="leading-[1.05]"
+                            style={{
+                              fontFamily: "var(--font-display)",
+                              fontSize: "var(--font-size-heading-2)",
+                              fontWeight: "var(--font-weight-bold)",
+                              color: "var(--color-text-brand)",
+                            }}
+                          >
+                            CORE VALUES
+                          </h3>
+                          <div className="w-10 h-0.75 bg-[var(--color-accent-gold)] mt-2 rounded-full" />
+                        </div>
+                      </div>
+                      <div className="w-full lg:w-[75%] flex flex-col">
+                        <h3
+                          className="mb-4"
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            fontSize: "var(--font-size-heading-1)",
+                            fontWeight: "var(--font-weight-bold)",
+                            lineHeight: "var(--line-height-heading)",
+                            letterSpacing: "var(--letter-spacing-heading)",
+                            color: "var(--color-text-primary)",
+                          }}
+                        >
+                          <span style={{ color: "var(--color-text-brand)" }}>SURIGAONON</span> VALUES
+                        </h3>
+                        <p
+                          className="mb-6"
+                          style={{
+                            fontFamily: "var(--font-body)",
+                            fontSize: "var(--font-size-body-lg)",
+                            color: "var(--color-text-secondary)",
+                            maxWidth: "900px",
+                          }}
+                        >
+                          Service, Unity, Resilience, Integrity, Growth, Accountability, Opportunity, Nurturing, Optimism, Nationalism - the guiding principles that define our identity and shape our future.
+                        </p>
+                        <Link href="/core-values">
+                          <button
+                            className="bg-[#1E4DB7] hover:bg-[#173C96] text-white font-semibold rounded-full px-[32px] py-[14px] flex items-center gap-2 transition-all duration-300 w-fit cursor-pointer"
+                            style={{
+                              fontFamily: "var(--font-body)",
+                              fontSize: "var(--font-size-button)",
+                            }}
+                          >
+                            Explore Core Values
+                            <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+             {/* Toggle Button */}
+             <motion.button
+               initial={{ opacity: 0, y: 40 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ amount: 0.25, margin: "0px" }}
+               transition={{ duration: 1.0, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
+               whileHover={{ scale: 1.05 }}
+               whileTap={{ scale: 0.95 }}
+               onClick={() => setIsVisionExpanded(!isVisionExpanded)}
+               className="mt-[30px] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 w-fit cursor-pointer"
+               style={{
+                 fontFamily: "var(--font-body)",
+                 fontSize: "var(--font-size-body-lg)",
+                 background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
+               }}
+             >
+               {isVisionExpanded ? "Collapse" : "Explore Vision"}
+               <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
+                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                   <path d="M5 12h14M12 5l7 7-7 7" />
+                 </svg>
+               </div>
+             </motion.button>
           </motion.div>
         </div>
-      </section>
 
-      {/* ===== MISSION SECTION ===== */}
-      <section className="bg-white py-[80px] px-6" aria-label="Our Mission">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            {/* Left Column (25%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full lg:w-[25%]"
-            >
-              <h2
-                className="leading-[1.05]"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(20px, 3vw, 28px)",
-                  fontWeight: 700,
-                  color: "#500a31",
-                }}
-              >
-                MISSION
-              </h2>
-            </motion.div>
-
-            {/* Right Column (75%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="w-full lg:w-[75%] flex flex-col"
-            >
-              <motion.h2
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                  fontWeight: 700,
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.015em",
-                  color: "#500a31",
-                  maxWidth: "900px",
-                }}
-              >
-                S.M.A.R.T. ACTIONS FOR{"\n"}
-                INNOVATION EXCELLENCE
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(16px, 1.8vw, 20px)",
-                  fontWeight: 400,
-                  lineHeight: 1.35,
-                  color: "#500a31",
-                  maxWidth: "900px",
-                }}
-              >
-                Strengthening innovation infrastructure, mobilizing resources and partnerships, advancing research and development, reinforcing human capital, and transforming governance for sustainable development.
-              </motion.p>
-
-              <Link href="/mission">
-                <motion.button
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-[#111111] text-white font-semibold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(0,0,0,0.10)] transition-transform duration-300 w-fit cursor-pointer"
-                  style={{
-                    fontFamily: "Montserrat, Arial, sans-serif",
-                    fontSize: "clamp(16px, 1.5vw, 20px)",
-                  }}
-                >
-                  Explore Mission
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== CORE VALUES SECTION ===== */}
-      <section className="bg-white py-[80px] px-6" aria-label="Core Values">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            {/* Left Column (25%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full lg:w-[25%]"
-            >
-              <h2
-                className="leading-[1.05]"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(20px, 3vw, 28px)",
-                  fontWeight: 700,
-                  color: "#500a31",
-                }}
-              >
-                CORE VALUES
-              </h2>
-            </motion.div>
-
-            {/* Right Column (75%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="w-full lg:w-[75%] flex flex-col"
-            >
-              <motion.h2
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                  fontWeight: 700,
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.015em",
-                  color: "#500a31",
-                  maxWidth: "900px",
-                }}
-              >
-                SURIGAONON VALUES
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(16px, 1.8vw, 20px)",
-                  fontWeight: 400,
-                  lineHeight: 1.35,
-                  color: "#500a31",
-                  maxWidth: "900px",
-                }}
-              >
-                Service, Unity, Resilience, Integrity, Growth, Accountability, Opportunity, Nurturing, Optimism, Nationalism - the guiding principles that define our identity and shape our future.
-              </motion.p>
-
-              <Link href="/core-values">
-                <motion.button
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-[#111111] text-white font-semibold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(0,0,0,0.10)] transition-transform duration-300 w-fit cursor-pointer"
-                  style={{
-                    fontFamily: "Montserrat, Arial, sans-serif",
-                    fontSize: "clamp(16px, 1.5vw, 20px)",
-                  }}
-                >
-                  Explore Core Values
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== STARTUPS SECTION ===== */}
-      <section className="bg-white py-[80px] px-6" aria-label="Startups">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            {/* Left Column (25%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full lg:w-[25%]"
-            >
-              <h2
-                className="leading-[1.05]"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(20px, 3vw, 28px)",
-                  fontWeight: 700,
-                  color: "#500a31",
-                }}
-              >
-                STARTUPS
-              </h2>
-            </motion.div>
-
-            {/* Right Column (75%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="w-full lg:w-[75%] flex flex-col"
-            >
-              <motion.h2
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                  fontWeight: 700,
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.015em",
-                  color: "#500a31",
-                  maxWidth: "900px",
-                }}
-              >
-                BUILDING SURIGAO'S{"\n"}
-                INNOVATION ECOSYSTEM
-              </motion.h2>
-
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(16px, 1.8vw, 20px)",
-                  fontWeight: 400,
-                  lineHeight: 1.35,
-                  color: "#500a31",
-                  maxWidth: "900px",
-                }}
-              >
-                Comprehensive support for entrepreneurs through incubation programs, mentorship networks, funding access, and resources to build, scale, and succeed in Surigao del Norte.
-              </motion.p>
-
-              <Link href="/startups">
-                <motion.button
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-[#111111] text-white font-semibold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(0,0,0,0.10)] transition-transform duration-300 w-fit cursor-pointer"
-                  style={{
-                    fontFamily: "Montserrat, Arial, sans-serif",
-                    fontSize: "clamp(16px, 1.5vw, 20px)",
-                  }}
-                >
-                  Explore Startup Ecosystem
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+         {/* Elegant fading divider */}
+         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1440px] h-[1px] opacity-20" style={{
+           background: "linear-gradient(90deg, transparent, rgba(0,0,0,0.2) 50%, transparent 100%)"
+         }} />
+        </section>
 
       {/* ===== CINEMATIC VIDEO SECTION ===== */}
       <CinematicVideoSection />
@@ -638,10 +541,10 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
               <h2
                 className="leading-[1.05]"
                 style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(20px, 3vw, 28px)",
-                  fontWeight: 700,
-                  color: "#500a31",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "var(--font-size-heading-2)",
+                  fontWeight: "var(--font-weight-bold)",
+                  color: "#5A2396",
                 }}
               >
                 POLICIES &{"\n"}GOVERNANCE
@@ -664,12 +567,12 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                 className="mb-8"
                 style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                  fontWeight: 700,
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.015em",
-                  color: "#500a31",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "var(--font-size-heading-1)",
+                  fontWeight: "var(--font-weight-bold)",
+                  lineHeight: "var(--line-height-heading)",
+                  letterSpacing: "var(--letter-spacing-heading)",
+                  color: "#1E4FBF",
                   maxWidth: "900px",
                 }}
               >
@@ -686,11 +589,11 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className="mb-8"
                 style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(16px, 1.8vw, 20px)",
-                  fontWeight: 400,
-                  lineHeight: 1.35,
-                  color: "#500a31",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "var(--font-size-body-lg)",
+                  fontWeight: "var(--font-weight-regular)",
+                  lineHeight: "var(--line-height-body)",
+                  color: "#6B7280",
                   maxWidth: "900px",
                 }}
               >
@@ -704,16 +607,18 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-[#111111] text-white font-semibold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(0,0,0,0.10)] transition-transform duration-300 w-fit cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-[30px] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 w-fit cursor-pointer"
                   style={{
-                    fontFamily: "Montserrat, Arial, sans-serif",
-                    fontSize: "clamp(16px, 1.5vw, 20px)",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "var(--font-size-body-lg)",
+                    background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
                   }}
                 >
                   Explore all policies
                   <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </div>
@@ -739,10 +644,10 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
               <h2
                 className="leading-[1.05]"
                 style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(20px, 3vw, 28px)",
-                  fontWeight: 700,
-                  color: "#500a31",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "var(--font-size-heading-2)",
+                  fontWeight: "var(--font-weight-bold)",
+                  color: "#5A2396",
                 }}
               >
                 ACTIVITIES
@@ -765,12 +670,12 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                 className="mb-8"
                 style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                  fontWeight: 700,
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.015em",
-                  color: "#500a31",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "var(--font-size-heading-1)",
+                  fontWeight: "var(--font-weight-bold)",
+                  lineHeight: "var(--line-height-heading)",
+                  letterSpacing: "var(--letter-spacing-heading)",
+                  color: "#1E4FBF",
                   maxWidth: "900px",
                 }}
               >
@@ -788,11 +693,13 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  whileHover={{ scale: 1.03 }}
-                  className="bg-[#111111] text-white font-semibold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(0,0,0,0.10)] transition-all duration-300 w-fit cursor-pointer hover:bg-[#4B0F5F]"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-[30px] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 w-fit cursor-pointer"
                   style={{
-                    fontFamily: "Montserrat, Arial, sans-serif",
-                    fontSize: "clamp(16px, 1.5vw, 20px)",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "var(--font-size-body-lg)",
+                    background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
                   }}
                 >
                   View all activities
@@ -801,7 +708,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                     transition={{ duration: 0.3 }}
                     className="w-9 h-9 bg-white rounded-full flex items-center justify-center"
                   >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </motion.div>
@@ -814,11 +721,11 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                   style={{
-                    fontFamily: "Montserrat, Arial, sans-serif",
-                    fontSize: "clamp(16px, 1.8vw, 20px)",
-                    fontWeight: 400,
-                    lineHeight: 1.35,
-                    color: "#500a31",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "var(--font-size-body-lg)",
+                    fontWeight: "var(--font-weight-regular)",
+                    lineHeight: "var(--line-height-body)",
+                    color: "#6B7280",
                     maxWidth: "900px",
                   }}
                 >
@@ -864,15 +771,15 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                     <h3
                       className="font-semibold mb-3"
                       style={{
-                        fontFamily: "Montserrat, Arial, sans-serif",
-                        fontSize: "clamp(18px, 2vw, 24px)",
-                        color: "#4B156D",
+                        fontFamily: "var(--font-body)",
+                        fontSize: "var(--font-size-heading-2)",
+                        color: "var(--color-text-primary)",
                       }}
                     >
                       {activity.title}
                     </h3>
                     {/* Card Metadata */}
-                    <div className="flex flex-col gap-1 text-sm" style={{ color: "#2D7187" }}>
+                    <div className="flex flex-col gap-1 text-sm" style={{ color: "var(--color-text-tertiary)" }}>
                       <span className="font-medium">{activity.publishedAt}</span>
                       <span className="font-medium">{activity.pillarTag}</span>
                     </div>
@@ -904,10 +811,10 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
               <h2
                 className="leading-[1.05]"
                 style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(20px, 3vw, 28px)",
-                  fontWeight: 700,
-                  color: "#500a31",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "var(--font-size-heading-2)",
+                  fontWeight: "var(--font-weight-bold)",
+                  color: "#5A2396",
                 }}
               >
                 NEWS & INSIGHTS
@@ -925,12 +832,12 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
               <h2
                 className="leading-[0.95] uppercase"
                 style={{
-                  fontFamily: "Montserrat, Arial, sans-serif",
-                  fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
-                  fontWeight: 700,
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.015em",
-                  color: "#500a31",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "var(--font-size-heading-1)",
+                  fontWeight: "var(--font-weight-bold)",
+                  lineHeight: "var(--line-height-heading)",
+                  letterSpacing: "var(--letter-spacing-heading)",
+                  color: "#1E4FBF",
                   maxWidth: "900px",
                 }}
               >
@@ -945,7 +852,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
 
           {/* Three-Card Featured News Layout */}
           {news.length > 0 ? (
-            <div 
+            <div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
               onMouseEnter={() => setIsHoveringNews(true)}
               onMouseLeave={() => setIsHoveringNews(false)}
@@ -959,7 +866,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                   transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="relative overflow-hidden rounded-[24px] cursor-pointer group"
-                  style={{ 
+                  style={{
                     height: "500px",
                     opacity: index === activeNewsIndex ? 1 : 0.6,
                     transition: "opacity 0.5s ease-in-out",
@@ -1000,15 +907,15 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                       <span
                         className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3"
                         style={{
-                          backgroundColor: "#4B0F5F",
-                          fontFamily: "Montserrat, Arial, sans-serif",
+                          backgroundColor: "var(--color-secondary-purple)",
+                          fontFamily: "var(--font-body)",
                         }}
                       >
                         {post.category}
                       </span>
 
                       {/* Date & Reading Time */}
-                      <div className="flex items-center gap-3 mb-3 text-xs opacity-80" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+                      <div className="flex items-center gap-3 mb-3 text-xs opacity-80" style={{ fontFamily: "var(--font-body)" }}>
                         <span>{post.publishedAt}</span>
                         <span>•</span>
                         <span>5 min read</span>
@@ -1018,15 +925,15 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                       <h3
                         className="font-semibold mb-4 line-clamp-3 leading-tight"
                         style={{
-                          fontFamily: "Montserrat, Arial, sans-serif",
-                          fontSize: "clamp(16px, 2vw, 20px)",
+                          fontFamily: "var(--font-body)",
+                          fontSize: "var(--font-size-body)",
                         }}
                       >
                         {post.title}
                       </h3>
 
                       {/* Explore Story Button */}
-                      <div className="flex items-center gap-2 text-sm font-semibold" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+                      <div className="flex items-center gap-2 text-sm font-semibold" style={{ fontFamily: "var(--font-body)" }}>
                         <span>Explore Story</span>
                         <motion.div
                           whileHover={{ x: 8 }}
@@ -1056,11 +963,13 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              whileHover={{ scale: 1.03 }}
-              className="bg-[#111111] text-white font-semibold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(0,0,0,0.10)] transition-all duration-300 w-fit cursor-pointer hover:bg-[#4B0F5F]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-[30px] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 w-fit cursor-pointer"
               style={{
-                fontFamily: "Montserrat, Arial, sans-serif",
-                fontSize: "clamp(16px, 1.5vw, 20px)",
+                fontFamily: "var(--font-body)",
+                fontSize: "var(--font-size-body-lg)",
+                background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
               }}
             >
               View all news
@@ -1069,7 +978,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                 transition={{ duration: 0.3 }}
                 className="w-9 h-9 bg-white rounded-full flex items-center justify-center"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </motion.div>
@@ -1082,11 +991,11 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               style={{
-                fontFamily: "Montserrat, Arial, sans-serif",
-                fontSize: "clamp(16px, 1.8vw, 20px)",
-                fontWeight: 400,
-                lineHeight: 1.35,
-                color: "#500a31",
+                fontFamily: "var(--font-body)",
+                fontSize: "var(--font-size-body-lg)",
+                fontWeight: "var(--font-weight-regular)",
+                lineHeight: "var(--line-height-body)",
+                color: "#6B7280",
                 maxWidth: "900px",
               }}
             >
@@ -1097,7 +1006,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
       </section>
 
       {/* ===== CTA BAND ===== */}
-      <section className="bg-white py-[100px] px-6" aria-label="Join the PRIME Movement">
+      <section className="bg-white py-20 px-6" aria-label="Join the PRIME Movement">
         <div className="max-w-[1440px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -1113,7 +1022,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               className="leading-relaxed mb-12 max-w-5xl mx-auto font-extrabold uppercase tracking-tight"
-              style={{ color: "#500a31", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700 }}
+              style={{ color: "#6B7280", fontFamily: "var(--font-display)", fontSize: "var(--font-size-heading-1)", fontWeight: "var(--font-weight-bold)" }}
             >
               Join researchers, entrepreneurs, and community leaders building Surigao's innovation ecosystem.
             </motion.p>
@@ -1134,8 +1043,8 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-[#500a31] text-white font-semibold text-base shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
-                style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
+                className="flex-1 text-center py-4 px-10 rounded-full text-white font-bold text-base shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 flex items-center justify-center gap-2"
+                style={{ fontFamily: "var(--font-body)", background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)" }}
               >
                 Become a Partner
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1150,8 +1059,8 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full bg-white text-[#500a31] font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-[#500a31] flex items-center justify-center gap-2"
-                style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
+                className="flex-1 text-center py-4 px-10 rounded-full text-white font-bold text-base shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 flex items-center justify-center gap-2"
+                style={{ fontFamily: "var(--font-body)", background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)" }}
               >
                 Contact Us
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -75,7 +75,7 @@ export default function SSC2040Roadmap() {
   };
 
   return (
-    <section className="bg-white py-[100px] px-6" aria-label="Vision 2040 Roadmap">
+    <section className="bg-white py-20 px-6" aria-label="Vision 2040 Roadmap">
       <div className="max-w-[1440px] mx-auto">
         {/* Section Header */}
         <motion.div
@@ -85,10 +85,10 @@ export default function SSC2040Roadmap() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <p className="font-bold uppercase tracking-wider mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(20px, 3vw, 28px)", color: "#500a31" }}>
+          <p className="font-bold uppercase tracking-wider mb-4" style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(20px, 3vw, 28px)", color: "#1E4FBF" }}>
             Vision 2040
           </p>
-          <h2 className="font-extrabold uppercase tracking-tight leading-[0.9]" style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700, color: "#500a31" }}>
+          <h2 className="font-extrabold uppercase tracking-tight leading-[0.9]" style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(1.75rem, 3.5vw, 3rem)", fontWeight: 700, color: "#1E4FBF" }}>
             JOURNEY TO A{"\n"}THRIVING INNOVATION{"\n"}ECOSYSTEM
           </h2>
         </motion.div>
@@ -98,7 +98,7 @@ export default function SSC2040Roadmap() {
           {/* Progress Line */}
           <div className="h-1 bg-gray-200 rounded-full max-w-4xl mx-auto mb-8">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#500a31] to-[#7C3AED] rounded-full"
+              className="h-full bg-gradient-to-r from-[#1E4FBF] to-[#7C3AED] rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${(activeIndex / (roadmapMilestones.length - 1)) * 100}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
@@ -116,14 +116,14 @@ export default function SSC2040Roadmap() {
                 <motion.div
                   animate={{
                     scale: idx === activeIndex ? 1.2 : 1,
-                    backgroundColor: idx === activeIndex ? "#500a31" : idx < activeIndex ? "#7C3AED" : "#D1D5DB",
+                    backgroundColor: idx === activeIndex ? "#1E4FBF" : idx < activeIndex ? "#7C3AED" : "#D1D5DB",
                   }}
                   transition={{ duration: 0.3 }}
                   className="w-4 h-4 rounded-full border-2 border-white shadow-md"
                 />
                 <span
                   className={`text-sm font-bold transition-colors ${
-                    idx === activeIndex ? "text-[#500a31]" : idx < activeIndex ? "text-[#7C3AED]" : "text-gray-400"
+                    idx === activeIndex ? "text-[#1E4FBF]" : idx < activeIndex ? "text-[#7C3AED]" : "text-gray-400"
                   }`}
                   style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
                 >
@@ -143,7 +143,7 @@ export default function SSC2040Roadmap() {
               animate={{ opacity: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, x: -50, y: 30 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="bg-gradient-to-br from-[#500a31]/5 to-[#7C3AED]/5 rounded-[32px] p-8 md:p-12 border border-[#500a31]/10"
+              className="bg-gradient-to-br from-[#1E4FBF]/5 to-[#7C3AED]/5 rounded-[32px] p-8 md:p-12 border border-[#1E4FBF]/10"
             >
               <div className="flex flex-col lg:flex-row gap-8 items-center">
                 {/* Image */}
@@ -159,7 +159,7 @@ export default function SSC2040Roadmap() {
                   
                   {/* Year Badge */}
                   <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
-                    <span className="text-2xl font-black" style={{ color: "#500a31", fontFamily: "Montserrat, Arial, sans-serif" }}>
+                    <span className="text-2xl font-black" style={{ color: "#1E4FBF", fontFamily: "Montserrat, Arial, sans-serif" }}>
                       {roadmapMilestones[activeIndex].year}
                     </span>
                   </div>
@@ -167,15 +167,15 @@ export default function SSC2040Roadmap() {
 
                 {/* Content */}
                 <div className="w-full lg:w-1/2 flex flex-col">
-                  <span className="inline-block px-4 py-2 rounded-full text-xs font-bold bg-[#500a31] text-white uppercase tracking-wider mb-4 w-fit">
+                  <span className="inline-block px-4 py-2 rounded-full text-xs font-bold bg-[#1E4FBF] text-white uppercase tracking-wider mb-4 w-fit">
                     Phase {activeIndex + 1}
                   </span>
                   
-                  <h3 className="font-extrabold text-3xl md:text-4xl mb-4 leading-tight" style={{ color: "#500a31", fontFamily: "Montserrat, Arial, sans-serif" }}>
+                  <h3 className="font-extrabold text-3xl md:text-4xl mb-4 leading-tight" style={{ color: "#1E4FBF", fontFamily: "Montserrat, Arial, sans-serif" }}>
                     {roadmapMilestones[activeIndex].title}
                   </h3>
                   
-                  <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: "#500a31", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif" }}>
+                  <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: "#1E4FBF", opacity: 0.8, fontFamily: "Montserrat, Arial, sans-serif" }}>
                     {roadmapMilestones[activeIndex].description}
                   </p>
 
@@ -199,7 +199,7 @@ export default function SSC2040Roadmap() {
             <button
               onClick={prevMilestone}
               disabled={activeIndex === 0}
-              className="w-12 h-12 rounded-full bg-white border-2 border-[#500a31] flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#500a31] hover:text-white transition-all duration-300 shadow-md"
+              className="w-12 h-12 rounded-full bg-white border-2 border-[#1E4FBF] flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#1E4FBF] hover:text-white transition-all duration-300 shadow-md"
               aria-label="Previous milestone"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
@@ -210,7 +210,7 @@ export default function SSC2040Roadmap() {
             <button
               onClick={nextMilestone}
               disabled={activeIndex === roadmapMilestones.length - 1}
-              className="w-12 h-12 rounded-full bg-white border-2 border-[#500a31] flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#500a31] hover:text-white transition-all duration-300 shadow-md"
+              className="w-12 h-12 rounded-full bg-white border-2 border-[#1E4FBF] flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#1E4FBF] hover:text-white transition-all duration-300 shadow-md"
               aria-label="Next milestone"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
@@ -226,7 +226,7 @@ export default function SSC2040Roadmap() {
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  idx === activeIndex ? "w-8 bg-[#500a31]" : "bg-gray-300 hover:bg-gray-400"
+                  idx === activeIndex ? "w-8 bg-[#1E4FBF]" : "bg-gray-300 hover:bg-gray-400"
                 }`}
                 aria-label={`Go to milestone ${idx + 1}`}
               />

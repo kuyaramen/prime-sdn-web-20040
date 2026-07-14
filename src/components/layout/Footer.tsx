@@ -71,7 +71,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#500a31] text-white" role="contentinfo">
+    <footer className="text-white" style={{ background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)" }} role="contentinfo">
       {/* Main Footer */}
       <div className="max-w-[1440px] mx-auto px-6 py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -80,15 +80,15 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-8" aria-label="Prime SDN Home">
               <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 21c0 .5 4 .5 4 0v-2H9v2zM12 2C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" fill="#500a31"/>
+                  <path d="M9 21c0 .5 4 .5 4 0v-2H9v2zM12 2C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" fill="#1E4FBF"/>
                 </svg>
               </div>
-              <span className="text-xl tracking-tight" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
-                <span className="font-bold text-white">PRIME</span>{" "}
-                <span className="font-bold text-white/80">SDN</span>
-              </span>
+             <span className="text-xl tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+               <span className="font-bold text-white">PRIME</span>{" "}
+               <span className="font-bold text-white/80">SDN</span>
+             </span>
             </Link>
-            <p className="text-sm text-white/70 mb-6 leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+            <p className="text-sm text-white/70 mb-6 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
               Building Surigao del Norte's innovation ecosystem through collaboration, research, and sustainable development.
             </p>
             <div className="flex gap-3">
@@ -109,7 +109,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "var(--font-body)" }}>
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -119,7 +119,7 @@ export function Footer() {
                 { label: "Activities", href: "/activities" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors duration-300" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors duration-300" style={{ fontFamily: "var(--font-body)" }}>
                     {link.label}
                   </Link>
                 </li>
@@ -129,7 +129,7 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "var(--font-body)" }}>
               Resources
             </h3>
             <ul className="space-y-3">
@@ -139,7 +139,7 @@ export function Footer() {
                 { label: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors duration-300" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors duration-300" style={{ fontFamily: "var(--font-body)" }}>
                     {link.label}
                   </Link>
                 </li>
@@ -149,10 +149,10 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "var(--font-body)" }}>
               Stay Informed
             </h3>
-            <p className="text-sm mb-5 text-white/70 leading-relaxed" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+            <p className="text-sm mb-5 text-white/70 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
               Subscribe to our newsletter for the latest updates and innovation stories from Surigao Del Norte.
             </p>
             <form onSubmit={handleNewsletter} className="flex flex-col gap-3">
@@ -164,22 +164,22 @@ export function Footer() {
                 required
                 className="px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-white/40 transition-all duration-300"
                 aria-label="Email address for newsletter"
-                style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
+                style={{ fontFamily: "var(--font-body)" }}
               />
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="px-6 py-3 rounded-lg bg-white text-[#500a31] text-sm font-semibold hover:bg-white/90 transition-all duration-300 disabled:opacity-50"
-                style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
+                className="px-6 py-3 rounded-lg bg-white text-[#1E4FBF] text-sm font-semibold hover:bg-white/90 transition-all duration-300 disabled:opacity-50"
+                style={{ fontFamily: "var(--font-body)" }}
               >
                 {status === "loading" ? "..." : "Subscribe"}
               </button>
             </form>
             {status === "success" && (
-              <p className="text-xs text-white mt-3" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>Thanks for subscribing!</p>
+              <p className="text-xs text-white mt-3" style={{ fontFamily: "var(--font-body)" }}>Thanks for subscribing!</p>
             )}
             {status === "error" && (
-              <p className="text-xs text-white/70 mt-3" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>Something went wrong. Try again.</p>
+              <p className="text-xs text-white/70 mt-3" style={{ fontFamily: "var(--font-body)" }}>Something went wrong. Try again.</p>
             )}
           </div>
         </div>
@@ -187,7 +187,7 @@ export function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+        <div className="max-w-[1440px] mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60" style={{ fontFamily: "var(--font-body)" }}>
           <div className="flex items-center gap-4">
             <span>{SITE_CONFIG.phone}</span>
             <span className="hidden sm:inline">|</span>

@@ -7,7 +7,7 @@ export function StatementSection() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section className="bg-white py-[140px] px-6 sm:px-12 md:px-20 lg:px-32" aria-label="Statement">
+    <section className="bg-white py-20 px-6 sm:px-12 md:px-20 lg:px-32" aria-label="Statement">
       <div className="w-full max-w-[1400px] mx-auto">
         <motion.div
           initial={prefersReduced ? {} : { opacity: 0, y: 40, filter: "blur(8px)" }}
@@ -23,7 +23,7 @@ export function StatementSection() {
             transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
             className="font-extrabold uppercase text-center leading-[1.08] tracking-[-0.03em]"
             style={{
-              color: "#500a31",
+              color: "#1E4FBF",
               fontSize: "clamp(2.2rem, 5vw, 6rem)"
             }}
           >

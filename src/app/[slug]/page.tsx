@@ -2,6 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ECOSYSTEM_PILLARS } from "@/components/Ecosystem/ecosystemData";
+import { EducationTalentClient } from "@/app/frameworks/education-and-talent/EducationTalentClient";
+import ResearchInnovationClient from "@/app/frameworks/research-and-innovation/ResearchInnovationClient";
+import DigitalTransformationClient from "@/app/frameworks/digital-transformation/DigitalTransformationClient";
 
 import HeroSection from "@/components/framework/HeroSection";
 import OverviewSection from "@/components/framework/OverviewSection";
@@ -32,6 +35,21 @@ export default async function PillarPage({ params }: PageProps) {
 
   if (!pillar) {
     notFound();
+  }
+
+  // Use the new Education & Talent client for the education-talent pillar
+  if (slug === "education-and-talent") {
+    return <EducationTalentClient />;
+  }
+
+  // Use the new Research & Innovation client for the research-and-innovation pillar
+  if (slug === "research-and-innovation") {
+    return <ResearchInnovationClient />;
+  }
+
+  // Use the new Digital Transformation client for the digital-transformation pillar
+  if (slug === "digital-transformation") {
+    return <DigitalTransformationClient />;
   }
 
   return (

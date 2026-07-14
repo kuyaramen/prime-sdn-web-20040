@@ -28,7 +28,7 @@ export function Card({ title, href, image, tag, date, excerpt }: CardProps) {
             {tag}
           </span>
         )}
-        <h3 className="font-display text-lg font-bold text-maroon-900 leading-snug mb-2 line-clamp-2">
+        <h3 className="font-display text-lg font-bold text-[#1E4FBF] leading-snug mb-2 line-clamp-2">
           {title}
         </h3>
         {date && (

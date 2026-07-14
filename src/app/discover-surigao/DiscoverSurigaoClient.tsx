@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useMotionValue, useTransform, motionValue } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { AnimatedSection, AnimatedHero, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
@@ -10,10 +10,53 @@ export default function DiscoverSurigaoClient() {
   const [mounted, setMounted] = useState(false);
   const [activeMunicipality, setActiveMunicipality] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isHoveringO, setIsHoveringO] = useState(false);
+  const [oPosition, setOPosition] = useState({ x: 0, y: 0 });
+
+  // Mouse tracking for paper plane
+  const mouseX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
+  const mouseY = useMotionValue(typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
+  const planeX = useMotionValue(typeof window !== 'undefined' ? window.innerWidth / 2 : 0);
+  const planeY = useMotionValue(typeof window !== 'undefined' ? window.innerHeight / 2 : 0);
+  const oRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Mouse tracking effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  // Get O position for hover effect
+  useEffect(() => {
+    if (oRef.current) {
+      const rect = oRef.current.getBoundingClientRect();
+      setOPosition({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+    }
+  }, [mounted]);
+
+  // Paper plane follows mouse with smooth interpolation
+  useEffect(() => {
+    if (!isHoveringO) {
+      const unsubscribeX = mouseX.onChange((v) => planeX.set(v));
+      const unsubscribeY = mouseY.onChange((v) => planeY.set(v));
+      return () => {
+        unsubscribeX();
+        unsubscribeY();
+      };
+    }
+  }, [mouseX, mouseY, planeX, planeY, isHoveringO]);
+
+  // Calculate rotation based on movement direction
+  const rotateX = useTransform(planeY, [0, typeof window !== 'undefined' ? window.innerHeight : 1000], [10, -10]);
+  const rotateY = useTransform(planeX, [0, typeof window !== 'undefined' ? window.innerWidth : 1000], [-10, 10]);
 
   const particlePositions = mounted ? [...Array(20)].map((_, i) => ({
     left: `${Math.random() * 100}%`,
@@ -351,7 +394,12 @@ export default function DiscoverSurigaoClient() {
               }}
             >
               Discover{"\n"}
-              Surigao del Norte
+              Suriga<span
+                ref={oRef}
+                onMouseEnter={() => setIsHoveringO(true)}
+                onMouseLeave={() => setIsHoveringO(false)}
+                className="inline-block cursor-pointer transition-colors hover:text-[#D8A629]"
+              >o</span> del Norte
             </motion.h1>
             <motion.p
               className="text-white/90 text-xl md:text-2xl max-w-3xl mx-auto mb-12"
@@ -397,6 +445,71 @@ export default function DiscoverSurigaoClient() {
             </div>
           </AnimatedHero>
         </div>
+
+        {/* Animated Paper Plane */}
+        <AnimatePresence>
+          {mounted && (
+            <motion.div
+              className="fixed z-50 pointer-events-none"
+              initial={{ opacity: 0, scale: 0 }}
+              style={{
+                x: useTransform(planeX, (v) => isHoveringO ? oPosition.x : v - 20),
+                y: useTransform(planeY, (v) => isHoveringO ? oPosition.y : v - 20),
+                rotateX,
+                rotateY,
+              }}
+              animate={{
+                opacity: 1,
+                rotate: isHoveringO ? [0, 360, 720] : 0,
+                scale: isHoveringO ? [1, 1.5, 1] : 1,
+              }}
+              transition={{
+                duration: 0.5,
+                delay: 1,
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                y: { type: "spring", stiffness: 300, damping: 30 },
+                rotate: { duration: 1.5, ease: "easeInOut" },
+                scale: { duration: 0.5 },
+              }}
+            >
+              <motion.div
+                animate={{
+                  filter: isHoveringO ? "drop-shadow(0 0 20px #D8A629)" : "drop-shadow(0 0 10px rgba(94, 35, 150, 0.5))",
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <svg
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  style={{
+                    fill: isHoveringO ? "#D8A629" : "url(#planeGradient)",
+                  }}
+                >
+                  <defs>
+                    <linearGradient id="planeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#5A2396" />
+                      <stop offset="100%" stopColor="#1E4FBF" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M2 12l20-9-9 20-2-9-9-2z" />
+                </svg>
+              </motion.div>
+              {/* Trail effect */}
+              <motion.div
+                className="absolute -left-2 top-1/2 -translate-y-1/2"
+                animate={{
+                  opacity: isHoveringO ? [0.8, 0.2, 0.8] : 0.3,
+                  scale: isHoveringO ? [1, 1.5, 1] : 1,
+                }}
+                transition={{ duration: 0.5, repeat: Infinity }}
+              >
+                <div className="w-2 h-2 rounded-full bg-[#D8A629]" />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Back Button */}
         <div className="absolute top-6 left-6 z-20">
@@ -1110,7 +1223,7 @@ export default function DiscoverSurigaoClient() {
           <AnimatedSection className="text-center">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/vision">
-                <Button variant="maroon" showArrow={true} className="text-base py-4 px-8 rounded-full">
+                <Button variant="primary" showArrow={true} className="text-base py-4 px-8 rounded-full">
                   Explore PRIME SDN Framework
                 </Button>
               </Link>
