@@ -147,76 +147,78 @@ export interface Partner {
 
 export const researchProjects: ResearchProject[] = [
   {
-    slug: 'siargao-mangrove-carbon',
-    title: 'Siargao Mangrove Carbon Blue Project',
+    slug: 'sti-collaborative-research',
+    title: 'STI Collaborative Research and Innovation Projects',
     coverImage: 'https://images.unsplash.com/photo-1583212292454-1fe6229603b7?auto=format&fit=crop&w=800&q=80',
-    category: 'Marine Science',
-    leadResearcher: 'Dr. Maria Santos',
-    institution: 'Surigao State University',
-    summary: 'Quantifying carbon sequestration capabilities of Siargao\'s vast mangrove forests for carbon credit integration.',
-    fullDescription: 'This groundbreaking research aims to measure and quantify the carbon sequestration potential of mangrove ecosystems in Siargao Island. The project will establish baseline carbon storage data, develop methodologies for carbon credit valuation, and create frameworks for community-based mangrove conservation with economic incentives.',
+    category: 'Science, Technology, and Innovation',
+    leadResearcher: 'Provincial STI Council',
+    institution: 'Provincial Government of Surigao del Norte',
+    summary: 'Full portfolio implementation of STI collaborative research and innovation projects aligned with UN Sustainable Development Goals.',
+    fullDescription: 'This comprehensive research program implements the full portfolio of STI collaborative research and innovation projects across the province. Projects focus on areas aligned with UN SDGs including sustainable development, climate resilience, digital transformation, and community empowerment. The program fosters collaboration between government, academia, civil society, and international partners.',
     status: 'Ongoing',
-    startDate: 'January 2025',
-    endDate: 'December 2026',
-    researchTeam: ['Dr. Maria Santos', 'Engr. John Reyes', 'Ms. Ana Cruz'],
+    startDate: '2028',
+    endDate: '2040',
+    researchTeam: ['Provincial STI Council', 'Surigao State University', 'CSO Partners', 'International Partners'],
     timeline: [
-      'Q1 2025: Site selection and baseline assessment',
-      'Q2 2025: Carbon stock measurement',
-      'Q3 2025: Community engagement and training',
-      'Q4 2025: Data analysis and reporting'
+      '2028: Program launch and partnership establishment',
+      '2031: First cycle research implementation',
+      '2034: Second cycle expansion and SDG alignment',
+      '2037: Full portfolio institutionalization',
+      '2040: Sustainment and continuous innovation'
     ],
     gallery: [],
     outcomes: [
-      'Carbon sequestration baseline data',
-      'Community conservation framework',
-      'Carbon credit valuation model'
+      'SDG-aligned research portfolio',
+      'International research partnerships',
+      'Community-based innovation projects',
+      'Knowledge exchange mechanisms'
     ],
     featured: true
   },
   {
-    slug: 'eco-mining-rehabilitation',
-    title: 'Eco-Rehabilitation of Post-Mining Sites',
+    slug: 'peace-security-innovation',
+    title: 'Peace and Security Innovation Research',
     coverImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80',
-    category: 'Environmental Engineering',
-    leadResearcher: 'Dr. Carlos Mendoza',
-    institution: 'Surigao State University',
-    summary: 'Testing endemic plant species for heavy-metal phytoextraction in decommissioned mining lands in Claver.',
-    fullDescription: 'This research focuses on identifying and testing native plant species capable of absorbing heavy metals from contaminated mining sites. The project aims to develop sustainable, low-cost rehabilitation methods that can restore ecological balance while providing economic opportunities for local communities through bio-energy production.',
-    status: 'Ongoing',
-    startDate: 'October 2024',
-    endDate: 'September 2026',
-    researchTeam: ['Dr. Carlos Mendoza', 'Dr. Lisa Tan', 'Engr. Mark Santos'],
+    category: 'Public Safety',
+    leadResearcher: 'Provincial Peace and Order Council',
+    institution: 'Provincial Government of Surigao del Norte',
+    summary: 'Research and development of innovative solutions for public safety, crime prevention, and emergency response systems.',
+    fullDescription: 'This research program focuses on developing innovative approaches to public safety and security. Research areas include smart policing technologies, predictive analytics for crime prevention, emergency response optimization, and community-based security solutions. The program aims to establish a Provincial Peace and Security Innovation Hub as a center of excellence for security research and development.',
+    status: 'Planning',
+    startDate: '2037',
+    endDate: '2040',
+    researchTeam: ['PPOC', 'PDEA', 'DILG', 'Academic Partners'],
     timeline: [
-      'Q4 2024: Plant species identification',
-      'Q1 2025: Laboratory testing',
-      'Q2 2025: Field trials',
-      'Q3 2025: Impact assessment'
+      '2037: Innovation hub establishment',
+      '2038: Research program development',
+      '2039: Pilot implementation',
+      '2040: Full operationalization'
     ],
     gallery: [],
     outcomes: [
-      'Phytoremediation protocol',
-      'Species database',
-      'Rehabilitation guidelines'
+      'Peace and Security Innovation Hub',
+      'Smart policing technologies',
+      'Predictive security models',
+      'Community safety protocols'
     ],
     featured: true
   },
   {
-    slug: 'ai-disaster-risk',
-    title: 'AI for Disaster Risk Reduction',
+    slug: 'predictive-analytics-governance',
+    title: 'Predictive Analytics for Governance Research',
     coverImage: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80',
-    category: 'Artificial Intelligence',
-    leadResearcher: 'Dr. Robert Lee',
-    institution: 'Mindanao State University',
-    summary: 'Developing AI-powered early warning systems for typhoons, floods, and landslides in Surigao del Norte.',
-    fullDescription: 'This project leverages machine learning and satellite imagery to develop predictive models for natural disasters. The system will provide real-time risk assessment, early warning alerts, and evacuation recommendations to improve disaster preparedness and response in vulnerable communities.',
+    category: 'Data Science',
+    leadResearcher: 'Provincial Planning Office',
+    institution: 'Provincial Government of Surigao del Norte',
+    summary: 'Development of predictive models and analytics for HR monitoring, urban planning, resource management, and public safety.',
+    fullDescription: 'This research program develops predictive models and analytics systems to support evidence-based governance. Research areas include HR demand forecasting, urban planning optimization, resource allocation modeling, and public safety prediction. The program integrates with the Real-Time Governance Dashboard to provide actionable insights for decision-makers.',
     status: 'Planning',
-    startDate: 'July 2025',
-    researchTeam: ['Dr. Robert Lee', 'Dr. Sarah Kim', 'Engr. David Park'],
+    startDate: '2034',
+    researchTeam: ['Provincial Planning Office', 'ICT Office', 'HRMO', 'Academic Partners'],
     timeline: [
-      'Q3 2025: Data collection and model development',
-      'Q4 2025: Prototype testing',
-      'Q1 2026: Pilot deployment',
-      'Q2 2026: System optimization'
+      '2034: Model development',
+      '2037: Pilot deployment',
+      '2040: Full integration'
     ],
     gallery: [],
     featured: true
@@ -225,59 +227,75 @@ export const researchProjects: ResearchProject[] = [
 
 export const innovationProjects: InnovationProject[] = [
   {
-    slug: 'smart-fisheries',
-    title: 'Smart Fisheries Monitoring System',
+    slug: 'provincial-eparticipation-portal',
+    title: 'Provincial e-Participation Portal',
     image: 'https://images.unsplash.com/photo-1558478551-1a378f63328e?auto=format&fit=crop&w=800&q=80',
-    category: 'IoT',
+    category: 'Digital Governance',
     objectives: [
-      'Monitor fish stock in real-time',
-      'Detect illegal fishing activities',
-      'Provide data for sustainable management'
+      'Enable citizen participation in governance',
+      'Provide platform for public feedback',
+      'Facilitate transparent decision-making',
+      'Strengthen stakeholder engagement'
     ],
-    technologies: ['IoT Sensors', 'Satellite Communication', 'Machine Learning', 'Mobile App'],
-    timeline: '2024-2026',
-    progress: 65,
+    technologies: ['Web Platform', 'Mobile App', 'Database Systems', 'Analytics'],
+    timeline: '2028-2040',
+    progress: 40,
     outcomes: [
-      'Deployed 50 sensor nodes',
-      'Reduced illegal fishing by 40%',
-      'Improved stock assessment accuracy'
+      'Increased citizen engagement',
+      'Transparent governance processes',
+      'Real-time feedback mechanisms',
+      'Stakeholder collaboration platforms'
     ],
-    fundingSource: 'DOST Grants',
-    collaborators: ['BFAR', 'Local Fisherfolk Associations'],
+    fundingSource: 'Provincial Government',
+    collaborators: ['CSO Partners', 'International Partners', 'DICT'],
     featured: true
   },
   {
-    slug: 'smart-agriculture',
-    title: 'Precision Agriculture Platform',
+    slug: 'sti-global-knowledge-exchange',
+    title: 'STI Global Knowledge Exchange Program',
     image: 'https://images.unsplash.com/photo-1574943320219-552eb9a7889c?auto=format&fit=crop&w=800&q=80',
-    category: 'Smart Farming',
+    category: 'Knowledge Exchange',
     objectives: [
-      'Optimize crop yields through data-driven decisions',
-      'Reduce water and fertilizer usage',
-      'Enable remote farm management'
+      'Facilitate international knowledge exchange',
+      'Promote STI collaboration',
+      'Establish center of excellence',
+      'Enhance research capabilities'
     ],
-    technologies: ['Soil Sensors', 'Drone Imaging', 'AI Analytics', 'Cloud Platform'],
-    timeline: '2025-2027',
-    progress: 35,
-    fundingSource: 'Provincial Innovation Fund',
-    collaborators: ['DA', 'Farmers Cooperatives'],
+    technologies: ['Digital Platforms', 'Video Conferencing', 'Knowledge Management', 'Collaboration Tools'],
+    timeline: '2031-2040',
+    progress: 25,
+    outcomes: [
+      'International partnerships established',
+      'Knowledge exchange mechanisms',
+      'Center of excellence recognition',
+      'Enhanced research capabilities'
+    ],
+    fundingSource: 'Provincial Government + International Partners',
+    collaborators: ['International STI Partners', 'Academic Institutions', 'DOST'],
     featured: true
   },
   {
-    slug: 'renewable-energy',
-    title: 'Hybrid Renewable Energy System',
+    slug: 'cso-performance-recognition',
+    title: 'CSO Performance Recognition Program',
     image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80',
-    category: 'Renewable Energy',
+    category: 'Civil Society Engagement',
     objectives: [
-      'Develop solar-wind hybrid systems',
-      'Provide reliable power to remote islands',
-      'Reduce dependence on fossil fuels'
+      'Recognize CSO contributions to SDGs',
+      'Promote STI engagement',
+      'Strengthen CSO capacity',
+      'Foster collaboration'
     ],
-    technologies: ['Solar Panels', 'Wind Turbines', 'Battery Storage', 'Smart Grid'],
-    timeline: '2024-2028',
-    progress: 45,
-    fundingSource: 'DOE Grants',
-    collaborators: ['NGCP', 'Local LGUs'],
+    technologies: ['Assessment Platform', 'Database Systems', 'Analytics', 'Reporting Tools'],
+    timeline: '2028-2040',
+    progress: 35,
+    outcomes: [
+      'SDG impact recognition system',
+      'CSO capacity enhancement',
+      'Collaboration frameworks',
+      'Performance metrics'
+    ],
+    fundingSource: 'Provincial Government',
+    collaborators: ['CSO Partners', 'UN Agencies', 'DILG'],
     featured: true
   }
 ];
@@ -579,37 +597,37 @@ export const partners: Partner[] = [
     name: 'Department of Science and Technology',
     type: 'DOST',
     description: 'Leading government agency for science and technology development in the Philippines.',
-    collaborationAreas: ['Research Funding', 'Technology Transfer', 'Capacity Building', 'Policy Development']
+    collaborationAreas: ['STI Development Plan', 'Research Funding', 'Technology Transfer', 'Capacity Building']
   },
   {
-    name: 'Commission on Higher Education',
-    type: 'CHED',
-    description: 'Government agency responsible for higher education in the Philippines.',
-    collaborationAreas: ['Research Grants', 'Faculty Development', 'Curriculum Development', 'Institutional Partnerships']
+    name: 'International STI Partners',
+    type: 'International Partner',
+    description: 'International organizations collaborating on SDG-aligned STI initiatives.',
+    collaborationAreas: ['Research Collaboration', 'Knowledge Exchange', 'Technology Transfer', 'Capacity Building']
+  },
+  {
+    name: 'Civil Society Organizations',
+    type: 'NGO',
+    description: 'CSO partners contributing to SDG-aligned initiatives and community engagement.',
+    collaborationAreas: ['Community Engagement', 'SDG Implementation', 'STI Advocacy', 'Performance Recognition']
   },
   {
     name: 'Surigao State University',
     type: 'University',
     description: 'Premier state university in Surigao del Norte offering quality education and research programs.',
-    collaborationAreas: ['Joint Research', 'Student Exchange', 'Technology Development', 'Community Extension']
-  },
-  {
-    name: 'Mindanao State University',
-    type: 'University',
-    description: 'Leading university system in Mindanao with strong research capabilities.',
-    collaborationAreas: ['Collaborative Research', 'Graduate Programs', 'Technology Innovation', 'Knowledge Sharing']
+    collaborationAreas: ['STI Research', 'Collaborative Projects', 'Knowledge Exchange', 'Capacity Building']
   },
   {
     name: 'Provincial Government of Surigao del Norte',
     type: 'LGU',
     description: 'Local government unit committed to innovation and development.',
-    collaborationAreas: ['Policy Support', 'Funding', 'Infrastructure', 'Community Engagement']
+    collaborationAreas: ['Policy Support', 'Funding', 'Infrastructure', 'STI Implementation']
   },
   {
-    name: 'National Fisheries Research and Development Institute',
+    name: 'Department of the Interior and Local Government',
     type: 'DOST',
-    description: 'Research agency focused on fisheries and aquatic resources.',
-    collaborationAreas: ['Marine Research', 'Technology Development', 'Capacity Building', 'Policy Advisory']
+    description: 'Government agency responsible for local governance and public safety.',
+    collaborationAreas: ['Peace and Order', 'CSO Accreditation', 'Community Engagement', 'Public Safety Innovation']
   }
 ];
 

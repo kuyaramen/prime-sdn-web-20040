@@ -15,47 +15,47 @@ export function NewsClient() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const featuredStory = {
-    title: "PRIME SDN Launches Provincial Innovation Week 2026",
-    category: "Featured",
+    title: "Province-Wide HRIS Now Operational Across All Provincial Departments",
+    category: "Government",
     author: "PRIME SDN Team",
     date: "January 15, 2026",
-    readingTime: "8 min read",
-    image: "/images/hero_aerial_surigao_new.jpg",
-    summary: "Surigao del Norte's premier innovation event brings together entrepreneurs, researchers, government leaders, and community members to celebrate and accelerate the province's digital transformation journey.",
+    readingTime: "6 min read",
+    image: "/495626670_994869069488926_4888877285000417893_n.jpg",
+    summary: "Surigao del Norte achieves a major milestone in digital governance with the successful deployment of the Human Resource Information System across all provincial departments, streamlining HR processes and enabling data-driven decision-making.",
   };
 
   const latestNews = [
     {
-      title: "Startup Bootcamp Empowers Young Entrepreneurs",
-      category: "Programs",
-      excerpt: "Intensive 12-week program helps 25 aspiring founders launch their startups with mentorship and funding support.",
+      title: "Integrated Financial Management System Goes Province-Wide",
+      category: "Government",
+      excerpt: "Provincial government launches IFMS to enhance financial management, ensure fiscal transparency, and improve service delivery through real-time reporting.",
       image: "/images/media__1781879352600.jpg",
       date: "January 20, 2026",
       readingTime: "5 min read",
       author: "Maria Santos",
     },
     {
-      title: "Surigao del Norte Advances Digital Governance",
-      category: "Government",
-      excerpt: "Provincial government launches new digital platforms to improve service delivery and citizen engagement.",
+      title: "Provincial Departments Achieve ISO 9001:2015 Certification",
+      category: "Innovation",
+      excerpt: "Seventy percent of provincial departments now ISO-certified, establishing quality management systems and improving service delivery standards.",
       image: "/images/media__1781879354228.png",
       date: "January 18, 2026",
       readingTime: "6 min read",
       author: "John Cruz",
     },
     {
-      title: "Research Partnership Strengthens Local Innovation",
-      category: "Research",
-      excerpt: "SNSU and PRIME SDN sign memorandum of agreement to advance collaborative research projects.",
+      title: "Surigao del Norte Strengthens International STI Partnerships",
+      category: "Partnerships",
+      excerpt: "Province formalizes partnerships with international organizations for collaborative research, innovation, and governance programs aligned with UN SDGs.",
       image: "/images/media__1781879356225.png",
       date: "January 15, 2026",
       readingTime: "4 min read",
       author: "Dr. Ana Reyes",
     },
     {
-      title: "Smart Communities Program Expands Across Municipalities",
-      category: "Innovation",
-      excerpt: "Five municipalities selected for smart city infrastructure development pilot program.",
+      title: "Province-Wide 911 Emergency Hotline System Now Operational",
+      category: "Government",
+      excerpt: "Integrated public safety coordination system with 24/7 emergency response capabilities now serving all municipalities across the province.",
       image: "/images/media__1781911485188.png",
       date: "January 12, 2026",
       readingTime: "7 min read",
@@ -65,26 +65,26 @@ export function NewsClient() {
 
   const todayHighlights = [
     {
-      title: "Provincial Innovation Hub Opens Doors to Local Startups",
-      category: "Innovation",
-      excerpt: "State-of-the-art facility provides workspace, mentorship, and funding opportunities for emerging technology ventures.",
-      image: "/images/media__1781879352600.jpg",
+      title: "Tax Declaration Digitalization Reaches 50% Milestone",
+      category: "Government",
+      excerpt: "Provincial government achieves major milestone in fiscal modernization with half of all tax declarations now digitized into centralized data bank.",
+      image: "/699996973_1284958417146655_2234496503768176183_n.jpg",
       date: "January 22, 2026",
       isLarge: true,
     },
     {
-      title: "Digital Literacy Training Reaches 500 Barangay Residents",
+      title: "Drug-Free Barangay Certification Shows Progress",
       category: "Community",
-      excerpt: "Youth-led initiative brings essential digital skills to underserved communities across the province.",
-      image: "/images/media__1781879354228.png",
+      excerpt: "Intensified barangay drug-clearing operations yield significant results with increasing number of barangays achieving drug-free status.",
+      image: "/601811201_820539664134361_3179058007410133787_n.jpg",
       date: "January 21, 2026",
       isLarge: false,
     },
     {
-      title: "SNSU Research Team Wins National Innovation Award",
-      category: "Research",
-      excerpt: "Breakthrough project on sustainable agriculture receives recognition from the Department of Science and Technology.",
-      image: "/images/media__1781879356225.png",
+      title: "Provincial STI Development Plan Formally Adopted",
+      category: "Innovation",
+      excerpt: "Sangguniang Panlalawigan adopts the Provincial Science, Technology, and Innovation Development Plan as official planning document.",
+      image: "/735058618_2898531357159941_4965185409093718256_n.jpg",
       date: "January 20, 2026",
       isLarge: false,
     },
@@ -185,32 +185,32 @@ export function NewsClient() {
 
   const editorsPicks = [
     {
-      title: "The Future of Digital Transformation in Local Government",
-      category: "Digital Government",
-      image: "/images/media__1781879352600.jpg",
+      title: "AI-Powered Revenue Forecasting System Deployed",
+      category: "Technology",
+      image: "/691034062_1278487637793733_4480899379328042466_n.jpg",
       date: "January 15, 2026",
     },
     {
-      title: "Building a Thriving Startup Ecosystem in the Provinces",
-      category: "Entrepreneurship",
-      image: "/images/media__1781879354228.png",
+      title: "Smart Policing Technologies Transform Public Safety",
+      category: "Innovation",
+      image: "/593804507_1157390633236768_1748125837326593653_n.jpg",
       date: "January 12, 2026",
     },
     {
-      title: "Sustainable Innovation: Balancing Growth and Environment",
-      category: "Sustainability",
-      image: "/images/media__1781879356225.png",
+      title: "Unified Digital Services Portal Launches",
+      category: "Government",
+      image: "/593797659_1157390596570105_2233484891158434992_n.jpg",
       date: "January 10, 2026",
     },
     {
-      title: "AI for Local Government: Opportunities and Challenges",
-      category: "Technology",
+      title: "Provincial Peace and Security Innovation Hub Established",
+      category: "Community",
       image: "/images/media__1781911485188.png",
       date: "January 8, 2026",
     },
   ];
 
-  const categories = ["All", "Innovation", "Government", "Startups", "Research", "Education", "Digital Transformation", "Partnerships", "Community"];
+  const categories = ["All", "Government", "Innovation", "Technology", "Partnerships", "Community"];
 
   const filteredNews = activeCategory === "all" 
     ? latestNews 
@@ -232,8 +232,8 @@ export function NewsClient() {
         {/* Full-width Hero Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/706317336_1291571619818668_2899914440609868235_n.jpg"
-            alt="Premium editorial hero"
+            src="/641177277_1221725650136599_4006014888174907290_n.jpg"
+            alt="News & Blogs Hero"
             fill
             priority
             className="object-cover"

@@ -183,233 +183,184 @@ export interface Event {
 
 export const learningPrograms: LearningProgram[] = [
   {
-    slug: 'digital-skills',
-    title: 'Digital Skills Program',
-    icon: '💻',
-    description: 'Comprehensive digital literacy training covering essential computer skills, internet navigation, and digital tools for modern work environments.',
-    duration: '12 weeks',
-    level: 'Beginner',
-    outcomes: [
-      'Master essential computer operations',
-      'Learn Microsoft Office suite',
-      'Develop internet research skills',
-      'Understand digital security basics',
-      'Create professional documents'
-    ],
-    curriculum: [
-      'Computer Fundamentals',
-      'Microsoft Word, Excel, PowerPoint',
-      'Internet & Email',
-      'Digital Communication',
-      'Online Safety & Security'
-    ],
-    targetAudience: ['Students', 'Professionals', 'Job Seekers'],
-    partner: 'TESDA',
-    certificate: true,
-    featured: true,
-  },
-  {
-    slug: 'artificial-intelligence',
-    title: 'Artificial Intelligence Program',
-    icon: '🤖',
-    description: 'Deep dive into AI concepts, machine learning, neural networks, and practical applications in various industries.',
-    duration: '16 weeks',
-    level: 'Advanced',
-    outcomes: [
-      'Understand AI fundamentals',
-      'Build machine learning models',
-      'Implement neural networks',
-      'Apply AI to real-world problems',
-      'Develop AI-powered applications'
-    ],
-    curriculum: [
-      'Introduction to AI',
-      'Machine Learning Basics',
-      'Deep Learning',
-      'Computer Vision',
-      'Natural Language Processing',
-      'AI Ethics'
-    ],
-    prerequisites: ['Programming fundamentals', 'Mathematics', 'Statistics'],
-    targetAudience: ['Engineers', 'Developers', 'Researchers'],
-    partner: 'DOST',
-    certificate: true,
-    featured: true,
-  },
-  {
-    slug: 'entrepreneurship',
-    title: 'Entrepreneurship Development',
-    icon: '🚀',
-    description: 'Comprehensive entrepreneurship training covering business planning, financial management, marketing, and startup launch strategies.',
-    duration: '10 weeks',
-    level: 'Intermediate',
-    outcomes: [
-      'Develop business plans',
-      'Understand financial management',
-      'Learn marketing strategies',
-      'Build startup foundations',
-      'Access funding opportunities'
-    ],
-    curriculum: [
-      'Business Ideation',
-      'Business Planning',
-      'Financial Management',
-      'Marketing & Sales',
-      'Legal Requirements',
-      'Startup Launch'
-    ],
-    targetAudience: ['Aspiring Entrepreneurs', 'Students', 'Professionals'],
-    partner: 'DTI',
-    certificate: true,
-    featured: true,
-  },
-  {
-    slug: 'marine-science',
-    title: 'Marine Science Program',
-    icon: '🌊',
-    description: 'Explore marine ecosystems, oceanography, marine biology, and conservation strategies for sustainable ocean management.',
-    duration: '14 weeks',
-    level: 'Intermediate',
-    outcomes: [
-      'Understand marine ecosystems',
-      'Study oceanography principles',
-      'Learn marine conservation',
-      'Conduct field research',
-      'Develop sustainable practices'
-    ],
-    curriculum: [
-      'Marine Biology',
-      'Oceanography',
-      'Marine Ecology',
-      'Conservation Strategies',
-      'Field Research Methods'
-    ],
-    targetAudience: ['Students', 'Researchers', 'Environmentalists'],
-    partner: 'DENR',
-    certificate: true,
-    featured: true,
-  },
-  {
-    slug: 'tourism-innovation',
-    title: 'Tourism Innovation Program',
-    icon: '✈️',
-    description: 'Modern tourism management with focus on digital transformation, sustainable tourism, and innovative visitor experiences.',
+    slug: 'data-analytics-capacity-building',
+    title: 'Data Analytics Capacity Building',
+    icon: '�',
+    description: 'Structured training program for government personnel covering data analytics, visualization tools, and strategic planning methodologies to support evidence-based governance.',
     duration: '8 weeks',
     level: 'Intermediate',
     outcomes: [
-      'Understand tourism trends',
-      'Develop digital tourism solutions',
-      'Implement sustainable practices',
-      'Create visitor experiences',
-      'Manage tourism operations'
+      'Master data analysis fundamentals',
+      'Learn visualization tools',
+      'Develop strategic planning skills',
+      'Apply evidence-based decision-making',
+      'Create governance dashboards'
     ],
     curriculum: [
-      'Tourism Fundamentals',
-      'Digital Tourism',
-      'Sustainable Tourism',
-      'Visitor Experience Design',
-      'Tourism Operations'
+      'Data Analysis Fundamentals',
+      'Visualization Tools',
+      'Strategic Planning Frameworks',
+      'Evidence-Based Decision-Making',
+      'Performance Monitoring'
     ],
-    targetAudience: ['Tourism Professionals', 'Students', 'Business Owners'],
-    partner: 'DOT',
+    targetAudience: ['Government Employees', 'Department Heads', 'Planning Officers'],
+    partner: 'Provincial ICT Office + HRMO',
     certificate: true,
-    featured: false,
+    featured: true,
   },
   {
-    slug: 'agriculture-technology',
-    title: 'Agriculture Technology',
-    icon: '🌾',
-    description: 'Modern farming techniques, precision agriculture, smart farming technologies, and sustainable agricultural practices.',
-    duration: '12 weeks',
+    slug: 'ai-literacy-government',
+    title: 'AI Literacy for Government Personnel',
+    icon: '🤖',
+    description: 'Multi-year AI literacy and professional development program enabling government employees to leverage AI tools for improved public service delivery.',
+    duration: '4 weeks per module',
     level: 'Intermediate',
     outcomes: [
-      'Learn precision agriculture',
-      'Use smart farming tools',
-      'Implement sustainable practices',
-      'Understand agri-tech innovations',
-      'Improve crop yields'
+      'Understand AI fundamentals',
+      'Learn AI tools for government',
+      'Apply AI to public services',
+      'Understand AI ethics and governance',
+      'Implement AI solutions'
     ],
     curriculum: [
-      'Precision Agriculture',
-      'Smart Farming',
-      'IoT in Agriculture',
-      'Sustainable Practices',
-      'Crop Management'
+      'AI Fundamentals',
+      'AI Tools for Government',
+      'Ethics and Governance',
+      'Practical Applications',
+      'Implementation Strategies'
     ],
-    targetAudience: ['Farmers', 'Agriculture Students', 'Agripreneurs'],
-    partner: 'DA',
-    certificate: true,
-    featured: false,
-  },
-  {
-    slug: 'robotics',
-    title: 'Robotics Program',
-    icon: '🦾',
-    description: 'Hands-on robotics training covering robot design, programming, automation, and industrial applications.',
-    duration: '16 weeks',
-    level: 'Advanced',
-    outcomes: [
-      'Design robotic systems',
-      'Program robots',
-      'Implement automation',
-      'Understand industrial robotics',
-      'Build custom robots'
-    ],
-    curriculum: [
-      'Robotics Fundamentals',
-      'Robot Design',
-      'Programming & Control',
-      'Industrial Automation',
-      'Advanced Robotics'
-    ],
-    prerequisites: ['Programming basics', 'Mathematics', 'Physics'],
-    targetAudience: ['Engineering Students', 'Hobbyists', 'Professionals'],
-    partner: 'DOST',
+    targetAudience: ['Government Employees', 'ICT Staff', 'Department Heads'],
+    partner: 'Provincial ICT Office + DOST',
     certificate: true,
     featured: true,
   },
   {
-    slug: 'cybersecurity',
-    title: 'Cybersecurity Program',
-    icon: '🔒',
-    description: 'Comprehensive cybersecurity training covering network security, ethical hacking, threat analysis, and security best practices.',
-    duration: '14 weeks',
+    slug: 'iso-internal-audit-training',
+    title: 'ISO 9001 Internal Auditor Training',
+    icon: '✓',
+    description: 'Internal Quality Auditor certification training for ISO 9001:2015 compliance and quality management systems establishment.',
+    duration: '2 weeks',
     level: 'Advanced',
     outcomes: [
-      'Understand security principles',
-      'Implement network security',
-      'Perform ethical hacking',
-      'Analyze security threats',
-      'Develop security strategies'
+      'Understand ISO 9001 standards',
+      'Master internal audit techniques',
+      'Implement quality management systems',
+      'Conduct compliance audits',
+      'Drive continuous improvement'
     ],
     curriculum: [
-      'Security Fundamentals',
-      'Network Security',
-      'Ethical Hacking',
-      'Threat Analysis',
-      'Security Operations'
+      'ISO 9001 Standards',
+      'Internal Audit Techniques',
+      'Quality Management Systems',
+      'Compliance Requirements',
+      'Continuous Improvement'
     ],
-    prerequisites: ['Networking basics', 'Programming', 'Linux'],
-    targetAudience: ['IT Professionals', 'Students', 'Security Enthusiasts'],
-    partner: 'DICT',
+    prerequisites: ['Quality Management Experience', 'Government Employment'],
+    targetAudience: ['Quality Officers', 'Department Heads', 'Process Owners'],
+    partner: 'HRMO + External Certifiers',
     certificate: true,
     featured: true,
   },
+  {
+    slug: 'strategic-planning-workshop',
+    title: 'Strategic Planning and Data-Driven Governance Workshop',
+    icon: '📋',
+    description: 'Capacity building on strategic planning, data-driven decision-making, and performance monitoring for responsive governance.',
+    duration: '1 week',
+    level: 'Advanced',
+    outcomes: [
+      'Develop strategic planning frameworks',
+      'Apply data-driven governance',
+      'Implement performance monitoring',
+      'Make responsive decisions',
+      'Align with SDGs'
+    ],
+    curriculum: [
+      'Strategic Planning Frameworks',
+      'Data-Driven Governance',
+      'Performance Monitoring',
+      'Responsive Decision-Making',
+      'SDG Alignment'
+    ],
+    prerequisites: ['Management Position', 'Government Employment'],
+    targetAudience: ['Department Heads', 'Planning Officers', 'Policy Makers'],
+    partner: 'Provincial Planning Office + HRMO',
+    certificate: true,
+    featured: true,
+  },
+  {
+    slug: 'cso-capacity-building',
+    title: 'CSO Capacity Building Program',
+    icon: '🤝',
+    description: 'Capacity building for Civil Society Organizations on STI advocacy, SDG implementation, and collaborative governance.',
+    duration: '6 weeks',
+    level: 'Intermediate',
+    outcomes: [
+      'Understand STI frameworks',
+      'Implement SDG-aligned programs',
+      'Engage in collaborative governance',
+      'Advocate for innovation',
+      'Measure impact'
+    ],
+    curriculum: [
+      'STI Frameworks',
+      'SDG Implementation',
+      'Collaborative Governance',
+      'Advocacy Strategies',
+      'Impact Measurement'
+    ],
+    targetAudience: ['CSO Members', 'Community Leaders', 'NGO Staff'],
+    partner: 'Provincial STI Council',
+    certificate: true,
+    featured: true,
+  }
 ];
 
 export const scholarships: Scholarship[] = [
   {
-    slug: 'dost-scholarship',
-    title: 'DOST Scholarship Program',
+    slug: 'provincial-sti-scholarship',
+    title: 'Provincial STI Scholarship Program',
+    sponsor: 'Provincial Government of Surigao del Norte',
+    sponsorLogo: '/images/partners/provincial.png',
+    deadline: 'Rolling',
+    eligibility: [
+      'Resident of Surigao del Norte',
+      'Pursuing STI-related courses',
+      'Good academic standing',
+      'Financial need',
+      'Commitment to return to province'
+    ],
+    benefits: [
+      'Full tuition coverage',
+      'Monthly stipend',
+      'Book allowance',
+      'Research funding',
+      'Priority government employment'
+    ],
+    requirements: [
+      'Application form',
+      'Certificate of residency',
+      'School enrollment form',
+      'Grades',
+      'Letter of commitment'
+    ],
+    coverage: 'Full tuition and fees',
+    duration: 'Until graduation',
+    category: 'Government',
+    featured: true,
+  },
+  {
+    slug: 'dost-sti-scholarship',
+    title: 'DOST STI Scholarship Program',
     sponsor: 'Department of Science and Technology',
     sponsorLogo: '/images/partners/dost.png',
-    deadline: '2024-03-31',
+    deadline: 'Annual',
     eligibility: [
       'Filipino citizen',
       'Grade 12 graduate',
       'STEM track preferred',
       'GWA of 85% or higher',
-      'No failing grades'
+      'Pursuing STI priority courses'
     ],
     benefits: [
       'Tuition and fees coverage',
@@ -431,30 +382,31 @@ export const scholarships: Scholarship[] = [
     featured: true,
   },
   {
-    slug: 'ched-scholarship',
-    title: 'CHED UniFAST Scholarship',
+    slug: 'ched-innovation-scholarship',
+    title: 'CHED Innovation Scholarship',
     sponsor: 'Commission on Higher Education',
     sponsorLogo: '/images/partners/ched.png',
-    deadline: '2024-04-15',
+    deadline: 'Annual',
     eligibility: [
       'Filipino citizen',
-      'High school graduate',
-      'Not a recipient of other scholarships',
-      'Financial need',
-      'Good academic standing'
+      'College student',
+      'Innovation or research track',
+      'Good academic standing',
+      'Not a recipient of other scholarships'
     ],
     benefits: [
       'Tuition subsidy',
       'Living allowance',
-      'Learning materials allowance',
-      'Miscellaneous expenses'
+      'Research funding',
+      'Conference support',
+      'Mentorship program'
     ],
     requirements: [
       'Application form',
-      'High school report card',
-      'Certificate of indigency',
-      'Birth certificate',
-      'ID pictures'
+      'Transcript of records',
+      'Research proposal',
+      'Letter of recommendation',
+      'Certificate of good moral character'
     ],
     coverage: 'Partial to full tuition',
     duration: 'Until graduation',
@@ -462,98 +414,37 @@ export const scholarships: Scholarship[] = [
     featured: true,
   },
   {
-    slug: 'tesda-programs',
-    title: 'TESDA Training Programs',
-    sponsor: 'Technical Education and Skills Development Authority',
-    sponsorLogo: '/images/partners/tesda.png',
-    deadline: 'Rolling',
+    slug: 'international-sti-exchange',
+    title: 'International STI Exchange Scholarship',
+    sponsor: 'International STI Partners',
+    sponsorLogo: '/images/partners/international.png',
+    deadline: 'Annual',
     eligibility: [
       'Filipino citizen',
-      'At least high school graduate',
-      'Physically and mentally fit',
-      'No specific age limit'
-    ],
-    benefits: [
-      'Free training',
-      'Assessment fee subsidy',
-      'Tool kit allowance',
-      'Training allowance',
-      'Job placement assistance'
-    ],
-    requirements: [
-      'Application form',
-      'Birth certificate',
-      'High school diploma',
-      'Medical certificate',
-      'ID pictures'
-    ],
-    coverage: 'Full training cost',
-    duration: 'Varies by program',
-    category: 'Government',
-    featured: true,
-  },
-  {
-    slug: 'provincial-scholarship',
-    title: 'Provincial Scholarship Program',
-    sponsor: 'Provincial Government of Surigao del Norte',
-    sponsorLogo: '/images/partners/provincial.png',
-    deadline: '2024-05-30',
-    eligibility: [
-      'Resident of Surigao del Norte',
-      'College student',
-      'Good academic standing',
-      'Financial need',
-      'Not a recipient of other scholarships'
-    ],
-    benefits: [
-      'Tuition assistance',
-      'Book allowance',
-      'Monthly stipend',
-      'Project funding'
-    ],
-    requirements: [
-      'Application form',
-      'Certificate of residency',
-      'School enrollment form',
-      'Grades',
-      'Certificate of indigency'
-    ],
-    coverage: 'Partial tuition',
-    duration: 'Per semester',
-    category: 'Government',
-    featured: false,
-  },
-  {
-    slug: 'private-scholarship',
-    title: 'Private Sector Scholarship',
-    sponsor: 'Local Business Association',
-    sponsorLogo: '/images/partners/business.png',
-    deadline: '2024-04-30',
-    eligibility: [
-      'College student',
-      'Business or IT course',
-      'GWA of 88% or higher',
-      'Leadership potential',
-      'Community involvement'
+      'Surigao del Norte resident',
+      'College or graduate student',
+      'STI-related field',
+      'Excellent academic record'
     ],
     benefits: [
       'Full tuition coverage',
-      'Internship opportunities',
-      'Mentorship program',
-      'Potential employment'
+      'Living allowance',
+      'Travel expenses',
+      'Research funding',
+      'International exposure'
     ],
     requirements: [
       'Application form',
       'Transcript of records',
-      'Essay',
-      'Letters of recommendation',
-      'Interview'
+      'Research proposal',
+      'English proficiency certificate',
+      'Letter of recommendation'
     ],
-    coverage: 'Full tuition',
-    duration: 'Until graduation',
-    category: 'Private',
-    featured: false,
-  },
+    coverage: 'Full expenses',
+    duration: '6 months to 1 year',
+    category: 'International',
+    featured: true,
+  }
 ];
 
 export const universities: University[] = [
@@ -562,7 +453,7 @@ export const universities: University[] = [
     name: 'Surigao del Norte State University',
     logo: '🎓',
     coverImage: '/images/universities/snsu-cover.jpg',
-    overview: 'Surigao del Norte State University is a premier educational institution in the Caraga region, offering quality education in various fields including engineering, agriculture, fisheries, and technology.',
+    overview: 'Surigao del Norte State University is a premier educational institution in the Caraga region and key partner in the provincial STI development plan, offering quality education in various fields including engineering, agriculture, fisheries, and technology.',
     established: 1969,
     location: 'Surigao City, Surigao del Norte',
     website: 'https://snsu.edu.ph',
@@ -584,21 +475,21 @@ export const universities: University[] = [
       'Science Laboratory'
     ],
     researchAreas: [
+      'STI Collaborative Research',
       'Sustainable Agriculture',
       'Marine Resources',
-      'Renewable Energy',
-      'Information Technology',
+      'Digital Transformation',
       'Engineering Innovations'
     ],
     partnerships: [
+      'Provincial STI Council',
       'DOST',
       'DA',
       'DENR',
-      'DTI',
-      'Private Companies'
+      'DTI'
     ],
     achievements: [
-      'Center of Excellence in Agriculture',
+      'STI Development Plan Partner',
       'Research Grant Recipient',
       'CHED Accredited Programs',
       'Industry Partnership Awards'
@@ -616,7 +507,7 @@ export const universities: University[] = [
     name: 'Caraga State University',
     logo: '🏛️',
     coverImage: '/images/universities/csu-cover.jpg',
-    overview: 'Caraga State University is a leading research university in the Caraga region, known for its excellence in agriculture, environmental science, and technology.',
+    overview: 'Caraga State University is a leading research university in the Caraga region and STI development partner, known for its excellence in agriculture, environmental science, and technology.',
     established: 1978,
     location: 'Butuan City, Agusan del Norte',
     website: 'https://carsu.edu.ph',
@@ -636,21 +527,21 @@ export const universities: University[] = [
       'Communication Studio'
     ],
     researchAreas: [
-      'Climate Change',
-      'Biodiversity Conservation',
+      'Climate Change Research',
+      'STI Innovation',
       'Sustainable Agriculture',
       'Waste Management',
       'Community Development'
     ],
     partnerships: [
+      'Provincial STI Council',
       'DENR',
       'DA',
       'DOST',
-      'NGOs',
-      'International Organizations'
+      'NGOs'
     ],
     achievements: [
-      'Research University Status',
+      'STI Research Partner',
       'Environmental Excellence Awards',
       'International Collaborations',
       'CHED Center of Development'
@@ -667,7 +558,7 @@ export const universities: University[] = [
     name: 'TESDA - Surigao del Norte',
     logo: '🔧',
     coverImage: '/images/universities/tesda-cover.jpg',
-    overview: 'TESDA Surigao del Norte provides technical vocational education and training programs to develop skilled workforce for various industries.',
+    overview: 'TESDA Surigao del Norte provides technical vocational education and training programs to develop skilled workforce for various industries, supporting the provincial digital transformation and skills development goals.',
     established: 1994,
     location: 'Surigao City, Surigao del Norte',
     website: 'https://tesda.gov.ph',
@@ -691,16 +582,16 @@ export const universities: University[] = [
       'Technical Skills Development',
       'Industry Standards',
       'Training Methodologies',
-      'Curriculum Development'
+      'Digital Skills Training'
     ],
     partnerships: [
+      'Provincial ICT Office',
       'Private Companies',
       'LGUs',
-      'Industry Associations',
-      'Training Centers'
+      'Industry Associations'
     ],
     achievements: [
-      'National TVET Champion',
+      'Digital Skills Training Partner',
       'Industry Partnership Awards',
       'Skills Competition Winners',
       'Training Excellence'
@@ -711,57 +602,7 @@ export const universities: University[] = [
       website: 'https://tesda.gov.ph'
     },
     featured: true,
-  },
-  {
-    slug: 'deped',
-    name: 'Department of Education - Surigao del Norte',
-    logo: '📚',
-    coverImage: '/images/universities/deped-cover.jpg',
-    overview: 'DepEd Surigao del Norte oversees basic education in the province, ensuring quality education for all learners from kindergarten to senior high school.',
-    established: 1901,
-    location: 'Surigao City, Surigao del Norte',
-    website: 'https://deped.gov.ph',
-    email: 'surigao@deped.gov.ph',
-    programs: [
-      'Kindergarten Program',
-      'Elementary Education',
-      'Junior High School',
-      'Senior High School',
-      'Alternative Learning System',
-      'Special Education'
-    ],
-    laboratories: [
-      'Science Laboratories',
-      'Computer Laboratories',
-      'Technical-Vocational Workshops',
-      'Learning Resource Centers'
-    ],
-    researchAreas: [
-      'Basic Education Research',
-      'Curriculum Development',
-      'Learning Assessment',
-      'Teacher Training',
-      'Education Technology'
-    ],
-    partnerships: [
-      'LGUs',
-      'Private Schools',
-      'NGOs',
-      'International Organizations'
-    ],
-    achievements: [
-      'High Literacy Rate',
-      'National Achievement Test Recognition',
-      'School Improvement Awards',
-      'Teacher Development Programs'
-    ],
-    contact: {
-      address: 'Surigao City, Surigao del Norte',
-      email: 'surigao@deped.gov.ph',
-      website: 'https://deped.gov.ph'
-    },
-    featured: false,
-  },
+  }
 ];
 
 export const courses: Course[] = [
