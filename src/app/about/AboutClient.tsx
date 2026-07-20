@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import Link from "next/link";
@@ -25,104 +25,113 @@ import Image from "next/image";
 export function AboutClient() {
   const [activePillar, setActivePillar] = useState(0);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 20]);
 
   return (
     <div className="min-h-screen bg-white">
-      {/* ===== IMMERSIVE HERO ===== */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
+      {/* ===== CHAPTER 1: THE OPENING ===== */}
+      <section ref={heroRef} className="relative h-[95vh] md:h-[95vh] lg:h-[100vh] flex items-center overflow-hidden">
+        {/* Full-width Background Image with Parallax */}
+        <motion.div
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="absolute inset-0"
+          style={{ y: imageY }}
+        >
           <Image
-            src={aboutHero.backgroundImage}
+            src={aboutHero.heroImage}
             alt="Surigao del Norte landscape"
             fill
             priority
             className="object-cover"
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A1628]/85 via-[#1E3A5F]/70 to-[#0A1628]/90" />
+        </motion.div>
+        
+        {/* Subtle Dark Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/25 to-transparent" />
+        
+        {/* Content Overlay - Left Aligned, Max 600px */}
+        <div className="relative z-10 max-w-[1440px] mx-auto w-full px-6 md:px-16 lg:px-20">
+          <div className="max-w-[600px]">
+            {/* Section Label - Small, Uppercase, Wide Letter Spacing */}
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+              className="block text-xs font-semibold uppercase tracking-widest text-white/90 mb-6"
+              style={{ fontFamily: "Montserrat, Arial, sans-serif", letterSpacing: "0.25em" }}
+            >
+              {aboutHero.eyebrow}
+            </motion.span>
+            
+            {/* Large Editorial Heading - Cinematic Scale */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+              className="font-extrabold leading-tight text-white mb-8"
+              style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
+            >
+              {aboutHero.heading}
+            </motion.h1>
+            
+            {/* Supporting Description - 40-50 Words, Editorial Style */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
+              className="text-lg leading-relaxed text-white/85 mb-10 max-w-[550px]"
+              style={{ fontSize: "clamp(1rem, 1.25vw, 1.125rem)" }}
+            >
+              {aboutHero.description}
+            </motion.p>
+            
+            {/* Elegant Text Link CTA with Animated Arrow */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
+            >
+              <Link href="#land" className="group inline-flex items-center gap-2 text-base font-semibold transition-all hover:gap-4 text-white relative" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>
+                {aboutHero.primaryButton}
+                <motion.span
+                  initial={{ x: 0 }}
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  →
+                </motion.span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
         
-        <div className="relative z-10 max-w-[1440px] mx-auto px-6 py-32 w-full">
-          <AnimatedSection>
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-              <motion.nav 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex items-center gap-2 text-sm mb-8"
-                style={{ color: "#60A5FA", fontFamily: "Montserrat, Arial, sans-serif" }}
-              >
-                {aboutHero.breadcrumb.split(' / ').map((crumb, index, arr) => (
-                  <span key={index}>
-                    {crumb}
-                    {index < arr.length - 1 && <span className="mx-2">/</span>}
-                  </span>
-                ))}
-              </motion.nav>
-              
-              <motion.span 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="inline-block px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest mb-6"
-                style={{ backgroundColor: "rgba(59, 130, 246, 0.2)", color: "#60A5FA", border: "1px solid rgba(59, 130, 246, 0.3)", fontFamily: "Montserrat, Arial, sans-serif", letterSpacing: "0.2em" }}
-              >
-                {aboutHero.eyebrow}
-              </motion.span>
-              
-              <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="font-extrabold leading-tight mb-6 text-white"
-                style={{ fontFamily: "Montserrat, Arial, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}
-              >
-                {aboutHero.heading}
-              </motion.h1>
-              
-              <motion.p 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="text-xl leading-relaxed mb-10 max-w-4xl"
-                style={{ color: "rgba(255, 255, 255, 0.85)" }}
-              >
-                {aboutHero.description}
-              </motion.p>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Link href="#pillars">
-                  <Button className="text-base py-4 px-10 rounded-full bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold">
-                    {aboutHero.primaryButton} <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="#contact">
-                  <Button variant="outline" className="text-base py-4 px-10 rounded-full border-2 border-white text-white hover:bg-white/10 font-semibold">
-                    {aboutHero.secondaryButton}
-                  </Button>
-                </Link>
-              </motion.div>
-            </motion.div>
-          </AnimatedSection>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div 
+        {/* Subtle Scroll Indicator */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
-          <motion.div 
-            animate={{ y: [0, 10, 0] }}
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="text-white/60"
+            className="flex flex-col items-center gap-2"
           >
-            <ChevronDown className="w-6 h-6" />
+            <span className="text-xs uppercase tracking-widest text-white/70" style={{ fontFamily: "Montserrat, Arial, sans-serif", letterSpacing: "0.2em" }}>
+              Scroll
+            </span>
+            <ChevronDown className="w-5 h-5 text-white/70" />
           </motion.div>
         </motion.div>
       </section>

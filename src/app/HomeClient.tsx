@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
@@ -20,6 +20,7 @@ import SSC2040Roadmap from "@/components/sections/SSC2040Roadmap";
 import { CinematicVideoSection } from "@/components/sections/CinematicVideoSection";
 import { StatementSection } from "@/components/sections/StatementSection";
 import PrimeFramework from "@/components/sections/PrimeFramework";
+import InvestmentGrid from "@/components/editorial/InvestmentGrid";
 
 interface Pillar {
   id: string;
@@ -30,60 +31,24 @@ interface Pillar {
   order: number;
 }
 
-interface Activity {
-  id: string;
-  title: string;
-  slug: string;
-  pillarTag: string;
-  excerpt: string;
-  coverImage: string;
-  publishedAt: string;
-}
-
-interface NewsPost {
-  id: string;
-  title: string;
-  slug: string;
-  category: string;
-  excerpt: string;
-  coverImage: string;
-  publishedAt: string;
-}
-
 interface HomeClientProps {
   pillars: Pillar[];
-  activities: Activity[];
-  news: NewsPost[];
 }
 
-export function HomeClient({ pillars, activities, news }: HomeClientProps) {
+export function HomeClient({ pillars }: HomeClientProps) {
   const prefersReduced = useReducedMotion();
   const { scrollY } = useScroll();
   const scrollXPrime = useTransform(scrollY, [0, 800], [0, 150]);
   const scrollXSurigao = useTransform(scrollY, [0, 800], [0, -150]);
-  const [activeNewsIndex, setActiveNewsIndex] = useState(0);
-  const [isHoveringNews, setIsHoveringNews] = useState(false);
   const [isVisionExpanded, setIsVisionExpanded] = useState(false);
 
   const xPrime = prefersReduced ? 0 : scrollXPrime;
   const xSurigao = prefersReduced ? 0 : scrollXSurigao;
 
-  // Autoplay for news cards
-  useEffect(() => {
-    if (news.length <= 1) return;
-
-    const interval = setInterval(() => {
-      if (!isHoveringNews) {
-        setActiveNewsIndex((prev) => (prev + 1) % Math.min(news.length, 3));
-      }
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [news.length, isHoveringNews]);
 
   return (
     <>
-      <section className="relative w-full overflow-hidden px-10 sm:px-12 md:px-14 lg:px-16 bg-white" aria-label="Hero" style={{ height: "calc(100vh - 5rem)", minHeight: "calc(100vh - 5rem)" }}>
+      <section className="relative w-full overflow-hidden px-10 sm:px-12 md:px-14 lg:px-16 bg-white" aria-label="Hero" style={{ height: "100vh", minHeight: "100vh" }}>
         {/* Background Image Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
@@ -92,9 +57,19 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
             fill
             priority
             className="object-cover"
-            style={{ objectPosition: "center 120%", filter: "brightness(1.0) contrast(1.1) saturate(0.95)" }}
+            style={{ objectPosition: "center 30%", filter: "brightness(1.0) contrast(1.1) saturate(0.95)" }}
           />
         </div>
+
+        {/* Subtle Editorial Top Scrim */}
+        <div 
+          className="absolute inset-x-0 top-0 z-10 pointer-events-none"
+          style={{
+            height: "150px",
+            background: "linear-gradient(to bottom, rgba(0, 10, 30, 0.25) 0%, rgba(0, 10, 30, 0) 100%)"
+          }}
+        />
+        
         {/* Atmospheric Fog Overlay: Blue x Gold x White */}
         <div
           className="absolute inset-0 z-10 pointer-events-none mix-blend-screen"
@@ -124,7 +99,7 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
 
         {/* Hero Content — Premium Editorial Composition */}
         <AnimatedHero className="relative z-20 w-full h-full flex items-center select-none">
-          <div className="w-full max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-28">
+          <div className="w-full max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-28 mt-[120px]">
             {/* Left Column: Title, Partners, CTA */}
             <div className="md:col-span-12 lg:col-span-12 flex flex-col">
               {/* Brand Title — Oversized, Dominant */}
@@ -280,6 +255,9 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
 
       {/* ===== PRIME SDN FRAMEWORK SECTION ===== */}
       <PrimeFramework />
+
+      {/* ===== STRATEGIC INVESTMENT AREAS GRID ===== */}
+      <InvestmentGrid />
 
       {/* ===== VISION SECTION (Expandable) ===== */}
       <section className="relative bg-white pt-[60px] pb-[120px] px-6 overflow-hidden" aria-label="Our Vision">
@@ -517,560 +495,10 @@ export function HomeClient({ pillars, activities, news }: HomeClientProps) {
          }} />
         </section>
 
-      {/* ===== CINEMATIC VIDEO SECTION ===== */}
-      <CinematicVideoSection />
-
       {/* ===== SSC2040 INTERACTIVE ROADMAP ===== */}
       <SSC2040Roadmap />
 
-      {/* ===== POLICIES BANNER ===== */}
-      <section
-        className="py-[80px] px-6 bg-white"
-        aria-label="Policies"
-      >
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            {/* Left Column (25%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full lg:w-[25%]"
-            >
-              <h2
-                className="leading-[1.05]"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--font-size-heading-2)",
-                  fontWeight: "var(--font-weight-bold)",
-                  color: "#5A2396",
-                }}
-              >
-                POLICIES &{"\n"}GOVERNANCE
-              </h2>
-            </motion.div>
 
-            {/* Right Column (75%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="w-full lg:w-[75%] flex flex-col"
-            >
-              {/* Main Heading */}
-              <motion.h2
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--font-size-heading-1)",
-                  fontWeight: "var(--font-weight-bold)",
-                  lineHeight: "var(--line-height-heading)",
-                  letterSpacing: "var(--letter-spacing-heading)",
-                  color: "#1E4FBF",
-                  maxWidth: "900px",
-                }}
-              >
-                POLICIES GUIDING{"\n"}
-                THE DEVELOPMENT{"\n"}
-                OF PRIME SDN.
-              </motion.h2>
-
-              {/* Supporting Text */}
-              <motion.p
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "var(--font-size-body-lg)",
-                  fontWeight: "var(--font-weight-regular)",
-                  lineHeight: "var(--line-height-body)",
-                  color: "#6B7280",
-                  maxWidth: "900px",
-                }}
-              >
-                Backed by provincial ordinances, executive orders, and strategic frameworks, PRIME SDN advances accountable, transparent, and innovation-driven governance for a resilient Surigao del Norte.
-              </motion.p>
-
-              {/* CTA Button */}
-              <Link href="/governance">
-                <motion.button
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-[30px] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 w-fit cursor-pointer"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--font-size-body-lg)",
-                    background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
-                  }}
-                >
-                  Explore all policies
-                  <div className="w-9 h-9 bg-white rounded-full flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== ACTIVITIES PREVIEW ===== */}
-      <section className="py-[80px] px-6 bg-white" aria-label="Activities">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col lg:flex-row gap-12 items-start mb-12">
-            {/* Left Column (25%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full lg:w-[25%]"
-            >
-              <h2
-                className="leading-[1.05]"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--font-size-heading-2)",
-                  fontWeight: "var(--font-weight-bold)",
-                  color: "#5A2396",
-                }}
-              >
-                ACTIVITIES
-              </h2>
-            </motion.div>
-
-            {/* Right Column (75%) */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="w-full lg:w-[75%] flex flex-col"
-            >
-              {/* Large Heading */}
-              <motion.h2
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                className="mb-8"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--font-size-heading-1)",
-                  fontWeight: "var(--font-weight-bold)",
-                  lineHeight: "var(--line-height-heading)",
-                  letterSpacing: "var(--letter-spacing-heading)",
-                  color: "#1E4FBF",
-                  maxWidth: "900px",
-                }}
-              >
-                DISCOVER PROGRAMS,{"\n"}
-                EVENTS, AND INITIATIVES{"\n"}
-                THAT EMPOWER INNOVATION{"\n"}
-                AND MEANINGFUL IMPACT.
-              </motion.h2>
-
-              {/* Button and Description Row */}
-              <div className="flex flex-col md:flex-row gap-8 items-start mb-12">
-                {/* View All Activities Button */}
-                <motion.button
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-[30px] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 w-fit cursor-pointer"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--font-size-body-lg)",
-                    background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
-                  }}
-                >
-                  View all activities
-                  <motion.div
-                    whileHover={{ x: 6 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-9 h-9 bg-white rounded-full flex items-center justify-center"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </motion.div>
-                </motion.button>
-
-                {/* Supporting Description */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "var(--font-size-body-lg)",
-                    fontWeight: "var(--font-weight-regular)",
-                    lineHeight: "var(--line-height-body)",
-                    color: "#6B7280",
-                    maxWidth: "900px",
-                  }}
-                >
-                  Explore events, innovation programs, startup engagements, and ecosystem milestones that cultivate collaboration, accelerate ideas, and showcase the progress of PRIME SDN across Surigao del Norte.
-                </motion.p>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Three-Card Layout */}
-          {activities.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {activities.map((activity, index) => (
-                <motion.div
-                  key={activity.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-                >
-                  <Link href={`/activities/${activity.slug}`} className="block group">
-                    <div className="relative overflow-hidden rounded-[18px] mb-4" style={{ height: "320px" }}>
-                      {activity.coverImage ? (
-                        <Image
-                          src={activity.coverImage}
-                          alt={activity.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gray-200">
-                          <span className="text-2xl font-bold text-gray-400">Activity Image</span>
-                        </div>
-                      )}
-                      {/* Overlay Gradient */}
-                      <div
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                          background: "linear-gradient(transparent, rgba(0,0,0,0.35))",
-                        }}
-                      />
-                    </div>
-                    <h3
-                      className="font-semibold mb-3"
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "var(--font-size-heading-2)",
-                        color: "var(--color-text-primary)",
-                      }}
-                    >
-                      {activity.title}
-                    </h3>
-                    {/* Card Metadata */}
-                    <div className="flex flex-col gap-1 text-sm" style={{ color: "var(--color-text-tertiary)" }}>
-                      <span className="font-medium">{activity.publishedAt}</span>
-                      <span className="font-medium">{activity.pillarTag}</span>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16" style={{ color: "#2D7187" }}>
-              <p>Activities coming soon. <Link href="/contact" className="underline" style={{ color: "#4B156D" }}>Get in touch</Link> to learn more.</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* ===== NEWS & INSIGHTS PREVIEW ===== */}
-      <section className="py-[80px] px-6 bg-white" aria-label="News and Insights">
-        <div className="max-w-[1440px] mx-auto">
-          {/* Section Header */}
-          <div className="flex flex-col lg:flex-row gap-12 items-start mb-16">
-            {/* Left Label */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full lg:w-[25%]"
-            >
-              <h2
-                className="leading-[1.05]"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--font-size-heading-2)",
-                  fontWeight: "var(--font-weight-bold)",
-                  color: "#5A2396",
-                }}
-              >
-                NEWS & INSIGHTS
-              </h2>
-            </motion.div>
-
-            {/* Right Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="w-full lg:w-[75%]"
-            >
-              <h2
-                className="leading-[0.95] uppercase"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "var(--font-size-heading-1)",
-                  fontWeight: "var(--font-weight-bold)",
-                  lineHeight: "var(--line-height-heading)",
-                  letterSpacing: "var(--letter-spacing-heading)",
-                  color: "#1E4FBF",
-                  maxWidth: "900px",
-                }}
-              >
-                STAY UPDATED WITH{"\n"}
-                THE LATEST STORIES,{"\n"}
-                POLICIES, STARTUP{"\n"}
-                MILESTONES, AND{"\n"}
-                INNOVATION NEWS.
-              </h2>
-            </motion.div>
-          </div>
-
-          {/* Three-Card Featured News Layout */}
-          {news.length > 0 ? (
-            <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-              onMouseEnter={() => setIsHoveringNews(true)}
-              onMouseLeave={() => setIsHoveringNews(false)}
-            >
-              {news.slice(0, 3).map((post, index) => (
-                <motion.div
-                  key={post.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="relative overflow-hidden rounded-[24px] cursor-pointer group"
-                  style={{
-                    height: "500px",
-                    opacity: index === activeNewsIndex ? 1 : 0.6,
-                    transition: "opacity 0.5s ease-in-out",
-                  }}
-                >
-                  <Link href={`/news/${post.slug}`} className="block w-full h-full">
-                    {/* Background Image */}
-                    {post.coverImage ? (
-                      <motion.div
-                        whileHover={{ scale: 1.06 }}
-                        transition={{ duration: 0.5 }}
-                        className="absolute inset-0"
-                      >
-                        <Image
-                          src={post.coverImage}
-                          alt={post.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </motion.div>
-                    ) : (
-                      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
-                        <span className="text-2xl font-bold text-gray-400">News Image</span>
-                      </div>
-                    )}
-
-                    {/* Bottom Overlay */}
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: "linear-gradient(transparent, rgba(0,0,0,0.85))",
-                      }}
-                    />
-
-                    {/* Card Content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      {/* Category Pill */}
-                      <span
-                        className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3"
-                        style={{
-                          backgroundColor: "var(--color-secondary-purple)",
-                          fontFamily: "var(--font-body)",
-                        }}
-                      >
-                        {post.category}
-                      </span>
-
-                      {/* Date & Reading Time */}
-                      <div className="flex items-center gap-3 mb-3 text-xs opacity-80" style={{ fontFamily: "var(--font-body)" }}>
-                        <span>{post.publishedAt}</span>
-                        <span>•</span>
-                        <span>5 min read</span>
-                      </div>
-
-                      {/* Headline */}
-                      <h3
-                        className="font-semibold mb-4 line-clamp-3 leading-tight"
-                        style={{
-                          fontFamily: "var(--font-body)",
-                          fontSize: "var(--font-size-body)",
-                        }}
-                      >
-                        {post.title}
-                      </h3>
-
-                      {/* Explore Story Button */}
-                      <div className="flex items-center gap-2 text-sm font-semibold" style={{ fontFamily: "var(--font-body)" }}>
-                        <span>Explore Story</span>
-                        <motion.div
-                          whileHover={{ x: 8 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                          </svg>
-                        </motion.div>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16" style={{ color: "#2D6F88" }}>
-              <p>News & insights coming soon.</p>
-            </div>
-          )}
-
-          {/* Bottom Content Row */}
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            {/* View All News Button */}
-            <motion.button
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-[30px] text-white font-bold rounded-full px-[42px] py-[18px] flex items-center gap-3 shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 w-fit cursor-pointer"
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "var(--font-size-body-lg)",
-                background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)",
-              }}
-            >
-              View all news
-              <motion.div
-                whileHover={{ x: 6 }}
-                transition={{ duration: 0.3 }}
-                className="w-9 h-9 bg-white rounded-full flex items-center justify-center"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E4DB7" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </motion.div>
-            </motion.button>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "var(--font-size-body-lg)",
-                fontWeight: "var(--font-weight-regular)",
-                lineHeight: "var(--line-height-body)",
-                color: "#6B7280",
-                maxWidth: "900px",
-              }}
-            >
-              Remain informed with updates, announcements, startup achievements, ecosystem partnerships, and innovation initiatives shaping the future of Surigao del Norte.
-            </motion.p>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== CTA BAND ===== */}
-      <section className="bg-white py-20 px-6" aria-label="Join the PRIME Movement">
-        <div className="max-w-[1440px] mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center"
-          >
-            {/* Description - Wide Top */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-              className="leading-relaxed mb-12 max-w-5xl mx-auto font-extrabold uppercase tracking-tight"
-              style={{ color: "#6B7280", fontFamily: "var(--font-display)", fontSize: "var(--font-size-heading-1)", fontWeight: "var(--font-weight-bold)" }}
-            >
-              Join researchers, entrepreneurs, and community leaders building Surigao's innovation ecosystem.
-            </motion.p>
-
-            {/* Action Buttons - Narrow Bottom */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-5 justify-center items-center max-w-2xl mx-auto"
-            >
-              <motion.a
-                href="/partners"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-80px" }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full text-white font-bold text-base shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 flex items-center justify-center gap-2"
-                style={{ fontFamily: "var(--font-body)", background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)" }}
-              >
-                Become a Partner
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </motion.a>
-              <motion.a
-                href="/contact"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-80px" }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-                className="flex-1 text-center py-4 px-10 rounded-full text-white font-bold text-base shadow-[0_10px_25px_rgba(90,35,150,0.25)] transition-all duration-300 flex items-center justify-center gap-2"
-                style={{ fontFamily: "var(--font-body)", background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)" }}
-              >
-                Contact Us
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </motion.a>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
     </>
   );
 }

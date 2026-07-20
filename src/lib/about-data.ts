@@ -6,8 +6,7 @@ export interface AboutHero {
   description: string;
   primaryButton: string;
   secondaryButton: string;
-  backgroundImage: string;
-  breadcrumb: string;
+  heroImage: string;
 }
 
 export interface AboutStory {
@@ -104,12 +103,11 @@ export interface ExploreCTA {
 
 export const aboutHero: AboutHero = {
   eyebrow: "ABOUT PRIME SDN",
-  heading: "Building the Future of Innovation in Surigao del Norte",
-  description: "PRIME SDN is the province's collaborative innovation ecosystem that connects government, academia, industry, entrepreneurs, researchers, investors, and communities to create sustainable economic growth, technological advancement, and inclusive development.",
-  primaryButton: "Explore Our Ecosystem",
-  secondaryButton: "Contact PRIME SDN",
-  backgroundImage: "/de85057f-eb66-4f18-a9bb-8f828a99fd42.jpg",
-  breadcrumb: "Home / About"
+  heading: "Discover the Heart of Surigao del Norte",
+  description: "PRIME SDN is the official digital experience of Surigao del Norte, showcasing the province's pristine landscapes, vibrant culture, thriving innovation ecosystem, and sustainable future through immersive storytelling.",
+  primaryButton: "Explore Surigao",
+  secondaryButton: "",
+  heroImage: "/de85057f-eb66-4f18-a9bb-8f828a99fd42.jpg"
 };
 
 export const aboutStory: AboutStory = {

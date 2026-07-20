@@ -9,6 +9,8 @@ import {
   Leaf,
   Handshake,
   Scale,
+  Microscope,
+  Building2,
   LucideIcon,
 } from "lucide-react";
 import type { EcosystemPillar } from "./ecosystemData";
@@ -21,6 +23,8 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Leaf,
   Handshake,
   Scale,
+  Microscope,
+  Building2,
 };
 
 interface EcosystemNodeProps {

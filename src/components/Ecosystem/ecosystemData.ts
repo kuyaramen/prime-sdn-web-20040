@@ -89,14 +89,15 @@ export interface EcosystemPillar {
 }
 
 export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
+  // ── Index 0: TOP CENTER ── Education & Talent
   {
-    id: "startup-development",
-    title: "Startup Development",
-    slug: "startup-development",
-    description: "Building a thriving startup culture that transforms local ideas into scalable ventures.",
-    accentColor: "#F59E0B",
-    accentColorRgb: "245, 158, 11",
-    iconName: "Rocket",
+    id: "education-talent",
+    title: "Education & Talent",
+    slug: "education-and-talent",
+    description: "Developing a world-class, future-ready workforce rooted in the Surigaonon identity.",
+    accentColor: "#10B981",
+    accentColorRgb: "16, 185, 129",
+    iconName: "GraduationCap",
     mission: "Cultivate a resilient startup ecosystem in Surigao del Norte by providing mentorship, funding pathways, co-working infrastructure, and market access that empowers entrepreneurs to build globally competitive ventures from local roots.",
     vision: "To establish Surigao del Norte as a leading regional center for technology and social entrepreneurship in Mindanao by 2040.",
     whyItMatters: [
@@ -206,17 +207,19 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "Local tech founders can now apply for equity-free grants up to PHP 250,000 for early validation."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
-    ctaText: "Join the PRIME Launchpad Cohort"
+    heroImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
+    ctaText: "Apply for a Technology Scholarship"
   },
+
+  // ── Index 1: UPPER RIGHT ── Innovation Infrastructure
   {
-    id: "education-talent",
-    title: "Education & Talent",
-    slug: "education-and-talent",
-    description: "Developing a world-class, future-ready workforce rooted in the Surigaonon identity.",
-    accentColor: "#10B981",
-    accentColorRgb: "16, 185, 129",
-    iconName: "GraduationCap",
+    id: "innovation-infrastructure",
+    title: "Innovation Infrastructure",
+    slug: "innovation-infrastructure",
+    description: "Modernizing governance, services, and business through technology adoption.",
+    accentColor: "#3B82F6",
+    accentColorRgb: "59, 130, 246",
+    iconName: "Building2",
     mission: "Invest in human capital development by aligning education, training, and scholarship programs with the innovation economy needs of Surigao del Norte, ensuring every Surigaonon has access to quality learning pathways.",
     vision: "To create a highly skilled, adaptive workforce specializing in software, engineering, and green tech by 2040.",
     whyItMatters: [
@@ -315,17 +318,19 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "30 local scholars selected to undergo technical training in piloting and maintaining crop monitoring drones."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
-    ctaText: "Apply for a Technology Scholarship"
+    heroImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
+    ctaText: "Access eSDN E-Services"
   },
+
+  // ── Index 2: LOWER RIGHT ── Startup Ecosystem
   {
-    id: "research-innovation",
-    title: "Research & Innovation",
-    slug: "research-and-innovation",
-    description: "Generating cutting-edge research that translates local knowledge into global solutions.",
-    accentColor: "#8B5CF6",
-    accentColorRgb: "139, 92, 246",
-    iconName: "FlaskConical",
+    id: "startup-ecosystem",
+    title: "Startup Ecosystem",
+    slug: "startup-ecosystem",
+    description: "Building a thriving startup culture that transforms local ideas into scalable ventures.",
+    accentColor: "#F59E0B",
+    accentColorRgb: "245, 158, 11",
+    iconName: "Rocket",
     mission: "Position Surigao del Norte as a research powerhouse by funding applied R&D that leverages the province's unique marine, mineral, and agricultural assets, bridging academic excellence with commercial and social impact.",
     vision: "To make Surigao del Norte a recognized national center of excellence for sustainable marine science and mining rehabilitation technology by 2040.",
     whyItMatters: [
@@ -424,17 +429,19 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "The Surigaonon research team was recognized for their innovative soil phytoremediation technology."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
-    ctaText: "Apply for a Research Grant"
+    heroImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
+    ctaText: "Join the PRIME Launchpad Cohort"
   },
+
+  // ── Index 3: BOTTOM CENTER ── Smart & Sustainable
   {
-    id: "digital-transformation",
-    title: "Digital Transformation",
-    slug: "digital-transformation",
-    description: "Modernizing governance, services, and business through technology adoption.",
-    accentColor: "#3B82F6",
-    accentColorRgb: "59, 130, 246",
-    iconName: "MonitorSmartphone",
+    id: "smart-sustainable",
+    title: "Smart and Sustainable SDN Roadmaps",
+    slug: "smart-sustainable-communities",
+    description: "Building climate-resilient, inclusive, and ecologically responsible communities.",
+    accentColor: "#6366F1",
+    accentColorRgb: "99, 102, 241",
+    iconName: "Leaf",
     mission: "Accelerate the digital transformation of Surigao del Norte's public services, economy, and communities by building robust ICT infrastructure, promoting e-governance, and creating inclusive pathways to the digital economy.",
     vision: "To achieve a 100% paperless, fully interconnected local government unit (LGU) system and high-speed broadband in all barangays by 2040.",
     whyItMatters: [
@@ -539,17 +546,19 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
         summary: "Recognized for rapid digital service expansion and rural connectivity infrastructure."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
-    ctaText: "Access eSDN E-Services"
+    heroImage: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1600&q=80",
+    ctaText: "Participate in Green Programs"
   },
+
+  // ── Index 4: LOWER LEFT ── Partnerships & Linkages
   {
-    id: "sustainable-communities",
-    title: "Sustainable Communities",
-    slug: "smart-sustainable-communities",
-    description: "Building climate-resilient, inclusive, and ecologically responsible communities.",
-    accentColor: "#6366F1",
-    accentColorRgb: "99, 102, 241",
-    iconName: "Leaf",
+    id: "partnerships-linkages",
+    title: "Partnerships & Linkages",
+    slug: "partnerships-linkages",
+    description: "Attracting strategic capital and forging alliances that fuel SDN's transformation.",
+    accentColor: "#0EA5A4",
+    accentColorRgb: "14, 165, 164",
+    iconName: "Handshake",
     mission: "Champion sustainable development across Surigao del Norte by integrating environmental stewardship, climate resilience, and social inclusion into every facet of community planning, infrastructure, and livelihood programs.",
     vision: "To model Surigao del Norte as a global benchmark for marine sanctuary protection, net-zero tourism, and circular resource management by 2040.",
     whyItMatters: [
@@ -657,124 +666,128 @@ export const ECOSYSTEM_PILLARS: EcosystemPillar[] = [
     heroImage: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1600&q=80",
     ctaText: "Participate in Green Programs"
   },
+
+  // ── Index 5: UPPER LEFT ── Research & Innovation
+
   {
-    id: "partnerships-investments",
-    title: "Partnerships & Investments",
-    slug: "partnerships-investments",
-    description: "Attracting strategic capital and forging alliances that fuel SDN's transformation.",
-    accentColor: "#0EA5A4",
-    accentColorRgb: "14, 165, 164",
-    iconName: "Handshake",
-    mission: "Build a diverse and dynamic investment ecosystem for Surigao del Norte by attracting domestic and international capital, forging strategic public-private alliances, and creating a business-enabling environment that rewards innovation.",
-    vision: "To position Surigao del Norte as a leading investment destination in the Visayas-Mindanao corridor by 2040.",
+    id: "research-innovation",
+    title: "Research & Innovation",
+    slug: "research-and-innovation",
+    description: "Generating cutting-edge research that translates local knowledge into global solutions.",
+    accentColor: "#8B5CF6",
+    accentColorRgb: "139, 92, 246",
+    iconName: "Microscope",
+    mission: "Position Surigao del Norte as a research powerhouse by funding applied R&D that leverages the province's unique marine, mineral, and agricultural assets, bridging academic excellence with commercial and social impact.",
+    vision: "To make Surigao del Norte a recognized national center of excellence for sustainable marine science and mining rehabilitation technology by 2040.",
     whyItMatters: [
-      { title: "The Problem", description: "Complex regulations and fragmented information deter serious investors from bringing capital into the region.", type: "Problem" },
-      { title: "Current Situation", description: "Reliance on localized funding limits the scale and speed of major infrastructure projects.", type: "Current Situation" },
-      { title: "Desired Future", description: "A streamlined, investor-friendly environment offering tax incentives and transparent partnerships.", type: "Desired Future" },
-      { title: "Expected Impact", description: "Rapid deployment of capital for large-scale energy, tech, and logistics infrastructure.", type: "Expected Impact" }
+      { title: "The Problem", description: "Valuable local resources are underutilized or unsustainably extracted due to lack of localized scientific study.", type: "Problem" },
+      { title: "Current Situation", description: "Academic research often remains theoretical without pathways to commercial or municipal implementation.", type: "Current Situation" },
+      { title: "Desired Future", description: "A bridge between local laboratories and global markets translating endemic knowledge into patented solutions.", type: "Desired Future" },
+      { title: "Expected Impact", description: "Sustainable resource management, novel biotechnology products, and a globally recognized research ecosystem.", type: "Expected Impact" }
     ],
     workflow: [
-      { step: 1, title: "Promotion", description: "Showcasing local investment opportunities in international forums." },
-      { step: 2, title: "Facilitation", description: "Assisting investors through the SIPAC one-stop-shop." },
-      { step: 3, title: "Partnership", description: "Structuring public-private agreements (PPP) for maximum mutual benefit." },
-      { step: 4, title: "Execution", description: "Accelerating permits and land use clearances to begin operations." }
+      { step: 1, title: "Funding", description: "Allocating R&D grants to promising local research proposals." },
+      { step: 2, title: "Prototyping", description: "Utilizing Innovation Labs for testing and validation." },
+      { step: 3, title: "IP Registration", description: "Securing patents and utility models for developed technologies." },
+      { step: 4, title: "Commercialization", description: "Partnering with industry for mass production and deployment." }
     ],
     stats: [
-      { value: 20, label: "Partner Organizations" },
-      { value: 12, label: "Strategic Alliances" },
-      { value: 500, prefix: "₱", suffix: "M+", label: "Current Investments" },
-      { value: 5, prefix: "₱", suffix: "B+", label: "Target Investments" }
+      { value: 14, label: "Research Projects" },
+      { value: 3, label: "Innovation Labs" },
+      { value: 22, label: "Patented Technologies" },
+      { value: 50, suffix: "+", label: "Target Funded Projects" }
     ],
     objectives: [
-      "Establish the Surigao Investment Promotion and Assistance Center (SIPAC).",
-      "Attract PHP 5 Billion in cumulative public-private partnership (PPP) investments.",
-      "Build a directory of international partner cities for business and cultural trade.",
-      "Facilitate easy capital access lines for local MSMEs and cooperatives."
+      "Establish the Surigao Marine and Coastal Research Institute.",
+      "Fund 50+ research projects targeting sustainable utilization of nickel and other mineral resources.",
+      "Acquire 30+ patents and utility models representing local intellectual property.",
+      "Bridge local university researchers with multinational industrial partners."
     ],
     tooltipMetrics: [
-      "20 Partner Organizations",
-      "12 Strategic Alliances",
-      "₱500M+ Investments"
+      "14 Research Projects",
+      "3 Innovation Labs",
+      "22 Patented Technologies"
     ],
     programs: [
       {
-        title: "SIPAC One-Stop Shop",
+        title: "PRIME Applied R&D Grants",
         type: "Initiative",
-        description: "Simplifying regulatory permits, providing land-use directories, and organizing tax holiday incentives for serious investors."
+        description: "Competitive funding program supporting researchers looking to develop market-viable solutions in local sectors."
       },
       {
-        title: "PRIME Annual Investment Forum",
-        type: "Initiative",
-        description: "A flagship business gathering bringing developers, commercial banks, and venture capitalists to Surigao."
+        title: "Marine and Coastal Innovation Labs",
+        type: "Incubation",
+        description: "Research laboratory infrastructure focusing on coral reef restoration, seaweed propagation, and sustainable aquaculture."
       },
       {
-        title: "Public-Private Partnership Facilitation",
-        type: "Initiative",
-        description: "Assisting municipal leaders in drafting and executing infrastructure agreements with private tech and energy firms."
+        title: "Mineral Wealth Tech Incubator",
+        type: "Accelerator",
+        description: "Partnering with chemical and mining engineering departments to develop environmentally safe waste treatment methods."
       }
     ],
     projects: [
       {
-        title: "Surigao Port Economic Zone R&D",
+        title: "Siargao Mangrove Carbon Blue Project",
         type: "Research",
-        description: "Feasibility studies on upgrading port cargo terminals to support technology-grade electronic goods shipment.",
-        date: "Completed Q1 2025"
+        description: "Quantifying carbon sequestration capabilities of Siargao's vast mangrove forests for carbon credit integration.",
+        date: "Launched Jan 2025"
       },
       {
-        title: "SDN Investment Expo",
-        type: "Event",
-        description: "Pitch events introducing local infrastructure proposals to international development partners.",
-        date: "September 2025"
+        title: "Eco-Rehabilitation of Post-Mining Sites",
+        type: "Research",
+        description: "Testing endemic plant species for heavy-metal phytoextraction in decommissioned mining lands in Claver.",
+        date: "Q4 2025"
       }
     ],
     roadmap: [
-      { year: "2025", milestone: "Establish the physical SIPAC office and launch the web investor portal", target: "1 integrated center" },
-      { year: "2026", milestone: "Host the first international SDN Investment Summit", target: "₱500M investment pledges" },
-      { year: "2030", milestone: "Conclude 5 major PPP projects in solar energy and port logistics", target: "5 concluded PPP agreements" },
-      { year: "2040", milestone: "Establish Surigao City as a highly specialized financial and logistics hub", target: "₱5B cumulative investments" }
+      { year: "2025", milestone: "Establish the Surigao Marine Lab and procure molecular testing equipment", target: "1 core facility" },
+      { year: "2027", milestone: "Register 10 patents for agricultural food-processing devices", target: "10 patents" },
+      { year: "2030", milestone: "Establish the Carbon Blue Credit trading framework with private developers", target: "₱30M credits valuation" },
+      { year: "2040", milestone: "Maintain fully commercialized university technology transfer models", target: "30+ active technology licensing agreements" }
     ],
     partners: [
-      { name: "Board of Investments Philippines", type: "DTI" },
-      { name: "CARAGA Chamber of Commerce", type: "Private Sector" },
-      { name: "European Chamber of Commerce of the Philippines", type: "Private Sector" },
-      { name: "Asian Development Bank (Mindanao Division)", type: "Private Sector" }
+      { name: "Department of Science and Technology", type: "DOST" },
+      { name: "Surigao State University R&D Division", type: "University" },
+      { name: "National Fisheries Research and Development Institute", type: "DOST" },
+      { name: "Claver Mining Group Coalition", type: "Private Sector" }
     ],
     policies: [
       {
-        title: "The Surigao del Norte Investment Incentive Code",
-        number: "Ordinance No. 2024-005",
+        title: "An Ordinance Establishing the Surigao Science and Research Council",
+        number: "Ordinance No. 2025-004",
         type: "Provincial Ordinance",
-        year: "2024"
+        year: "2025"
       }
     ],
     successStories: [
       {
-        beneficiary: "MetroSolar SDN Corporation",
-        type: "Startup",
-        story: "A joint venture facilitated by SIPAC. Invested in a 15MW solar farm in Placer, supplying stable clean power to local distribution networks and reducing power outage occurrences.",
-        impact: "Provides stable electricity to 25,000 households."
+        beneficiary: "Seaweed Bioplastics Lab",
+        type: "Community Impact",
+        story: "A research team from SNSU developed a biodegradable packaging alternative utilizing locally farmed red seaweeds, providing a secondary income stream for seaweed farmers.",
+        impact: "99% reduction in single-use plastic reliance for pilot businesses."
       }
     ],
     news: [
       {
-        title: "SIPAC Signs Partnership Agreement with Japanese Tech Consortium",
-        type: "Announcement",
-        date: "June 15, 2026",
-        summary: "Cooperation includes technical exchange on smart grid and agricultural logistics tools."
+        title: "SDN Researchers Win Best R&D Award at National Science Week",
+        type: "Article",
+        date: "April 18, 2026",
+        summary: "The Surigaonon research team was recognized for their innovative soil phytoremediation technology."
       }
     ],
-    heroImage: "https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&w=1600&q=80",
-    ctaText: "View SDN Investment Guide"
+    heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
+    ctaText: "Apply for a Research Grant"
   }
 ];
 
 // Node angular positions (degrees from top, clockwise)
 // 6 nodes evenly spaced = 360/6 = 60° apart, starting at -90° (top)
 export const NODE_ANGLES: number[] = [
-  -90,           // 1: Startup Development — Top Center
-  -90 + 60,      // 2: Education & Talent — Upper Right
-  -90 + 120,     // 3: Research & Innovation — Middle Right
-  -90 + 180,     // 4: Digital Transformation — Bottom Center
-  -90 + 240,     // 5: Sustainable Communities — Lower Left
-  -90 + 300,     // 6: Partnerships & Investments — Upper Left
+  -90,           // 0: Education & Talent          — Top Center
+  -90 + 60,      // 1: Innovation Infrastructure   — Upper Right
+  -90 + 120,     // 2: Startup Ecosystem           — Lower Right
+  -90 + 180,     // 3: Smart & Sustainable         — Bottom Center
+  -90 + 240,     // 4: Partnerships & Linkages          — Lower Left
+  -90 + 300,     // 5: Research & Innovation       — Upper Left
 ];
+

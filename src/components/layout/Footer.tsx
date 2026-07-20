@@ -1,54 +1,15 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { SITE_CONFIG } from "@/lib/utils";
+import Image from "next/image";
 import { useState } from "react";
+
+const EASE_CURVE = [0.22, 1, 0.36, 1] as const;
 
 export function Footer() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
-  const socialLinks = [
-    {
-      svg: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-        </svg>
-      ),
-      href: SITE_CONFIG.social.facebook,
-      label: "Facebook"
-    },
-    {
-      svg: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-        </svg>
-      ),
-      href: SITE_CONFIG.social.instagram,
-      label: "Instagram"
-    },
-    {
-      svg: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
-        </svg>
-      ),
-      href: SITE_CONFIG.social.twitter,
-      label: "X (Twitter)"
-    },
-    {
-      svg: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-          <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
-        </svg>
-      ),
-      href: SITE_CONFIG.social.youtube,
-      label: "YouTube"
-    }
-  ];
 
   async function handleNewsletter(e: React.FormEvent) {
     e.preventDefault();
@@ -71,132 +32,457 @@ export function Footer() {
   }
 
   return (
-    <footer className="text-white" style={{ background: "linear-gradient(135deg, #5A2396 0%, #1E4FBF 100%)" }} role="contentinfo">
-      {/* Main Footer */}
-      <div className="max-w-[1440px] mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Logo + Social */}
-          <div>
-            <Link href="/" className="flex items-center gap-3 mb-8" aria-label="Prime SDN Home">
-              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 21c0 .5 4 .5 4 0v-2H9v2zM12 2C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" fill="#1E4FBF"/>
-                </svg>
-              </div>
-             <span className="text-xl tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-               <span className="font-bold text-white">PRIME</span>{" "}
-               <span className="font-bold text-white/80">SDN</span>
-             </span>
+    <footer 
+      className="relative w-full select-none"
+      role="contentinfo"
+      style={{
+        backgroundColor: "#F7F5F2",
+        paddingTop: "120px",
+        paddingBottom: "80px"
+      }}
+    >
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16">
+
+        {/* ZONE 1: Call To Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: EASE_CURVE }}
+          className="text-center mb-20"
+        >
+          <h2
+            className="font-bold text-[#111111] mb-6"
+            style={{
+              fontSize: "72px",
+              fontFamily: "var(--font-display)",
+              fontWeight: 700,
+              lineHeight: "1.0"
+            }}
+          >
+            Let's Build the Future
+            <br />
+            of Surigao del Norte.
+          </h2>
+          
+          <p
+            className="text-[#666666] mb-10"
+            style={{
+              fontSize: "18px",
+              fontFamily: "var(--font-body)",
+              lineHeight: "1.6"
+            }}
+          >
+            Explore opportunities, discover innovation, and become part of PRIME SDN 2040.
+          </p>
+
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link
+              href="/explore"
+              className="inline-flex items-center justify-center rounded-full text-white font-semibold transition-all duration-300 hover:bg-[#1E4FBF]"
+              style={{
+                backgroundColor: "#1E5EFF",
+                fontFamily: "var(--font-body)",
+                fontSize: "16px",
+                height: "54px",
+                padding: "0 30px"
+              }}
+            >
+              Explore SDN →
             </Link>
-            <p className="text-sm text-white/70 mb-6 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
-              Building Surigao del Norte's innovation ecosystem through collaboration, research, and sustainable development.
-            </p>
-            <div className="flex gap-3">
-              {socialLinks.map(({ svg, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all duration-300 text-white"
-                >
-                  {svg}
-                </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Divider */}
+        <div 
+          className="w-full mb-20"
+          style={{ height: "1px", backgroundColor: "rgba(0,0,0,0.08)" }}
+        />
+
+        {/* ZONE 2: Footer Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: EASE_CURVE }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20"
+        >
+          {/* Column 1: Discover */}
+          <div>
+            <h3
+              className="font-bold uppercase mb-6"
+              style={{
+                fontSize: "13px",
+                letterSpacing: "0.12em",
+                fontFamily: "var(--font-body)",
+                color: "#111111",
+                fontWeight: 600
+              }}
+            >
+              Discover
+            </h3>
+            <ul className="space-y-[18px]">
+              {[
+                { label: "About SDN", href: "/about" },
+                { label: "Investment Areas", href: "/invest" },
+                { label: "Innovation Districts", href: "/districts" },
+                { label: "Tourism", href: "/tourism" },
+                { label: "Infrastructure", href: "/infrastructure" },
+                { label: "News", href: "/news" }
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-block relative"
+                    style={{
+                      fontSize: "17px",
+                      fontFamily: "var(--font-body)",
+                      fontWeight: 500,
+                      color: "#666666",
+                      transition: "color 0.3s ease"
+                    }}
+                  >
+                    <span className="group-hover:text-[#1E5EFF] transition-colors duration-300">
+                      {link.label}
+                    </span>
+                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#1E5EFF] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  </Link>
+                </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Column 2: PRIME */}
+          <div>
+            <h3
+              className="font-bold uppercase mb-6"
+              style={{
+                fontSize: "13px",
+                letterSpacing: "0.12em",
+                fontFamily: "var(--font-body)",
+                color: "#111111",
+                fontWeight: 600
+              }}
+            >
+              PRIME
+            </h3>
+            <ul className="space-y-[18px]">
+              {[
+                { label: "Vision", href: "/about/vision" },
+                { label: "Framework", href: "/about/framework" },
+                { label: "Roadmap", href: "/about/roadmap" },
+                { label: "Projects", href: "/projects" },
+                { label: "Partners", href: "/partners" }
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-block relative"
+                    style={{
+                      fontSize: "17px",
+                      fontFamily: "var(--font-body)",
+                      fontWeight: 500,
+                      color: "#666666",
+                      transition: "color 0.3s ease"
+                    }}
+                  >
+                    <span className="group-hover:text-[#1E5EFF] transition-colors duration-300">
+                      {link.label}
+                    </span>
+                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#1E5EFF] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Resources */}
+          <div>
+            <h3
+              className="font-bold uppercase mb-6"
+              style={{
+                fontSize: "13px",
+                letterSpacing: "0.12em",
+                fontFamily: "var(--font-body)",
+                color: "#111111",
+                fontWeight: 600
+              }}
+            >
+              Resources
+            </h3>
+            <ul className="space-y-[18px]">
+              {[
+                { label: "Downloads", href: "/downloads" },
+                { label: "Reports", href: "/reports" },
+                { label: "Media", href: "/media" },
+                { label: "FAQs", href: "/faq" },
+                { label: "Contact", href: "/contact" }
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="group inline-block relative"
+                    style={{
+                      fontSize: "17px",
+                      fontFamily: "var(--font-body)",
+                      fontWeight: 500,
+                      color: "#666666",
+                      transition: "color 0.3s ease"
+                    }}
+                  >
+                    <span className="group-hover:text-[#1E5EFF] transition-colors duration-300">
+                      {link.label}
+                    </span>
+                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#1E5EFF] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4: Connect */}
+          <div>
+            <h3
+              className="font-bold uppercase mb-6"
+              style={{
+                fontSize: "13px",
+                letterSpacing: "0.12em",
+                fontFamily: "var(--font-body)",
+                color: "#111111",
+                fontWeight: 600
+              }}
+            >
+              Connect
+            </h3>
+            <ul className="space-y-[18px]">
+              {[
+                { label: "Facebook", href: "https://facebook.com" },
+                { label: "Instagram", href: "https://instagram.com" },
+                { label: "LinkedIn", href: "https://linkedin.com" },
+                { label: "YouTube", href: "https://youtube.com" },
+                { label: "Email", href: "mailto:info@primesdn.ph" }
+              ].map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="group inline-block relative"
+                    style={{
+                      fontSize: "17px",
+                      fontFamily: "var(--font-body)",
+                      fontWeight: 500,
+                      color: "#666666",
+                      transition: "color 0.3s ease"
+                    }}
+                  >
+                    <span className="group-hover:text-[#1E5EFF] transition-colors duration-300">
+                      {link.label}
+                    </span>
+                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#1E5EFF] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+
+        {/* Divider */}
+        <div 
+          className="w-full mb-16"
+          style={{ height: "1px", backgroundColor: "rgba(0,0,0,0.08)" }}
+        />
+
+        {/* ZONE 3: Brand Area + Newsletter */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: EASE_CURVE }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-16"
+        >
+          {/* Brand Area */}
+          <div className="flex items-start gap-6">
+            <motion.div
+              whileHover={{ opacity: 0.8 }}
+              transition={{ duration: 0.3 }}
+              className="shrink-0"
+            >
+              <Image
+                src="/00dbb79a-7e8b-4b4e-823c-3ce8f873f46f-removebg-preview.png"
+                alt="PRIME SDN Logo"
+                width={120}
+                height={40}
+                className="object-contain"
+                style={{ objectFit: "contain" }}
+              />
+            </motion.div>
+            
+            <div>
+              <div className="mb-3">
+                <span
+                  className="block font-bold"
+                  style={{
+                    fontSize: "24px",
+                    fontFamily: "var(--font-display)",
+                    color: "#111111",
+                    lineHeight: "1.2"
+                  }}
+                >
+                  PRIME
+                </span>
+                <span
+                  className="block font-medium"
+                  style={{
+                    fontSize: "14px",
+                    fontFamily: "var(--font-display)",
+                    color: "#666666",
+                    letterSpacing: "0.05em",
+                    lineHeight: "1.4"
+                  }}
+                >
+                  SURIGAO DEL NORTE
+                </span>
+              </div>
+              
+              <p
+                className="text-[#666666]"
+                style={{
+                  fontSize: "15px",
+                  fontFamily: "var(--font-body)",
+                  lineHeight: "1.7",
+                  maxWidth: "430px"
+                }}
+              >
+                Building the innovation capital of Mindanao through education, infrastructure, sustainability, research, entrepreneurship, and partnerships.
+              </p>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "var(--font-body)" }}>
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { label: "About", href: "/about/vision" },
-                { label: "Policies & Governance", href: "/about/policies" },
-                { label: "Activities", href: "/activities" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors duration-300" style={{ fontFamily: "var(--font-body)" }}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "var(--font-body)" }}>
-              Resources
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { label: "News & Blogs", href: "/news" },
-                { label: "Startups", href: "/startups" },
-                { label: "Contact", href: "/contact" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors duration-300" style={{ fontFamily: "var(--font-body)" }}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Newsletter */}
-          <div>
-            <h3 className="font-bold text-white text-sm mb-6 uppercase tracking-wider" style={{ fontFamily: "var(--font-body)" }}>
-              Stay Informed
+          <div className="lg:max-w-md">
+            <h3
+              className="font-bold uppercase mb-4"
+              style={{
+                fontSize: "13px",
+                letterSpacing: "0.12em",
+                fontFamily: "var(--font-body)",
+                color: "#111111",
+                fontWeight: 600
+              }}
+            >
+              Newsletter
             </h3>
-            <p className="text-sm mb-5 text-white/70 leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
-              Subscribe to our newsletter for the latest updates and innovation stories from Surigao Del Norte.
-            </p>
-            <form onSubmit={handleNewsletter} className="flex flex-col gap-3">
+            <form onSubmit={handleNewsletter} className="flex gap-3">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
+                placeholder="Email Address"
                 required
-                className="px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-white/40 transition-all duration-300"
+                className="flex-1 px-5 py-3 rounded-full border text-[#111111] placeholder-[#999999] focus:outline-none focus:border-[#1E5EFF] transition-all duration-300"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "15px",
+                  borderColor: "rgba(0,0,0,0.12)",
+                  backgroundColor: "#FFFFFF"
+                }}
                 aria-label="Email address for newsletter"
-                style={{ fontFamily: "var(--font-body)" }}
               />
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="px-6 py-3 rounded-lg bg-white text-[#1E4FBF] text-sm font-semibold hover:bg-white/90 transition-all duration-300 disabled:opacity-50"
-                style={{ fontFamily: "var(--font-body)" }}
+                className="px-6 py-3 rounded-full text-white font-semibold transition-all duration-300 hover:bg-[#1E4FBF] hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100"
+                style={{
+                  backgroundColor: "#1E5EFF",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "15px"
+                }}
               >
                 {status === "loading" ? "..." : "Subscribe"}
               </button>
             </form>
             {status === "success" && (
-              <p className="text-xs text-white mt-3" style={{ fontFamily: "var(--font-body)" }}>Thanks for subscribing!</p>
+              <p className="text-sm mt-3" style={{ fontFamily: "var(--font-body)", color: "#666666" }}>
+                Thanks for subscribing!
+              </p>
             )}
             {status === "error" && (
-              <p className="text-xs text-white/70 mt-3" style={{ fontFamily: "var(--font-body)" }}>Something went wrong. Try again.</p>
+              <p className="text-sm mt-3" style={{ fontFamily: "var(--font-body)", color: "#666666" }}>
+                Something went wrong. Try again.
+              </p>
             )}
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-[1440px] mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60" style={{ fontFamily: "var(--font-body)" }}>
-          <div className="flex items-center gap-4">
-            <span>{SITE_CONFIG.phone}</span>
-            <span className="hidden sm:inline">|</span>
-            <a href={`mailto:${SITE_CONFIG.email}`} className="hover:text-white transition-colors duration-300">
-              {SITE_CONFIG.email}
-            </a>
+        {/* Divider */}
+        <div 
+          className="w-full mb-12"
+          style={{ height: "1px", backgroundColor: "rgba(0,0,0,0.08)" }}
+        />
+
+        {/* ZONE 4: Bottom Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.25, ease: EASE_CURVE }}
+          className="flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          {/* Left: Copyright */}
+          <p
+            className="text-[#666666]"
+            style={{
+              fontSize: "14px",
+              fontFamily: "var(--font-body)"
+            }}
+          >
+            © 2026 PRIME SDN 2040
+          </p>
+
+          {/* Center: Legal Links */}
+          <div className="flex items-center gap-6">
+            {[
+              { label: "Privacy", href: "/privacy" },
+              { label: "Accessibility", href: "/accessibility" },
+              { label: "Terms", href: "/terms" },
+              { label: "Cookies", href: "/cookies" }
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group inline-block relative"
+                style={{
+                  fontSize: "14px",
+                  fontFamily: "var(--font-body)",
+                  color: "#666666",
+                  transition: "color 0.3s ease"
+                }}
+              >
+                <span className="group-hover:text-[#1E5EFF] transition-colors duration-300">
+                  {link.label}
+                </span>
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#1E5EFF] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+              </Link>
+            ))}
           </div>
-          <span>© {new Date().getFullYear()} Prime SDN. All rights reserved.</span>
-        </div>
+
+          {/* Right: Developer Credit */}
+          <p
+            className="text-[#666666]"
+            style={{
+              fontSize: "14px",
+              fontFamily: "var(--font-body)"
+            }}
+          >
+            Developed by Province of Surigao del Norte
+          </p>
+        </motion.div>
+
       </div>
     </footer>
   );

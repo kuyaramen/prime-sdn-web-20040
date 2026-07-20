@@ -906,3 +906,45 @@ a:focus-visible {
   }
 }
 
+/* ===== PRIME GUIDE — DIGITAL CONCIERGE ANIMATIONS ===== */
+
+@keyframes guide-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes guide-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+
+@keyframes guide-blink {
+  0%, 88%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.08); }
+}
+
+@keyframes guide-wave {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(18deg); }
+  50%  { transform: rotate(-10deg); }
+  75%  { transform: rotate(14deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.guide-float  { animation: guide-float  4s  ease-in-out infinite; }
+.guide-breathe{ animation: guide-breathe 3s  ease-in-out infinite; }
+.guide-blink  { animation: guide-blink  5.5s ease-in-out infinite; transform-origin: center 50%; }
+.guide-wave   { animation: guide-wave   0.9s ease-in-out 2; transform-origin: 50% 75%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-float,
+  .guide-breathe,
+  .guide-blink,
+  .guide-wave { animation: none !important; }
+}
+
+@keyframes guide-panel-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
