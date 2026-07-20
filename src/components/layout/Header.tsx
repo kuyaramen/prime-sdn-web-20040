@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Search, Globe } from "lucide-react";
+import { Menu, X, ArrowRight, Search, Globe, ChevronDown } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { usePathname } from "next/navigation";
 import { SearchOverlay } from "./SearchOverlay";
