@@ -1,41 +1,271 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight, Search, Globe } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { usePathname } from "next/navigation";
+import { SearchOverlay } from "./SearchOverlay";
 
-const navItems = [
-  { label: "Home", href: "/" },
+interface NavGroup {
+  label: string;
+  featuredImage?: string;
+  featuredImageAlt?: string;
+  featuredLabel?: string;
+  featuredTitle?: string;
+  featuredLink?: string;
+  links: { label: string; href: string }[];
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  contextDescription: string;
+  featuredImage?: string;
+  featuredImageAlt?: string;
+  featuredLabel?: string;
+  featuredTitle?: string;
+  featuredLink?: string;
+  groups?: NavGroup[];
+}
+
+const navItems: NavItem[] = [
   {
-    label: "About us",
-    href: "/about",
-    children: [
-      { label: "About PRIME SDN", href: "/about" },
-      { label: "Vision & Mission", href: "/about#vision" },
-      { label: "Our Framework", href: "/about#framework" },
-      { label: "Policies & Governance", href: "/about#policies" },
-      { label: "Leadership Team", href: "/about#organization" },
-    ],
+    label: "Discover Surigao",
+    href: "/discover",
+    contextDescription: "Experience the unique blend of island ecology, vibrant startup hubs, and prime investment opportunities.",
+    featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+    featuredImageAlt: "Siargao Island",
+    featuredLabel: "FEATURED DESTINATION",
+    featuredTitle: "The Siargao Innovation Hub",
+    featuredLink: "/hubs/siargao",
+    groups: [
+      {
+        label: "Destinations",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "DESTINATIONS",
+        featuredTitle: "Explore the Islands",
+        featuredLink: "/destinations",
+        links: [
+          { label: "Tourism", href: "/tourism" },
+          { label: "Destinations", href: "/destinations" },
+          { label: "Nature", href: "/nature" },
+        ]
+      },
+      {
+        label: "Ecology",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "ECOLOGY",
+        featuredTitle: "Sustainable Surigao",
+        featuredLink: "/ecology",
+        links: [
+          { label: "Islands", href: "/islands" },
+          { label: "Culture", href: "/culture" },
+        ]
+      },
+      {
+        label: "People",
+        links: [
+          { label: "Heritage", href: "/heritage" },
+          { label: "Communities", href: "/communities" },
+        ]
+      }
+    ]
   },
-  { label: "Activities", href: "/activities" },
-  { label: "News & Blogs", href: "/news" },
-  { label: "Contact", href: "/contact" },
+  {
+    label: "The Movement",
+    href: "/about",
+    contextDescription: "Building the future of Surigao del Norte through collaboration, innovation and sustainable development.",
+    featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+    featuredImageAlt: "Vision 2040",
+    featuredLabel: "MASTERPLAN",
+    featuredTitle: "Surigao 2040 Vision",
+    featuredLink: "/about#vision",
+    groups: [
+      {
+        label: "About",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "ABOUT",
+        featuredTitle: "The PRIME Initiative",
+        featuredLink: "/about#prime",
+        links: [
+          { label: "Vision", href: "/about#vision" },
+          { label: "About PRIME", href: "/about#prime" },
+        ]
+      },
+      {
+        label: "Framework",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "ROADMAP",
+        featuredTitle: "Strategic Pillars",
+        featuredLink: "/about#pillars",
+        links: [
+          { label: "Roadmap", href: "/about#roadmap" },
+          { label: "Framework", href: "/about#framework" },
+          { label: "Pillars", href: "/about#pillars" },
+        ]
+      },
+      {
+        label: "People",
+        links: [
+          { label: "Leadership", href: "/about#organization" },
+          { label: "Partners", href: "/partners" },
+        ]
+      }
+    ]
+  },
+  {
+    label: "Opportunities",
+    href: "/opportunities",
+    contextDescription: "Explore the tangible actions, core programs, and milestone events transforming the ecosystem.",
+    featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+    featuredImageAlt: "Opportunities",
+    featuredLabel: "INVESTMENT SPOTLIGHT",
+    featuredTitle: "Agri-Tech Innovation",
+    featuredLink: "/innovation/agri-tech",
+    groups: [
+      {
+        label: "Business",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "STARTUPS",
+        featuredTitle: "Funding the Future",
+        featuredLink: "/startups",
+        links: [
+          { label: "Investment", href: "/investment" },
+          { label: "Startups", href: "/startups" },
+        ]
+      },
+      {
+        label: "Innovation",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "RESEARCH",
+        featuredTitle: "Advanced Research Labs",
+        featuredLink: "/research",
+        links: [
+          { label: "Research", href: "/research" },
+          { label: "Education", href: "/education" },
+        ]
+      },
+      {
+        label: "Programs",
+        links: [
+          { label: "Incubation", href: "/programs" },
+          { label: "Acceleration", href: "/programs#acceleration" },
+        ]
+      }
+    ]
+  },
+  {
+    label: "Stories",
+    href: "/news",
+    contextDescription: "Stay informed with the latest news, feature stories, and data reports from the network.",
+    featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+    featuredImageAlt: "Stories",
+    featuredLabel: "LATEST STORY",
+    featuredTitle: "The New Wave of Founders",
+    featuredLink: "/articles/new-wave",
+    groups: [
+      {
+        label: "News",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "PRESS",
+        featuredTitle: "Global Recognition",
+        featuredLink: "/press",
+        links: [
+          { label: "Latest News", href: "/news" },
+          { label: "Press Releases", href: "/press" },
+        ]
+      },
+      {
+        label: "Features",
+        featuredImage: "/images/ChatGPT Image Jul 12, 2026, 08_19_27 PM.png",
+        featuredLabel: "SUCCESS STORIES",
+        featuredTitle: "Building from the Islands",
+        featuredLink: "/success-stories",
+        links: [
+          { label: "Articles", href: "/articles" },
+          { label: "Success Stories", href: "/success-stories" },
+        ]
+      },
+      {
+        label: "Media",
+        links: [
+          { label: "Events", href: "/events" },
+          { label: "Galleries", href: "/media" },
+        ]
+      }
+    ]
+  },
 ];
 
-export function Header() {
+export interface HeaderProps {
+  heroMode?: boolean;
+}
+
+export function Header({ heroMode = false }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeFeaturedGroup, setActiveFeaturedGroup] = useState<string | null>(null);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
+  
+  const headerRef = useRef<HTMLElement>(null);
+  const lastScrollY = useRef(0);
   const prefersReduced = useReducedMotion();
+  const pathname = usePathname();
 
+  // Scroll detection logic
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Solid state threshold - 50px for hero mode
+      setIsScrolled(currentScrollY > 50);
+      
+      // Visibility threshold & directional logic
+      if (currentScrollY <= 120) {
+        // Always show the navigation when near the top of the page
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current && !activeDropdown && !mobileOpen && !searchOpen) {
+        // Scrolling down past 120px and no menus are actively open: hide navigation
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        // Scrolling up: reveal navigation
+        setIsVisible(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
 
+    // Run once on mount to capture initial position
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeDropdown, mobileOpen, searchOpen]);
+
+  // Close dropdowns on route change
+  useEffect(() => {
+    setActiveDropdown(null);
+    setActiveFeaturedGroup(null);
+    setMobileOpen(false);
+    setSearchOpen(false);
+  }, [pathname]);
+
+  // Reset active featured group when dropdown changes
+  useEffect(() => {
+    setActiveFeaturedGroup(null);
+  }, [activeDropdown]);
+
+  // Handle clicking outside to close
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setAboutOpen(false);
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -45,167 +275,382 @@ export function Header() {
   const dropdownVariants = prefersReduced
     ? {}
     : {
-        initial: { opacity: 0, y: -4 },
+        initial: { opacity: 0, y: -6 },
         animate: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: -4 },
+        exit: { opacity: 0, y: -6 },
       };
 
+  // Determine styling based on scroll and interaction
+  const isSolid = isScrolled || activeDropdown !== null || mobileOpen || searchOpen || !heroMode;
+  
+  const transitionSpeed = prefersReduced ? "duration-0" : "duration-[250ms]";
+  
+  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all ${transitionSpeed} ease-out ${
+    isSolid 
+      ? "bg-white border-b border-black/[0.04]" 
+      : "bg-transparent border-b border-transparent shadow-none"
+  } ${isVisible ? "translate-y-0" : "-translate-y-full"}`;
+
+  // Near-black (#111111) for scrolled state for maximum editorial crispness
+  const linkColor = isSolid 
+    ? "text-[#111111]" 
+    : "text-white";
+  const linkHover = isSolid
+    ? "hover:text-[#1E4FBF]"
+    : "hover:text-white/80";
+  const iconColor = isSolid 
+    ? "text-[#111111] hover:text-[#1E4FBF]" 
+    : "text-white/90 hover:text-white";
+  
+  // Active indicator color - white in hero mode, blue in solid state
+  const activeIndicatorColor = isSolid ? "#1E4FBF" : "white";
+
   return (
-    <header 
-      className="sticky top-0 left-0 right-0 z-50 bg-[rgba(255,255,255,0.92)] backdrop-blur-[20px] border-b border-[#EAF4FF] shadow-[0_8px_32px_rgba(0,0,0,0.03)] transition-all duration-300"
-      role="banner"
-    >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" role="navigation" aria-label="Main navigation">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 shrink-0 translate-y-1" aria-label="Prime SDN Home">
-          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#1E4FBF] to-[#5A2396] flex items-center justify-center shadow-[0_8px_24px_rgba(30,79,191,0.25)]">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 21c0 .5 4 .5 4 0v-2H9v2zM12 2C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" fill="white"/>
-            </svg>
-          </div>
-          <span className="text-xl tracking-tight leading-none" style={{ fontFamily: "var(--font-display)" }}>
-            <span className="font-bold" style={{ color: "var(--color-text-brand)" }}>PRIME</span>{" "}
-            <span className="font-bold" style={{ color: "var(--color-secondary-purple)" }}>SDN</span>
-          </span>
-        </Link>
-
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-10">
-          {navItems.map((item) =>
-            item.children ? (
-              <div key={item.label} className="relative" ref={dropdownRef}>
-                <div className="flex items-center gap-1">
-                  <Link
-                    href={item.href}
-                    className="text-[0.9375rem] font-medium text-gray-700 hover:text-[#1E4FBF] relative group transition-colors duration-300"
-                  >
-                    {item.label}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#1E4FBF] to-[#5A2396] transition-all duration-300 group-hover:w-full" />
-                  </Link>
-                  <button
-                    onClick={() => setAboutOpen(!aboutOpen)}
-                    onMouseEnter={() => setAboutOpen(true)}
-                    className="text-gray-700 hover:text-[#1E4FBF] transition-colors duration-300"
-                    aria-expanded={aboutOpen}
-                    aria-haspopup="true"
-                    aria-label="About us menu"
-                    suppressHydrationWarning
-                  >
-                    <ChevronDown size={14} className={`transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
-                  </button>
-                </div>
-                <AnimatePresence>
-                  {aboutOpen && (
-                    <motion.div
-                      {...dropdownVariants}
-                      transition={{ duration: 0.15 }}
-                      className="nav-dropdown"
-                      onMouseLeave={() => setAboutOpen(false)}
-                      role="menu"
-                    >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block"
-                          role="menuitem"
-                          onClick={() => setAboutOpen(false)}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-[0.9375rem] font-medium text-gray-700 hover:text-[#1E4FBF] relative group transition-colors duration-300"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#1E4FBF] to-[#5A2396] transition-all duration-300 group-hover:w-full" />
-              </Link>
-            )
+    <>
+      <header className={headerClasses} role="banner" ref={headerRef} onMouseLeave={() => setActiveDropdown(null)}>
+        {/* Scrim overlay when mega menu is open */}
+        <AnimatePresence>
+          {activeDropdown && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: prefersReduced ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-0 top-[80px] bg-black/[0.06] pointer-events-none -z-10"
+            />
           )}
-        </div>
+        </AnimatePresence>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden p-2 text-gray-700"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          suppressHydrationWarning
+        {/* Localized gradient scrim for hero mode */}
+        {heroMode && !isSolid && (
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none -z-10" />
+        )}
+
+        <nav 
+          className={`max-w-[1440px] mx-auto flex items-center justify-between transition-all ${transitionSpeed} ${
+            isSolid ? "h-[104px] px-10 sm:px-14" : "h-[116px] px-10 sm:px-16"
+          }`} 
+          role="navigation" 
+          aria-label="Main navigation"
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </nav>
-
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={prefersReduced ? {} : { height: 0, opacity: 0 }}
-            animate={prefersReduced ? {} : { height: "auto", opacity: 1 }}
-            exit={prefersReduced ? {} : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-gray-100 overflow-hidden bg-white"
+          {/* Logo — Uploaded image for testing */}
+          <Link 
+            href="/" 
+            className="flex items-center shrink-0 transition-opacity duration-500 hover:opacity-80 mr-8" 
+            aria-label="Prime SDN Home"
+            onClick={() => setActiveDropdown(null)}
           >
-            <div className="px-4 py-4 space-y-1">
-              {navItems.map((item) =>
-                item.children ? (
-                  <div key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="flex items-center justify-between w-full py-3 text-sm font-medium text-gray-700"
-                      onClick={() => setMobileOpen(false)}
+            <Image
+              src="/00dbb79a-7e8b-4b4e-823c-3ce8f873f46f-removebg-preview.png"
+              alt="PRIME SDN Logo"
+              width={100}
+              height={33}
+              className="object-contain"
+              style={{ objectFit: "contain" }}
+            />
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex flex-1 items-center h-full">
+            <div className="flex items-center gap-10 ml-14 h-full">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href || (item.groups && item.groups.some(group => group.links.some(child => pathname === child.href)));
+                
+                return item.groups ? (
+                  <div key={item.label} className="h-full flex items-center">
+                    <button
+                      onMouseEnter={() => setActiveDropdown(item.label)}
+                      onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
+                      className={`relative h-full flex items-center px-3 transition-colors duration-300 group ${linkColor} ${linkHover}`}
+                      style={{ 
+                        fontFamily: "var(--font-body)",
+                        fontSize: "17px",
+                        fontWeight: 600,
+                        letterSpacing: "-0.01em",
+                        lineHeight: 1.15,
+                        WebkitFontSmoothing: "antialiased",
+                        MozOsxFontSmoothing: "grayscale",
+                      }}
+                      aria-expanded={activeDropdown === item.label}
+                      aria-haspopup="true"
                     >
                       {item.label}
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setMobileAboutOpen(!mobileAboutOpen);
-                        }}
-                        className="text-gray-700"
-                      >
-                        <ChevronDown
-                          size={14}
-                          className={`transition-transform ${mobileAboutOpen ? "rotate-180" : ""}`}
-                        />
-                      </button>
-                    </Link>
-                    {mobileAboutOpen && (
-                      <div className="pl-4 space-y-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="block py-2 text-sm text-gray-600 hover:text-[#1E4FBF] transition-colors duration-300"
-                            onClick={() => setMobileOpen(false)}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                      {/* Active indicator — persistent thin line */}
+                      <span className={`absolute bottom-[28px] left-3 right-3 h-[2px] transition-all duration-[250ms] ease-out ${
+                        isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+                      }`} style={{ transformOrigin: "left", backgroundColor: activeIndicatorColor }} />
+                    </button>
                   </div>
                 ) : (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="block py-3 text-sm font-medium text-gray-700 hover:text-[#1E4FBF] transition-colors duration-300"
-                    onClick={() => setMobileOpen(false)}
+                    className={`relative h-full flex items-center px-3 transition-colors duration-300 group ${linkColor} ${linkHover}`}
+                    style={{ 
+                      fontFamily: "var(--font-body)",
+                      fontSize: "17px",
+                      fontWeight: 600,
+                      letterSpacing: "-0.01em",
+                      lineHeight: 1.15,
+                      WebkitFontSmoothing: "antialiased",
+                      MozOsxFontSmoothing: "grayscale",
+                    }}
                   >
                     {item.label}
+                    <span className={`absolute bottom-[28px] left-3 right-3 h-[2px] transition-all duration-[250ms] ease-out ${
+                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
+                    }`} style={{ transformOrigin: "left", backgroundColor: activeIndicatorColor }} />
                   </Link>
                 )
-              )}
+              })}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+
+            {/* Right Side Actions */}
+            <div className={`flex items-center ml-auto gap-10 transition-colors ${transitionSpeed}`}>
+              <button 
+                className={`flex items-center gap-2 text-[15px] font-medium transition-colors duration-200 ${linkColor} hover:text-[#1E4FBF]`}
+                aria-label="Change language"
+              >
+                <Globe size={18} strokeWidth={1.5} className="shrink-0" />
+                <span>EN</span>
+              </button>
+              <button 
+                onClick={() => setSearchOpen(true)}
+                className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors duration-200 ${iconColor} hover:text-[#1E4FBF]`}
+                aria-label="Open search"
+              >
+                <Search size={24} strokeWidth={1.5} />
+              </button>
+              <Link
+                href="/explore"
+                className="h-[40px] px-[24px] flex items-center justify-center rounded-full bg-[#1E4FBF] text-white text-[13px] font-semibold tracking-[0.01em] whitespace-nowrap transition-all duration-[250ms] ease-out hover:bg-[#153B94] hover:-translate-y-px hover:shadow-[0_6px_20px_rgba(30,79,191,0.25)]"
+              >
+                Explore SDN
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile Toggle & Search */}
+          <div className="flex items-center gap-3 lg:hidden">
+            <button 
+              onClick={() => setSearchOpen(true)}
+              className={`p-2 transition-colors duration-500 ${iconColor}`}
+              aria-label="Open search"
+            >
+              <Search size={20} strokeWidth={1.5} />
+            </button>
+            <button
+              className="p-2"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
+            >
+              {mobileOpen ? <X size={24} strokeWidth={1.5} className="text-[#1C2024]" /> : <Menu size={24} strokeWidth={1.5} className={iconColor} />}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mega Menus (Desktop) */}
+        <AnimatePresence>
+          {activeDropdown && navItems.find(i => i.label === activeDropdown)?.groups && (
+            <motion.div
+              {...dropdownVariants}
+              transition={{ duration: prefersReduced ? 0 : 0.3, ease: "easeOut" }}
+              className="absolute top-full left-0 w-full bg-white border-b border-black/[0.04] overflow-hidden hidden lg:block"
+            >
+              <div className="max-w-[1400px] mx-auto px-16 pt-[16px] pb-[32px]">
+                {(() => {
+                  const item = navItems.find(i => i.label === activeDropdown);
+                  if (!item) return null;
+                  
+                  // Resolve dynamic featured story based on hover state
+                  let currentFeaturedImage = item.featuredImage;
+                  let currentFeaturedLabel = item.featuredLabel;
+                  let currentFeaturedTitle = item.featuredTitle;
+                  let currentFeaturedLink = item.featuredLink;
+                  
+                  if (activeFeaturedGroup) {
+                    const groupData = item.groups?.find(g => g.label === activeFeaturedGroup);
+                    if (groupData?.featuredImage) {
+                      currentFeaturedImage = groupData.featuredImage;
+                      currentFeaturedLabel = groupData.featuredLabel;
+                      currentFeaturedTitle = groupData.featuredTitle;
+                      currentFeaturedLink = groupData.featuredLink;
+                    }
+                  }
+                  
+                  return (
+                    <div className="flex flex-col">
+                      {/* Context Area */}
+                      <div className="mb-[16px]">
+                        <p className="font-[var(--font-body)] text-[16px] text-[#5A6578] max-w-[480px] font-normal leading-[1.5]">
+                          {item.contextDescription}
+                        </p>
+                      </div>
+
+                      {/* Anchor Divider */}
+                      <div className="w-full h-[1px] bg-black/[0.06] mb-[24px]" />
+
+                      {/* Editorial Grid: 3 nav columns + featured story card */}
+                      <div className="grid grid-cols-[1fr_1fr_1fr_320px] gap-x-[64px]">
+                        {/* Navigation Columns */}
+                        {item.groups?.map((group, groupIdx) => (
+                          <div 
+                            key={groupIdx} 
+                            className="flex flex-col"
+                            onMouseEnter={() => setActiveFeaturedGroup(group.label)}
+                          >
+                            <h4 
+                              className="text-[11px] uppercase tracking-[0.16em] text-[#999999] font-semibold mb-4"
+                              style={{ fontFamily: "var(--font-display)" }}
+                            >
+                              {group.label}
+                            </h4>
+                            <ul className="space-y-[12px]">
+                              {group.links.map((link, linkIdx) => (
+                                <li key={linkIdx}>
+                                  <Link
+                                    href={link.href}
+                                    className="group/link inline-flex items-center transition-colors duration-300"
+                                    onClick={() => setActiveDropdown(null)}
+                                  >
+                                    <span className="relative font-[var(--font-body)] text-[17px] font-medium text-[#111111] leading-[1.3] transition-colors duration-300 group-hover/link:text-black">
+                                      {link.label}
+                                      <span className="absolute -bottom-[2px] left-0 w-full h-[1px] bg-[#111111] origin-left scale-x-0 transition-transform duration-300 group-hover/link:scale-x-100" />
+                                    </span>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+
+                        {/* Featured Editorial Story Card */}
+                        {currentFeaturedImage && (
+                          <div className="flex flex-col w-[320px]">
+                            <Link href={currentFeaturedLink || item.href} className="group/card flex flex-col" onClick={() => setActiveDropdown(null)}>
+                              <div className="relative w-full h-[175px] mb-4 overflow-hidden">
+                                <Image
+                                  src={currentFeaturedImage}
+                                  alt={currentFeaturedTitle || item.label}
+                                  fill
+                                  className="object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/card:scale-[1.02]"
+                                />
+                              </div>
+                              <span className="block text-[11px] uppercase tracking-[0.16em] text-[#999999] font-semibold mb-2">
+                                {currentFeaturedLabel}
+                              </span>
+                              <h3 className="font-[var(--font-display)] text-[20px] font-semibold text-[#111111] leading-[1.25] mb-2 transition-colors duration-300 group-hover/card:text-black">
+                                {currentFeaturedTitle}
+                              </h3>
+                              <span className="text-[13px] font-medium text-[#111111] mt-2 inline-flex items-center w-fit transition-transform duration-300 group-hover/card:translate-x-0.5">
+                                Read Story
+                                <ArrowRight size={13} strokeWidth={2} className="ml-1 opacity-70" />
+                              </span>
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Mobile Nav (Fullscreen Editorial) */}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={prefersReduced ? {} : { height: 0, opacity: 0 }}
+              animate={prefersReduced ? {} : { height: "100vh", opacity: 1 }}
+              exit={prefersReduced ? {} : { height: 0, opacity: 0 }}
+              transition={{ duration: prefersReduced ? 0 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:hidden overflow-y-auto bg-white absolute top-full left-0 right-0 pb-32"
+              style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}
+            >
+              <div className="px-8 py-6 space-y-0">
+                {navItems.map((item) =>
+                  item.groups ? (
+                    <div key={item.label} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
+                      <button
+                        className="flex items-center justify-between w-full py-5"
+                        style={{ 
+                          fontFamily: "var(--font-display)",
+                          fontSize: "1.25rem",
+                          fontWeight: 500,
+                          color: "#1C2024",
+                          letterSpacing: "-0.005em",
+                        }}
+                        onClick={() => setMobileAboutOpen(mobileAboutOpen === item.label ? null : item.label)}
+                      >
+                        {item.label}
+                        <ChevronDown
+                          size={18}
+                          strokeWidth={1.5}
+                          className={`transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] text-[#1C2024]/30 ${mobileAboutOpen === item.label ? "rotate-180 !text-[#1E4FBF]" : ""}`}
+                        />
+                      </button>
+                      <AnimatePresence>
+                        {mobileAboutOpen === item.label && (
+                          <motion.div 
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: prefersReduced ? 0 : 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pl-5 pb-6 space-y-4 pt-1 border-l border-[#1E4FBF]/10 ml-1">
+                              {item.groups.flatMap(g => g.links).map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  className="block transition-colors duration-500 hover:text-[#1E4FBF]"
+                                  style={{
+                                    fontFamily: "var(--font-body)",
+                                    fontSize: "0.9375rem",
+                                    fontWeight: 400,
+                                    color: "#4B5563",
+                                    letterSpacing: "0.005em",
+                                  }}
+                                  onClick={() => setMobileOpen(false)}
+                                >
+                                  {child.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="block py-5 transition-colors duration-500 hover:text-[#1E4FBF]"
+                      style={{ 
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.25rem",
+                        fontWeight: 500,
+                        color: "#1C2024",
+                        letterSpacing: "-0.005em",
+                        borderBottom: "1px solid rgba(0,0,0,0.04)",
+                      }}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+      
+      {/* Search Overlay */}
+      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+    </>
   );
 }
