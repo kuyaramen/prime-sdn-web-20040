@@ -9,6 +9,13 @@ export interface PathChoice {
   href: string;
 }
 
+export interface TalentCategory {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
 export interface Institution {
   id: string;
   name: string;
@@ -153,7 +160,7 @@ export const educationTalentData = {
         description: "Teaching, research, development",
         icon: "📚",
       },
-    ] as PathChoice[],
+    ] as TalentCategory[],
   },
 
   continueExploring: [
