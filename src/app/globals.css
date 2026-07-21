@@ -948,3 +948,231 @@ a:focus-visible {
   to   { opacity: 1; transform: translateY(0)   scale(1); }
 }
 
+/* ===== TABLET PORTRAIT RESPONSIVE (768px - 1023px) ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Reduce Hero height to 90vh for tablet portrait */
+  [aria-label="Hero"] {
+    height: 90vh !important;
+    min-height: 90vh !important;
+  }
+
+  /* Scale Hero typography slightly for tablet portrait */
+  [aria-label="Hero"] h1 {
+    font-size: clamp(5.5rem, 9vw, 11rem) !important;
+  }
+
+  [aria-label="Hero"] h2 {
+    font-size: clamp(5rem, 8.5vw, 10.5rem) !important;
+  }
+
+  [aria-label="Hero"] h2 span.gold-text-animate {
+    font-size: clamp(4.5rem, 8vw, 10rem) !important;
+  }
+
+  /* Scale partnership carousel logos for tablet portrait */
+  [aria-label="Hero"] .group[style*="width: 52px"] {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  [aria-label="Hero"] .group[style*="width: 52px"] img {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  /* Reduce partnership carousel max-width for tablet portrait */
+  [aria-label="Hero"] div[style*="max-width: 520px"] {
+    max-width: 440px !important;
+  }
+
+  /* Adjust background image focal point for reduced hero height */
+  [aria-label="Hero"] .object-cover {
+    object-position: center 35% !important;
+  }
+}
+
+/* ===== LARGE PHONES RESPONSIVE (430px - 767px) ===== */
+@media (min-width: 430px) and (max-width: 767px) {
+  /* Reduce Hero height to 84vh for large phones */
+  [aria-label="Hero"] {
+    height: 84vh !important;
+    min-height: 84vh !important;
+  }
+
+  /* Create dedicated mobile typography scale for large phones */
+  [aria-label="Hero"] h1 {
+    font-size: clamp(3.5rem, 7vw, 5rem) !important;
+  }
+
+  [aria-label="Hero"] h2 {
+    font-size: clamp(3rem, 6.5vw, 4.5rem) !important;
+  }
+
+  [aria-label="Hero"] h2 span.gold-text-animate {
+    font-size: clamp(2.5rem, 6vw, 4rem) !important;
+  }
+
+  /* Show Hero description with reduced width and font-size for large phones */
+  [aria-label="Hero"] .hidden.md\:block {
+    display: block !important;
+  }
+
+  [aria-label="Hero"] .hidden.md\:block {
+    position: absolute !important;
+    right: 24px !important;
+    bottom: 24px !important;
+    width: 35vw !important;
+    max-width: 280px !important;
+    text-align: right !important;
+  }
+
+  [aria-label="Hero"] .hidden.md\:block p {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    line-clamp: 3 !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    display: -webkit-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Increase partnership logos to 40px for large phones */
+  [aria-label="Hero"] .group[style*="width: 52px"] {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  [aria-label="Hero"] .group[style*="width: 52px"] img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* Increase partnership carousel max-width for larger logos */
+  [aria-label="Hero"] div[style*="max-width: 520px"] {
+    max-width: 360px !important;
+  }
+
+  /* Adjust partnership carousel padding for large phones */
+  [aria-label="Hero"] div[style*="max-width: 520px"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Adjust background image focal point for large phones */
+  [aria-label="Hero"] .object-cover {
+    object-position: center 40% !important;
+  }
+
+  /* Increase Hero content margin-top to 80px for large phones */
+  [aria-label="Hero"] .mt-\[120px\] {
+    margin-top: 80px !important;
+  }
+
+  /* Increase grid gap to 22px for large phones */
+  [aria-label="Hero"] .gap-8 {
+    gap: 22px !important;
+  }
+
+  /* Scale brand title container margins proportionally for large phones */
+  [aria-label="Hero"] div[style*="marginBottom: 32px"] {
+    margin-bottom: 22px !important;
+    margin-top: 28px !important;
+  }
+
+  /* Scale partnership section margins proportionally for large phones */
+  [aria-label="Hero"] div[style*="marginBottom: 40px"] {
+    margin-bottom: 28px !important;
+    margin-top: 28px !important;
+  }
+}
+
+/* ===== STANDARD PHONE NAVBAR REFINEMENT (390px - 429px) ===== */
+@media (min-width: 390px) and (max-width: 429px) {
+  /* Adjust navbar height to 78px for standard phone */
+  nav[role="navigation"] {
+    height: 78px !important;
+  }
+
+  /* Adjust horizontal padding to 16px for standard phone */
+  nav[role="navigation"] {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Adjust mobile icon spacing to 16px for standard phone */
+  nav[role="navigation"] .flex.items-center.gap-3.lg\:hidden {
+    gap: 16px !important;
+  }
+}
+
+/* ===== STANDARD PHONE HERO IMAGE ZONE (390px - 429px) ===== */
+@media (min-width: 390px) and (max-width: 429px) {
+  /* Keep Hero container at 100vh */
+  [aria-label="Hero"] {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+
+  /* Adjust background image focal point for standard phone */
+  [aria-label="Hero"] .object-cover {
+    object-position: center 45% !important;
+  }
+
+  /* Refine Soft Gold & Blue Bottom Fog Transition for two-zone composition */
+  [aria-label="Hero"] > div.absolute.inset-x-0.bottom-0.z-10.pointer-events-none:nth-of-type(3) {
+    height: 50% !important;
+    background: linear-gradient(to bottom, transparent 0%, rgba(212, 175, 55, 0.03) 15%, rgba(30, 79, 191, 0.05) 30%, rgba(255, 255, 255, 0.7) 55%, #FFFFFF 80%, #FFFFFF 100%) !important;
+    filter: blur(6px) !important;
+  }
+
+  /* Refine Clean White Edge Blending for softer transition */
+  [aria-label="Hero"] > div.absolute.inset-x-0.bottom-0.z-10.pointer-events-none:nth-of-type(4) {
+    height: 40% !important;
+    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.85) 30%, #FFFFFF 100%) !important;
+    filter: blur(3px) !important;
+  }
+
+  /* Reposition Hero title vertically within Hero Image Zone (raised by 20px) */
+  [aria-label="Hero"] .mt-\[120px\] {
+    margin-top: 52px !important;
+  }
+
+  /* Fine-tune Hero typography for Standard Phones (all same size) */
+  [aria-label="Hero"] h1 {
+    font-size: clamp(3.8rem, 8.2vw, 5.7rem) !important;
+  }
+
+  [aria-label="Hero"] h2 {
+    font-size: clamp(3.8rem, 8.2vw, 5.7rem) !important;
+  }
+
+  [aria-label="Hero"] h2 span.gold-text-animate {
+    font-size: clamp(3.8rem, 8.2vw, 5.7rem) !important;
+  }
+
+  /* Improve line-height and spacing for cohesive editorial block */
+  [aria-label="Hero"] h1 {
+    line-height: 0.9 !important;
+  }
+
+  [aria-label="Hero"] h2 {
+    line-height: 0.9 !important;
+  }
+
+  /* Reduce vertical gaps between title lines (tighter composition) */
+  [aria-label="Hero"] h1 {
+    margin-bottom: 0px !important;
+  }
+
+  /* Reduce spacing between PRIME and 2040 */
+  [aria-label="Hero"] h2 span.gold-text-animate {
+    margin-left: 6px !important;
+  }
+
+  /* Reduce brand title container margins for tighter composition */
+  [aria-label="Hero"] div.leading-none.max-w-\[750px\] {
+    margin-bottom: 16px !important;
+    margin-top: 16px !important;
+  }
+}
+

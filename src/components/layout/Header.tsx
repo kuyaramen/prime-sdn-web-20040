@@ -283,27 +283,31 @@ export function Header({ heroMode = false }: HeaderProps) {
   // Determine styling based on scroll and interaction
   const isSolid = isScrolled || activeDropdown !== null || mobileOpen || searchOpen || !heroMode;
   
-  const transitionSpeed = prefersReduced ? "duration-0" : "duration-[250ms]";
+  const transitionSpeed = prefersReduced ? "duration-0" : "duration-[300ms]";
   
-  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all ${transitionSpeed} ease-out ${
+  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all ${transitionSpeed} ease ${
     isSolid 
-      ? "bg-white border-b border-black/[0.04]" 
+      ? "bg-white border-b border-black/[0.06] shadow-[0_2px_18px_rgba(0,0,0,0.04)]" 
       : "bg-transparent border-b border-transparent shadow-none"
   } ${isVisible ? "translate-y-0" : "-translate-y-full"}`;
 
-  // Near-black (#111111) for scrolled state for maximum editorial crispness
+  // Colors for hero vs scrolled state
   const linkColor = isSolid 
     ? "text-[#111111]" 
     : "text-white";
   const linkHover = isSolid
-    ? "hover:text-[#1E4FBF]"
-    : "hover:text-white/80";
+    ? "hover:opacity-72"
+    : "hover:opacity-72";
   const iconColor = isSolid 
-    ? "text-[#111111] hover:text-[#1E4FBF]" 
-    : "text-white/90 hover:text-white";
+    ? "text-[#111111]" 
+    : "text-white";
   
-  // Active indicator color - white in hero mode, blue in solid state
-  const activeIndicatorColor = isSolid ? "#1E4FBF" : "white";
+  // Brand text colors
+  const brandMainColor = isSolid ? "#111111" : "white";
+  const brandSubtitleColor = isSolid ? "#7A7A7A" : "rgba(255,255,255,0.78)";
+  
+  // Active indicator color - white in hero mode, primary blue in solid state
+  const activeIndicatorColor = isSolid ? "#2457D6" : "white";
 
   return (
     <>
@@ -326,33 +330,86 @@ export function Header({ heroMode = false }: HeaderProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-transparent pointer-events-none -z-10" />
         )}
 
-        <nav 
-          className={`max-w-[1440px] mx-auto flex items-center justify-between transition-all ${transitionSpeed} ${
-            isSolid ? "h-[104px] px-10 sm:px-14" : "h-[116px] px-10 sm:px-16"
-          }`} 
-          role="navigation" 
+        <nav
+          className={`max-w-[1600px] mx-auto flex items-center justify-between transition-all ${transitionSpeed} ${
+            isSolid ? "h-[78px]" : "h-[88px]"
+          } px-6`}
+          role="navigation"
           aria-label="Main navigation"
         >
-          {/* Logo — Uploaded image for testing */}
-          <Link 
-            href="/" 
-            className="flex items-center shrink-0 transition-opacity duration-500 hover:opacity-80 mr-8" 
-            aria-label="Prime SDN Home"
-            onClick={() => setActiveDropdown(null)}
-          >
-            <Image
-              src="/00dbb79a-7e8b-4b4e-823c-3ce8f873f46f-removebg-preview.png"
-              alt="PRIME SDN Logo"
-              width={100}
-              height={33}
-              className="object-contain"
-              style={{ objectFit: "contain" }}
-            />
-          </Link>
+          {/* Brand Lockup */}
+          <div className="flex items-center shrink-0">
+            {/* Logo Icon */}
+            <Link 
+              href="/" 
+              className="shrink-0" 
+              aria-label="Prime SDN Home"
+              onClick={() => setActiveDropdown(null)}
+            >
+              <Image
+                src="/00dbb79a-7e8b-4b4e-823c-3ce8f873f46f-removebg-preview.png"
+                alt="PRIME SDN Logo"
+                width={60}
+                height={60}
+                className="object-contain"
+                style={{ objectFit: "contain" }}
+              />
+            </Link>
+            
+            {/* Wordmark */}
+            <Link
+              href="/"
+              className="flex flex-col leading-none"
+              style={{ marginTop: "-2px" }}
+              aria-label="Prime SDN Home"
+              onClick={() => setActiveDropdown(null)}
+            >
+              <div className="flex items-baseline" style={{ marginBottom: "4px" }}>
+                <span
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "18px",
+                    fontWeight: 700,
+                    letterSpacing: "-0.02em",
+                    color: isSolid ? "#163B8F" : "#F8F8F8",
+                    lineHeight: 1,
+                  }}
+                >
+                  PRIME
+                </span>
+                <span
+                  className="bg-gradient-to-r from-[#E8C547] to-[#D4A72C] bg-clip-text text-transparent"
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontSize: "18px",
+                    fontWeight: 700,
+                    letterSpacing: "-0.02em",
+                    marginLeft: "4px",
+                    lineHeight: 1,
+                  }}
+                >
+                  SDN
+                </span>
+              </div>
+              <span
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "8.1px",
+                  fontWeight: 500,
+                  letterSpacing: "0.05em",
+                  color: isSolid ? "#6B7280" : "rgba(255, 255, 255, 0.82)",
+                  lineHeight: 1,
+                  textTransform: "uppercase",
+                }}
+              >
+                SURIGAO DEL NORTE
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop Nav */}
           <div className="hidden lg:flex flex-1 items-center h-full">
-            <div className="flex items-center gap-10 ml-14 h-full">
+            <div className="flex items-center gap-16 ml-[120px] h-full">
               {navItems.map((item) => {
                 const isActive = pathname === item.href || (item.groups && item.groups.some(group => group.links.some(child => pathname === child.href)));
                 
@@ -361,13 +418,13 @@ export function Header({ heroMode = false }: HeaderProps) {
                     <button
                       onMouseEnter={() => setActiveDropdown(item.label)}
                       onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
-                      className={`relative h-full flex items-center px-3 transition-colors duration-300 group ${linkColor} ${linkHover}`}
+                      className={`relative h-full flex items-center px-3 transition-all duration-[250ms] ease group ${linkColor} ${linkHover}`}
                       style={{ 
-                        fontFamily: "var(--font-body)",
-                        fontSize: "17px",
-                        fontWeight: 600,
-                        letterSpacing: "-0.01em",
-                        lineHeight: 1.15,
+                        fontFamily: "Inter, sans-serif",
+                        fontSize: "16px",
+                        fontWeight: 500,
+                        letterSpacing: "0",
+                        lineHeight: 1,
                         WebkitFontSmoothing: "antialiased",
                         MozOsxFontSmoothing: "grayscale",
                       }}
@@ -376,57 +433,51 @@ export function Header({ heroMode = false }: HeaderProps) {
                     >
                       {item.label}
                       {/* Active indicator — persistent thin line */}
-                      <span className={`absolute bottom-[28px] left-3 right-3 h-[2px] transition-all duration-[250ms] ease-out ${
+                      <span className={`absolute bottom-[30px] left-3 right-3 h-[2px] transition-all duration-[250ms] ease ${
                         isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-                      }`} style={{ transformOrigin: "left", backgroundColor: activeIndicatorColor }} />
+                      }`} style={{ transformOrigin: "center", backgroundColor: activeIndicatorColor }} />
                     </button>
                   </div>
                 ) : (
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`relative h-full flex items-center px-3 transition-colors duration-300 group ${linkColor} ${linkHover}`}
+                    className={`relative h-full flex items-center px-3 transition-all duration-[250ms] ease group ${linkColor} ${linkHover}`}
                     style={{ 
-                      fontFamily: "var(--font-body)",
-                      fontSize: "17px",
-                      fontWeight: 600,
-                      letterSpacing: "-0.01em",
-                      lineHeight: 1.15,
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: "16px",
+                      fontWeight: 500,
+                      letterSpacing: "0",
+                      lineHeight: 1,
                       WebkitFontSmoothing: "antialiased",
                       MozOsxFontSmoothing: "grayscale",
                     }}
                   >
                     {item.label}
-                    <span className={`absolute bottom-[28px] left-3 right-3 h-[2px] transition-all duration-[250ms] ease-out ${
+                    <span className={`absolute bottom-[30px] left-3 right-3 h-[2px] transition-all duration-[250ms] ease ${
                       isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
-                    }`} style={{ transformOrigin: "left", backgroundColor: activeIndicatorColor }} />
+                    }`} style={{ transformOrigin: "center", backgroundColor: activeIndicatorColor }} />
                   </Link>
                 )
               })}
             </div>
 
             {/* Right Side Actions */}
-            <div className={`flex items-center ml-auto gap-10 transition-colors ${transitionSpeed}`}>
+            <div className={`flex items-center ml-auto gap-8 transition-colors ${transitionSpeed}`}>
               <button 
-                className={`flex items-center gap-2 text-[15px] font-medium transition-colors duration-200 ${linkColor} hover:text-[#1E4FBF]`}
+                className={`flex items-center gap-2.5 text-[16px] font-medium transition-all duration-[250ms] ease ${linkColor} ${linkHover}`}
                 aria-label="Change language"
               >
-                <Globe size={18} strokeWidth={1.5} className="shrink-0" />
+                <Globe size={20} strokeWidth={1.5} className="shrink-0" />
                 <span>EN</span>
               </button>
               <button 
                 onClick={() => setSearchOpen(true)}
-                className={`w-11 h-11 flex items-center justify-center rounded-full transition-colors duration-200 ${iconColor} hover:text-[#1E4FBF]`}
+                className={`w-11 h-11 flex items-center justify-center rounded-full transition-all duration-[250ms] ease ${iconColor} ${linkHover}`}
                 aria-label="Open search"
               >
-                <Search size={24} strokeWidth={1.5} />
+                <Search size={20} strokeWidth={1.5} />
               </button>
-              <Link
-                href="/explore"
-                className="h-[40px] px-[24px] flex items-center justify-center rounded-full bg-[#1E4FBF] text-white text-[13px] font-semibold tracking-[0.01em] whitespace-nowrap transition-all duration-[250ms] ease-out hover:bg-[#153B94] hover:-translate-y-px hover:shadow-[0_6px_20px_rgba(30,79,191,0.25)]"
-              >
-                Explore SDN
-              </Link>
             </div>
           </div>
 
