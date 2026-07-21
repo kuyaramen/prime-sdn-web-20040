@@ -7,17 +7,17 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function InstitutionsPage() {
-  const { institutions } = educationTalentData;
+  const { institutions, hero } = educationTalentData;
 
   return (
     <div className="min-h-screen bg-white">
       {/* ===== HERO SECTION ===== */}
       <PillarHero
-        imageSrc={institutions.hero.imageSrc}
-        imageAlt={institutions.hero.imageAlt}
-        breadcrumb={institutions.hero.breadcrumb}
-        title={institutions.hero.title}
-        description={institutions.hero.description}
+        imageSrc={hero.imageSrc}
+        imageAlt={hero.imageAlt}
+        breadcrumb={hero.breadcrumb}
+        title={hero.title}
+        description={hero.description}
       />
 
       {/* ===== INSTITUTION LOGO GALLERY ===== */}
@@ -44,14 +44,9 @@ export default function InstitutionsPage() {
                   </div>
 
                   {/* Institution Name */}
-                  <h3 className="font-semibold text-[18px] text-[#111111] leading-[1.3] mb-2 text-center" style={{ fontFamily: "Inter, sans-serif" }}>
+                  <h3 className="font-semibold text-[18px] text-[#111111] leading-[1.3] text-center" style={{ fontFamily: "Inter, sans-serif" }}>
                     {institution.name}
                   </h3>
-
-                  {/* Category */}
-                  <p className="text-[14px] text-[#6B7280] text-center" style={{ fontFamily: "Inter, sans-serif" }}>
-                    {institution.category}
-                  </p>
                 </motion.div>
               </Link>
             ))}
