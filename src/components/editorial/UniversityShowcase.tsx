@@ -35,7 +35,7 @@ export function UniversityShowcase({ institutions, onSelect }: UniversityShowcas
             <div className="relative w-32 h-32 mb-8">
               <motion.div
                 whileHover={{ scale: 1.08 }}
-                transition={{ duration: 0.35, ease: "ease-out" }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
                 className="relative w-full h-full"
               >
                 <Image
